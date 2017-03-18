@@ -1,3 +1,27 @@
+<navbar></navbar>
 <div>
+    <div layout="column" layout-align="space-around center">
 
+        <div class="profile-img">
+            <img ng-src="./../app/common/assets/avatars/profile1.png">
+        </div>
+
+        <div layout="row" layout-align="space-around center" class="categories-container">
+
+            <div layout="column" class="sport-container">
+                <span class="category-title">Sport</span>
+                <div ng-repeat="category in $ctrl.sport[0] track by $index ">
+                    <md-checkbox ng-model="isChecked" ng-change="$ctrl.onCheckBoxChange($index,category,'sport')">{{category}}</md-checkbox>
+                </div>
+            </div>
+
+            <div layout="column" class="hobbies-container">
+                <span class="category-title">Gamming</span>
+                <div ng-repeat="category in $ctrl.gamming[0]">
+                    <md-checkbox ng-model="isChecked" ng-change="$ctrl.onCheckBoxChange($index,category,'hobbies')">{{category}}</md-checkbox>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>

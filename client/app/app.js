@@ -8,7 +8,7 @@ import angularMaterial from 'angular-material';
 import AngularAnimate from 'angular-animate';
 //import AngularBootstrap from 'angular-ui-bootstrap';
 import angularAria from 'angular-aria';
-//import lodash from 'lodash'
+import lodash from 'lodash'
 import 'angular-material/angular-material.css'
 angular.module('app', [
     uiRouter,
