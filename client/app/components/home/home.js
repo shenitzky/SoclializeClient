@@ -1,8 +1,8 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import homeComponent from './home.component';
-import userDataService from './../../common/userDataService/userData.module'
-import userProfileModule from './../userProfile/userProfile'
+import userDataService from './../../common/userDataService/userData.module';
+import userProfileModule from './../userProfile/userProfile';
 
 let homeModule = angular.module('home', [
   uiRouter,
