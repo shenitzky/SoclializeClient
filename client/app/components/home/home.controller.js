@@ -18,7 +18,6 @@ class HomeController {
 
     getLocation() {
         WINDOW.get(this).navigator.geolocation.getCurrentPosition((position)=>{
-            console.log(position);
             this.latitude = position.coords.latitude;
             this.longitude = position.coords.longitude;
         });
