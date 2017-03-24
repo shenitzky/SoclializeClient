@@ -1,4 +1,8 @@
 <!-- Place all UI elements intended to be present across all routes in this file -->
-<div class="app">
-  <div ui-view></div>
+<div class="mobile-app" id="mobile-app" layout-fill>
+  <navbar></navbar>
+  <md-content id="app" class="main" flex="grow" md-no-flicker>
+    <div ui-view></div>
+  </md-content>
+  <low-tool-bar></low-tool-bar>
 </div>
