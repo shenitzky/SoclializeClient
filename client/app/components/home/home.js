@@ -3,11 +3,12 @@ import uiRouter from 'angular-ui-router';
 import homeComponent from './home.component';
 import userDataService from './../../common/userDataService/userData.module';
 import userProfileModule from './../userProfile/userProfile';
-
+import chooseHobbiesModule from './../chooseHobbies/chooseHobbies';
 let homeModule = angular.module('home', [
   uiRouter,
   userDataService,
-  userProfileModule
+  userProfileModule,
+  chooseHobbiesModule
 ])
 
 .config(($stateProvider, $urlRouterProvider) => {

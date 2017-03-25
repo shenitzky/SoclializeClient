@@ -12,7 +12,7 @@ class HomeController {
         WINDOW.set(this,$window);
     }
 
-    userProfileClick(stateName){
+    changeStateNameOnClick(stateName){
         STATE.get(this).go(stateName);
     }
 
