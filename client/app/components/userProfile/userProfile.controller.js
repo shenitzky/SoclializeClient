@@ -1,3 +1,9 @@
+
+const SPORT = 'Sport';
+const GAMEMING = 'Gamming';
+
+
+
 class UserProfileController {
     constructor(factorsDataService) {
         this.name = 'userProfile';
@@ -12,15 +18,15 @@ class UserProfileController {
             data = data.data;
             console.log("data",data);
             _.forEach(data, (category) => {
-                if(category.class === 'Sport'){
+                if(category.class === SPORT){
                     console.log(category.subClasses);
                     this.sport.push(category.subClasses)
                 }
-                if(category.class === 'Gamming'){
+                if(category.class === GAMEMING){
                     console.log(category.subClasses);
                     this.gamming.push(category.subClasses);
                 }
-            })
+            });
             console.log("this.sport",this.sport);
         })
     }
