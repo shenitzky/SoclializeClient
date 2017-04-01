@@ -4,20 +4,21 @@
         <h2 class="text sub-title">Tell us what you are<br>interested in</h2>
     </div>
 
-    <div layout="column">
-      <div ng-repeat="category in $ctrl.factorsMock track by $index">
-        <div class="category-container">
-          <div class="category-title">
-            <h2>{{category.class}}</h2>
-          </div>
-          <div class="icon-container">
-            <div class="icon-body" ng-click="$ctrl.test(category.subclasses.name)">
-              <img class="img-icon" ng-src="{{category.subclasses.url}}">
-            </div>
+  <div layout="column">
+    <div ng-repeat="category in $ctrl.factorsMock track by $index">
+      <div class="category-container">
+        <div class="category-title">
+          <h2>{{category.class}}</h2>
+        </div>
+        <div class="icon-container" ng-repeat="subCategory in category.subclasses track by $index">
+          <div class="icon-body" id="{{subCategory.name}}"
+               ng-click="$ctrl.onChooseSubCategory(subCategory.name)"
+               ng-mousedown="$ctrl.onSubCategoryClick(subCategory.name)">
+            <img class="img-icon" ng-src="{{subCategory.url}}">
           </div>
         </div>
       </div>
-      <md-button ng-click="$ctrl.sendCategoriesToServer()">DONE</md-button>
     </div>
+    <md-button ng-click="$ctrl.sendCategoriesToServer()">DONE</md-button>
+  </div>
 </div>
-
