@@ -18,9 +18,12 @@
     <md-button><span class="find-match-title">FIND MATCH</span></md-button>
   </div>
   <md-divider></md-divider>
-  <div class="current-factors-container">
-    <div class="icon-container" ng-repeat="category in $ctrl.factorsMock track by $index">
-      <md-checkbox class="icon-body">{{category.subclasses.name}}</md-checkbox>
+
+  <div class="current-factors-container" ng-repeat="category in $ctrl.userMock.factors">
+    <div ng-repeat="subCategory in category.subclasses">
+      <checkbox-element section-key="{{subCategory.name}}" section-model="{{category.class}}"  on-element-change="$ctrl.onCheckboxChange(obj,model,key)" label="{{subCategory.name}}"></checkbox-element>
     </div>
   </div>
+
+
 </div>
