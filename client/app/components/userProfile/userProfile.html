@@ -5,19 +5,15 @@
             <img ng-src="./../app/common/assets/avatars/profile1.png">
         </div>
 
-        <div layout="row" layout-align="space-around center" class="categories-container">
-
-            <div layout="column" class="sport-container">
-                <span class="category-title">Sport</span>
-                <div ng-repeat="category in $ctrl.sport[0] track by $index ">
-                    <md-checkbox ng-model="isChecked" ng-change="$ctrl.onCheckBoxChange($index,category,'sport')">{{category}}</md-checkbox>
-                </div>
-            </div>
-
-            <div layout="column" class="hobbies-container">
-                <span class="category-title">Gamming</span>
-                <div ng-repeat="category in $ctrl.gamming[0]">
-                    <md-checkbox ng-model="isChecked" ng-change="$ctrl.onCheckBoxChange($index,category,'hobbies')">{{category}}</md-checkbox>
+        <div layout="row" layout-align="space-around center" class="categories-container" ng-if="$ctrl.readyTest">
+            <div layout="column" class="sport-container" ng-repeat="category in $ctrl.factorsMock track by $index">
+                <span class="category-title">{{category.class}}</span>
+                <div ng-repeat="subCategory in category.subclasses track by $index ">
+                  <checkbox-element ng-model="subCategory.isToggle" section-key="{{subCategory.name}}"
+                                    section-model="{{category.class}}"
+                                    on-element-change="$ctrl.onCheckBoxChange(obj,model,key)"
+                                    label="{{subCategory.name}}">
+                  </checkbox-element>
                 </div>
             </div>
 
