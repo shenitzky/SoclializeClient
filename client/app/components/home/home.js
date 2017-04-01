@@ -5,13 +5,15 @@ import userDataService from './../../common/userDataService/userData.module';
 import userProfileModule from './../userProfile/userProfile';
 import chooseHobbiesModule from './../chooseHobbies/chooseHobbies';
 import matchRequestModule from './../matchRequest/matchRequest';
+import checkboxElement from './../elements/checkboxElement/checkboxElement'
 
 let homeModule = angular.module('home', [
   uiRouter,
   userDataService,
   userProfileModule,
   chooseHobbiesModule,
-  matchRequestModule
+  matchRequestModule,
+  checkboxElement
 ])
 
 .config(($stateProvider, $urlRouterProvider) => {
