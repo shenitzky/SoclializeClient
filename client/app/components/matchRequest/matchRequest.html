@@ -1,0 +1,26 @@
+<div>
+
+  <div layout="column">
+    <div layout="row"  layout-align="start center">
+      <img class="img" ng-src="./../app/common/assets/avatars/profile1.png">
+      <img class="img bubble" ng-src="./../app/common/assets/avatars/profile1.png">
+    </div>
+  </div>
+
+  <div layout="column">
+    <div layout="row"  layout-align="end center">
+      <img class="img" ng-src="./../app/common/assets/avatars/profile1.png">
+      <img class="img bubble" ng-src="./../app/common/assets/avatars/profile1.png">
+    </div>
+  </div>
+
+  <div layout="row"  layout-align="center center">
+    <md-button><span class="find-match-title">FIND MATCH</span></md-button>
+  </div>
+  <md-divider></md-divider>
+  <div class="current-factors-container">
+    <div class="icon-container" ng-repeat="category in $ctrl.factorsMock track by $index">
+      <md-checkbox class="icon-body">{{category.subclasses.name}}</md-checkbox>
+    </div>
+  </div>
+</div>

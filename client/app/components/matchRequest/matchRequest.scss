@@ -1,3 +1,24 @@
-.matchRequest {
-  color: red;
+match-request {
+  .img{
+    width: 80px;
+    height: 82px;
+  }
+  .current-factors-container{
+    margin-top: 40px;
+  }
+  .bubble{
+    margin-left: -15px;
+  }
+  .find-match-title{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .icon-container {
+    max-width: 100%;
+    position: relative;
+  }
+  .icon-body{
+    float: left;
+  }
 }

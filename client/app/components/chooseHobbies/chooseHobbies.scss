@@ -19,4 +19,11 @@ choose-hobbies {
   .category-title {
     text-align: center;
   }
+  .icon-container {
+    max-width: 100%;
+    position: relative;
+  }
+  .icon-body{
+    float: left;
+  }
 }
