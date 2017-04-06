@@ -4,6 +4,7 @@ import homeComponent from './home.component';
 import userDataService from './../../common/userDataService/userData.module';
 import userProfileModule from './../userProfile/userProfile';
 import chooseHobbiesModule from './../chooseHobbies/chooseHobbies';
+import matchFoundModule from './../matchFound/matchFound'
 import matchRequestModule from './../matchRequest/matchRequest';
 import checkboxElement from './../elements/checkboxElement/checkboxElement'
 
@@ -13,7 +14,8 @@ let homeModule = angular.module('home', [
   userProfileModule,
   chooseHobbiesModule,
   matchRequestModule,
-  checkboxElement
+  matchFoundModule,
+  checkboxElement,
 ])
 
 .config(($stateProvider, $urlRouterProvider) => {

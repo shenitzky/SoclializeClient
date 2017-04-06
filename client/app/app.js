@@ -9,6 +9,8 @@ import AngularAnimate from 'angular-animate';
 //import AngularBootstrap from 'angular-ui-bootstrap';
 import angularAria from 'angular-aria';
 import lodash from 'lodash'
+import moment from 'moment/moment';
+
 import 'angular-material/angular-material.css'
 angular.module('app', [
     uiRouter,
@@ -25,4 +27,5 @@ angular.module('app', [
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
 
-  .component('app', AppComponent);
+  .component('app', AppComponent)
+    .value('moment',moment);
