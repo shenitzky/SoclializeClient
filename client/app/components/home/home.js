@@ -7,6 +7,7 @@ import userProfileModule from './../userProfile/userProfile';
 import chooseHobbiesModule from './../chooseHobbies/chooseHobbies';
 import matchFoundModule from './../matchFound/matchFound'
 import matchRequestModule from './../matchRequest/matchRequest';
+import notificationsModule from './../notifications/notifications';
 import checkboxElement from './../elements/checkboxElement/checkboxElement'
 
 let homeModule = angular.module('home', [
@@ -18,6 +19,7 @@ let homeModule = angular.module('home', [
   matchRequestModule,
   matchFoundModule,
   checkboxElement,
+  notificationsModule
 ])
 
 .config(($stateProvider, $urlRouterProvider) => {
