@@ -1,29 +1,40 @@
 const WINDOW = new WeakMap();
+const HTTP = new WeakMap();
+const STATE = new WeakMap();
+
+
+//todo 1.maybe not need $http
+//todo
+
 
 class MatchRequestController {
-  constructor($window,factorsDataService,userDataService,matchDataService) {
+  constructor($window,$http,$state,userDataService,matchDataService) {
     WINDOW.set(this,$window);
+    HTTP.set(this,$http);
+    STATE.set(this,$state);
+    
     this.userData    = userDataService;
-    this.factorsData = factorsDataService;
     this.matchData   = matchDataService;
   }
   
   $onInit(){
     this.viewReady = false;
-    
     this.userData.getUserData().then((userData)=>{
-      
-      this.factorsData.getFactorData().then((factorData)=>{
-        
-        factorData  = _.get(factorData,'data');
         userData  = _.get(userData,'data');
-        this.factorsList = factorData;
         this.user = userData;
         this.viewReady = true;
         this._setActiveToggle();
+    });
+  }
+  
+  _setActiveToggle(){
+    _.forEach(this.user.factors, (category) =>{
+      _.forEach(category.subClasses , (subCategory) =>{
+        subCategory.isToggle = true;
       });
     });
   }
+  
   
   _getLocationAndSendMatchRequest() {
     WINDOW.get(this).navigator.geolocation.getCurrentPosition((position)=>{
@@ -44,21 +55,29 @@ class MatchRequestController {
     },error =>{console.log('error',error)});
   }
   
-  
-  
-  _setActiveToggle(){
-    _.forEach(this.user.factors, (category) =>{
-      _.forEach(category.subClasses , (subCategory) =>{
-        subCategory.isToggle = true;
-      });
-    });
-  }
-  
-  
   onCheckboxChange(obj,model,key) {
     //console.log("this.user.factors",this.user.factors);
     //this._getLocationAndSendMatchRequest();
+    
+    
+    // this.matchData.createMatchDataRequest(
+    //   {
+    //     'matchFactors':this.user.factors,
+    //     'location':
+    //       {
+    //         'lat':38,
+    //         'lng':38
+    //       }
+    //   }).then((data)=>{console.log("data",data)});
+    //
+    //
+    //todo need to find it in this.user.factors and remove it/add it
+    //todo only send it when user press findMatch
+  }
   
+  
+  sendMatchRequest(){
+    debugger;
     this.matchData.createMatchDataRequest(
       {
         'matchFactors':this.user.factors,
@@ -67,14 +86,14 @@ class MatchRequestController {
             'lat':38,
             'lng':38
           }
-      }).then((data)=>{console.log("data",data)});
-    
-    
-    //todo need to find it in this.user.factors and remove it/add it
-    //todo only send it when user press findMatch
+      })
+      .then((data)=>{
+      console.log("data",data);
+      STATE.get(this).go('notifications',{'index':'yossiTest'});
+    });
   }
   
 }
 
-MatchRequestController.$inject = ['$window','factorsDataService','userDataService','matchDataService'];
+MatchRequestController.$inject = ['$window','$http','$state','userDataService','matchDataService'];
 export default MatchRequestController;

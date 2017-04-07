@@ -6,7 +6,7 @@ import AppComponent from './app.component';
 import 'normalize.css';
 import angularMaterial from 'angular-material';
 import AngularAnimate from 'angular-animate';
-import googleMaps from '@google/maps'
+import ngMap from 'ngmap';
 //import AngularBootstrap from 'angular-ui-bootstrap';
 import angularAria from 'angular-aria';
 import lodash from 'lodash'
@@ -19,7 +19,8 @@ angular.module('app', [
     Components,
     angularMaterial,
     angularAria,
-    AngularAnimate
+    AngularAnimate,
+    ngMap
   ])
   .config(($locationProvider) => {
     "ngInject";
@@ -29,5 +30,4 @@ angular.module('app', [
   })
 
   .component('app', AppComponent)
-    .value('moment',moment)
-    .value('googleMaps',googleMaps);
+    .value('moment',moment);
