@@ -8,7 +8,10 @@ export class UserDataService {
     getUserData() {
         return USERDATA_API.get(this).getUserData();
     }
-
+  
+    updateUserData(data) {
+      return USERDATA_API.get(this).updateUserData(data);
+    }
 
 }
 UserDataService.$inject = ['userDataApi'];

@@ -1,29 +1,18 @@
-<div>
+<div ng-if="$ctrl.viewReady">
 
-  <div layout="column">
-    <div layout="row"  layout-align="start center">
-      <img class="img" ng-src="./../app/common/assets/avatars/profile1.png">
-      <img class="img bubble" ng-src="./../app/common/assets/avatars/profile1.png">
-    </div>
-  </div>
+  <div class="current-factors-container" ng-repeat="category in $ctrl.user.factors">
+    <div ng-repeat="subCategory in category.subClasses">
 
-  <div layout="column">
-    <div layout="row"  layout-align="end center">
-      <img class="img" ng-src="./../app/common/assets/avatars/profile1.png">
-      <img class="img bubble" ng-src="./../app/common/assets/avatars/profile1.png">
+      <checkbox-element section-key="{{subCategory.name}}" section-model="{{category.class}}"
+                        on-element-change="$ctrl.onCheckboxChange(obj,model,key)"
+                        label="{{subCategory.name}}"
+                        ng-model="subCategory.isToggle">
+      </checkbox-element>
     </div>
   </div>
 
   <div layout="row"  layout-align="center center">
     <md-button><span class="find-match-title">FIND MATCH</span></md-button>
   </div>
-  <md-divider></md-divider>
-
-  <div class="current-factors-container" ng-repeat="category in $ctrl.userMock.factors">
-    <div ng-repeat="subCategory in category.subclasses">
-      <checkbox-element section-key="{{subCategory.name}}" section-model="{{category.class}}"  on-element-change="$ctrl.onCheckboxChange(obj,model,key)" label="{{subCategory.name}}"></checkbox-element>
-    </div>
-  </div>
-
 
 </div>

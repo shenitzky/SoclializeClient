@@ -1,3 +1,4 @@
+<!--ng-if="$ctrl.viewReady-->
 <div>
     <div layout="column" layout-align="space-around center">
 
@@ -5,10 +6,10 @@
             <img ng-src="./../app/common/assets/avatars/profile1.png">
         </div>
 
-        <div layout="row" layout-align="space-around center" class="categories-container" ng-if="$ctrl.readyTest">
-            <div layout="column" class="sport-container" ng-repeat="category in $ctrl.factorsMock track by $index">
+        <div layout-align="space-around center" class="categories-container">
+            <div layout="column" class="sport-container" ng-repeat="category in $ctrl.factorsList track by $index">
                 <span class="category-title">{{category.class}}</span>
-                <div ng-repeat="subCategory in category.subclasses track by $index ">
+                <div ng-repeat="subCategory in category.subClasses track by $index ">
                   <checkbox-element ng-model="subCategory.isToggle" section-key="{{subCategory.name}}"
                                     section-model="{{category.class}}"
                                     on-element-change="$ctrl.onCheckBoxChange(obj,model,key)"

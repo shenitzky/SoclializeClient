@@ -2,12 +2,12 @@ const STATE = new WeakMap();
 const WINDOW = new WeakMap();
 
 class HomeController {
-    constructor(userDataService,$state,$window) {
+    constructor(userDataService,$state,$window,googleMaps) {
         this.name = 'home';
         this.userDataServiceModuleTest = userDataService;
-        this.userDataServiceModuleTest.getUserData().then((data)=>{
-
-        });
+        //this.googleMap = googleMaps;
+        //this.googleMap.createClient({key: 'AIzaSyD8IhUUKMzZsCjNFUa_zM6sFhzB6jZhaJk'});
+      
         STATE.set(this,$state);
         WINDOW.set(this,$window);
     }
@@ -22,10 +22,10 @@ class HomeController {
             this.longitude = position.coords.longitude;
             console.log("latitude:",this.latitude);
             console.log("longitude:",this.longitude);
-        });
+        },error=>{console.log(error)});
     }
 }
 
 
-HomeController.$inject = ['userDataService','$state','$window'];
+HomeController.$inject = ['userDataService','$state','$window','googleMaps'];
 export default HomeController;
