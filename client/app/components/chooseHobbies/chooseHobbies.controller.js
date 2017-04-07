@@ -1,54 +1,33 @@
 class ChooseHobbiesController {
-    constructor() {
-      this.name = 'chooseHobbies';
+    constructor(userDataService,factorsDataService) {
+      this.userData = userDataService;
+      this.factorsData = factorsDataService;
+      this.factorsCopy = [];
     }
   
     $onInit(){
-      this.factorsMock =
-        [
-          {
-            'class': 'Sport',
-            'subclasses': [
-              {
-                'name': 'football',
-                'url': './../../app/common/assets/games.png'
-              },
-              {
-                'name': 'tennis',
-                'url': './../../app/common/assets/games.png'
-              }
-            ]
-          },
-          {
-            'class': 'Hobbies',
-            'subclasses': [
-              {
-                'name': 'gaming',
-                'url': './../../app/common/assets/games.png'
-              },
-              {
-                'name': 'ps4',
-                'url': './../../app/common/assets/games.png'
-              }
-            ]
-          }
-        ];
-      this.factorsMockDeep = _.cloneDeep(this.factorsMock);
-      _.forEach(this.factorsMockDeep, (category) =>{
-        _.forEach(category.subclasses , (subCategory) =>{
-          subCategory.isToggle = false;
+      this.viewReady = false;
+      this.factorsData.getFactorData().then((factorData)=>{
+        factorData       =  _.get(factorData,'data');
+        this.factorsCopy =  _.cloneDeep(factorData);
+        _.forEach(this.factorsCopy, (category) =>{
+          _.forEach(category.subClasses , (subCategory) =>{
+            subCategory.isToggle = false;
+          });
         });
+        this.viewReady = true;
       });
     }
     
   sendCategoriesToServer(){
+  
   }
   
   onChooseSubCategory(subClassName){
     let toggleStatus = false;
     var subClassElement = document.getElementById(subClassName);
-    _.forEach(this.factorsMockDeep, (category) =>{
-      _.forEach(category.subclasses , (subCategory) =>{
+    _.forEach(this.factorsCopy, (category) =>{
+      _.forEach(category.subClasses , (subCategory) =>{
         if(subCategory.name === subClassName){
           toggleStatus = subCategory.isToggle;
         }
@@ -60,16 +39,18 @@ class ChooseHobbiesController {
       subClassElement.classList.remove('vIconOn');
     }
   }
+  
   onSubCategoryClick(childName){
-    _.forEach(this.factorsMockDeep, (category) =>{
-      _.forEach(category.subclasses , (subCategory) =>{
+    _.forEach(this.factorsCopy, (category) =>{
+      _.forEach(category.subClasses , (subCategory) =>{
         if(subCategory.name === childName ){
           subCategory.isToggle = !subCategory.isToggle;
         }
       });
     });
   }
+  
 }
 
-ChooseHobbiesController.$inject = [];
+ChooseHobbiesController.$inject = ['userDataService','factorsDataService'];
 export default ChooseHobbiesController;

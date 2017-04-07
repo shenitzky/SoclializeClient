@@ -102,12 +102,12 @@ export class ConnectionService {
     }
 
     sendPlainText({method, url, data, withCredentials = false}) {
-        return HTTP.get(this)({
+      return HTTP.get(this)({
             method: method,
             url: url,
             data: data,
             withCredentials: withCredentials,
-            headers: '*'
+            headers: {'Content-Type':'application/json'}
         });
     }
 

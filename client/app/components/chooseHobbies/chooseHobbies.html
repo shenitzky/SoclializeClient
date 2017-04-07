@@ -1,20 +1,20 @@
-<div>
+<div ng-if="$ctrl.viewReady">
     <div>
         <h1 class="text title">HI</h1>
         <h2 class="text sub-title">Tell us what you are<br>interested in</h2>
     </div>
 
   <div layout="column">
-    <div ng-repeat="category in $ctrl.factorsMock track by $index">
+    <div ng-repeat="category in $ctrl.factorsCopy track by $index">
       <div class="category-container">
         <div class="category-title">
           <h2>{{category.class}}</h2>
         </div>
-        <div class="icon-container" ng-repeat="subCategory in category.subclasses track by $index">
+        <div class="icon-container" ng-repeat="subCategory in category.subClasses track by $index">
           <div class="icon-body" id="{{subCategory.name}}"
                ng-click="$ctrl.onChooseSubCategory(subCategory.name)"
                ng-mousedown="$ctrl.onSubCategoryClick(subCategory.name)">
-            <img class="img-icon" ng-src="{{subCategory.url}}">
+            <img class="img-icon" ng-src="{{'http://'+subCategory.imgUrl}}">
           </div>
         </div>
       </div>
