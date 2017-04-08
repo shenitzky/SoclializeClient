@@ -13,7 +13,7 @@ let notificationsModule = angular.module('notifications', [
       .state('notifications', {
         url: '/notifications',
         component: 'notifications',
-        params: {'requestId': null }
+        params: {'optionalMatch': null }
       })
   })
   
