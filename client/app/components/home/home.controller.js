@@ -5,8 +5,6 @@ class HomeController {
     constructor(userDataService,$state,$window,NgMap) {
         this.name = 'home';
         this.userDataServiceModuleTest = userDataService;
-        //this.googleMap = googleMaps;
-        //this.googleMap.createClient({key: 'AIzaSyD8IhUUKMzZsCjNFUa_zM6sFhzB6jZhaJk'});
         this.viewReady = false;
         
         //todo GOOGLE MAPS :)
@@ -16,10 +14,10 @@ class HomeController {
         this.test3 = 31.89;
         this.test4 = 34.81489;
   
-        setInterval(()=>{console.log("Hello pasta")}, 1000);
+        //setInterval(()=>{console.log("Hello pasta")}, 1000);
         
         this.viewReady = true;
-        this.testMap = NgMap;
+        //this.testMap = NgMap;
         
         //todo END GOOGLE MAPS :)
       

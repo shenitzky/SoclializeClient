@@ -1,0 +1,8 @@
+<div ng-if="$ctrl.location">
+  <div map-lazy-load="{{$ctrl.googleMapsUrl}}">
+    <ng-map center="{{$ctrl.test1}},{{$ctrl.test2}}" zoom="14">
+      <marker position="[{{$ctrl.test1}}, {{$ctrl.test2}}]"></marker>
+      <marker position="[{{$ctrl.test3}}, {{$ctrl.test4}}]"></marker>
+    </ng-map>
+  </div>
+</div>
