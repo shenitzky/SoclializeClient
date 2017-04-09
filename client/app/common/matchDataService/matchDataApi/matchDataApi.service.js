@@ -21,6 +21,21 @@ export class MatchDataApiService {
     return CONNECTION.get(this).sendPlainText(obj);
   }
   
+  updateAndCheckMatcReq(data) {
+    let obj = {data: data,method: 'POST', url: apiConsts.updateAndCheckMatcReq};
+    return CONNECTION.get(this).sendPlainText(obj);
+  }
+  
+  acceptOptionalMatch(data) {
+    let obj = {data: data,method: 'POST', url: apiConsts.acceptOptionalMatch};
+    return CONNECTION.get(this).sendPlainText(obj);
+  }
+  
+  declineOptionalMatch(data) {
+    let obj = {data: data,method: 'POST', url: apiConsts.declineOptionalMatch};
+    return CONNECTION.get(this).sendPlainText(obj);
+  }
+  
 }
 MatchDataApiService.$inject = ['connection'];
 export default MatchDataApiService;

@@ -12,14 +12,15 @@ class MatchRequestUpdateController {
     this.name = 'matchRequestUpdate';
   }
   
-  
   $onInit(){
-    setInterval(()=>{
+    this.interval = setInterval(()=>{
+      console.log("HERE");
       MATCH_DATA_SERVICE.get(this).updateAndCheckMatchRequest(this.matchRequestObject).then((optionalMatchData)=>{
         optionalMatchData = _.get(optionalMatchData,'data');
-        STATE.get(this).go('notifications',{'optionalMatch':{'yossiTest':1234}});
+        //debugger;
         //it's false we have a match else do nothing.
         if(!_.isNull(optionalMatchData)) {
+          STATE.get(this).go('notifications',{'optionalMatch':optionalMatchData});
           //state.go to notifications with optional-match
         }
       },error=>{
@@ -28,9 +29,11 @@ class MatchRequestUpdateController {
     }, 10000);
   }
   
+  $onDestroy(){
+    clearInterval(this.interval);
+  }
+  
 }
 MatchRequestUpdateController.$inject = ['$state','$window','$stateParams','matchDataService'];
 export default MatchRequestUpdateController;
 
-
-//updateAndCheckMatchRequest

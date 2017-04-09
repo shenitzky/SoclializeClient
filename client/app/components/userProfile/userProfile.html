@@ -7,7 +7,7 @@
         </div>
 
         <div layout-align="space-around center" class="categories-container">
-            <div layout="column" class="sport-container" ng-repeat="category in $ctrl.factorsList track by $index">
+            <div layout="column" class="category-container" ng-repeat="category in $ctrl.factorsList track by $index">
                 <span class="category-title">{{category.class}}</span>
                 <div ng-repeat="subCategory in category.subClasses track by $index ">
                   <checkbox-element ng-model="subCategory.isToggle" section-key="{{subCategory.name}}"
