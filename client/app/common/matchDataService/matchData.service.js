@@ -16,6 +16,14 @@ export class MatchDataService {
     return MATCHDATA_API.get(this).updateAndCheckMatcReq(data);
   }
   
+  acceptOptionalMatch(data) {
+    return MATCHDATA_API.get(this).acceptOptionalMatch(data);
+  }
+  
+  declineOptionalMatch(data) {
+    return MATCHDATA_API.get(this).declineOptionalMatch(data);
+  }
+  
 }
 MatchDataService.$inject = ['matchDataApi'];
 export default MatchDataService;

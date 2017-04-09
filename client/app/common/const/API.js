@@ -3,13 +3,17 @@ const consts = {
     factors              :  'http://socialize20170306063515.azurewebsites.net/api/socializeapi/GetAllSystemFactors',
     updateUserData       : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/UpdateUserData',
     createMatcReq        : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/CreateMatcReq',
-    updateAndCheckMatcReq: 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/UpdateAndCheckMatcReq'
+    updateAndCheckMatcReq: 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/UpdateAndCheckMatcReq',
+    acceptOptionalMatch  : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/AcceptOptionalMatch',
+    declineOptionalMatch : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/DeclineOptionalMatch'
   
     //userData             : '/api/socializeapi/GetUserData',
     //factors              : '/api/socializeapi/GetAllSystemFactors',
     //updateUserData       : '/api/socializeapi/UpdateUserData',
     //createMatcReq        : '/api/socializeApi/CreateMatcReq'',
-    //updateAndCheckMatcReq: '/api/socializeApi/updateAndCheckMatcReq''
+    //updateAndCheckMatcReq: '/api/socializeApi/updateAndCheckMatcReq',
+    //acceptOptionalMatch  : '/api/socializeApi/AcceptOptionalMatch',
+    //declineOptionalMatch : '/api/socializeApi/DeclineOptionalMatch',
 };
 
 export default consts;
