@@ -7,8 +7,7 @@ class UserProfileController {
   }
   
   $onInit(){
-    this.readyTest =false;
-    
+    this.viewReady = false;
     this.userData.getUserData().then((userData)=> {
       this.factorsData.getFactorData().then((factorData) => {
         
@@ -27,58 +26,44 @@ class UserProfileController {
         
         _.forEach(this.factorsList , (category)=>{
           _.forEach(category.subClasses , (subcategory)=>{
-            _.forEach(this.user.factors, (userSubCategory)=>{
-              if(_.find(userSubCategory.subClasses, (o)=>{if(o.name === subcategory.name) return true})){
-                subcategory.isToggle = true;
-              }else {
-                subcategory.isToggle = false;
-              }
+            _.forEach(this.user.factors, (userFactor)=>{
+              _.forEach(userFactor.subClasses, (userFactorSubclass)=>{
+                if(!subcategory.isToggle){
+                  subcategory.isToggle = userFactorSubclass.name === subcategory.name;
+                }
+              });
             });
           });
+          this.viewReady = true;
         });
-        //this._initToggles();
-        //this._initializeUserFactorsWithAllFactors();
-        this.readyTest = true;
       });
     });
   }
   
-  _initToggles(){
-    _.forEach(this.factorsList, (category) =>{
-      _.forEach(category.subClasses , (subCategory) =>{
-        subCategory.isToggle = false;
-        return subCategory;
-      });
-    });
-  }
-  
-  
-  // _initializeUserFactorsWithAllFactors(){
-  //   _.forEach(this.factorsList , (category)=>{
-  //     _.forEach(category.subClasses , (subcategory)=>{
-  //       _.forEach(this.user.factors, (userSubCategory)=>{
-  //         if(_.find(userSubCategory.subClasses,subcategory)){
-  //           subcategory.isToggle = true;
-  //         }else {
-  //           subcategory.isToggle = false;
-  //         }
-  //       });
-  //     });
-  //   });
-  // }
-  
-  
-  
-  
-  
-  onCheckBoxChange(index,category,categoryClass){
-    //todo vaild obj and only then.
-    this.objToSend = [];
-    let subClasses = [];
-    subClasses.push({'name':categoryClass});
-    this.objToSend.push( {'class':category,'subClasses':subClasses});
+  sendUserFactors(){
+    let objToSend = [];
+    let tempCategoryName = true;
+    let catName  = '';
     
-    this.userData.updateUserData(this.objToSend);
+    _.forEach(this.factorsList , (category)=>{
+      let tempFactor = {};
+      let tempSubcategory = [];
+      _.forEach(category.subClasses , (subcategory)=>{
+        if(subcategory.isToggle){
+          tempCategoryName = false;
+          catName = category.name;
+          tempSubcategory.push(subcategory);
+        }
+      });
+      if (!_.isEmpty(tempSubcategory)){
+        tempFactor = {
+          'Class': category.class,
+          'SubClasses': tempSubcategory
+        };
+        objToSend.push(tempFactor);
+      }
+    });
+    this.userData.updateUserData({'Data':objToSend});
   }
 }
 

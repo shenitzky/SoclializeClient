@@ -1,5 +1,14 @@
 low-tool-bar {
+
   md-toolbar {
     background-color: #f7f6f6 !important;
+  }
+
+  .md-button {
+    min-width: 0px;
+  }
+
+  .icon-container{
+    width: 30px;
   }
 }

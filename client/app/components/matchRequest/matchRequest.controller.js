@@ -8,17 +8,22 @@ const STATE = new WeakMap();
 
 
 class MatchRequestController {
-  constructor($window,$http,$state,userDataService,matchDataService) {
+  constructor($window,$http,$state,userDataService,matchDataService,$mdSidenav) {
     WINDOW.set(this,$window);
     HTTP.set(this,$http);
     STATE.set(this,$state);
     
     this.userData    = userDataService;
     this.matchData   = matchDataService;
+    this.mdSidenav   = $mdSidenav
   }
   
   $onInit(){
     this.viewReady = false;
+    
+    this.toggleLeft = this.buildToggler('left');
+    this.toggleRight = this.buildToggler('right');
+    
     this._getLocation();
     this.userData.getUserData().then((userData)=>{
         userData  = _.get(userData,'data');
@@ -71,7 +76,14 @@ class MatchRequestController {
     });
   }
   
+  
+  buildToggler(componentId) {
+    return ()=> {
+      this.mdSidenav(componentId).toggle();
+    };
+  }
+  
 }
 
-MatchRequestController.$inject = ['$window','$http','$state','userDataService','matchDataService'];
+MatchRequestController.$inject = ['$window','$http','$state','userDataService','matchDataService','$mdSidenav'];
 export default MatchRequestController;
