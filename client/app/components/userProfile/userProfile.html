@@ -1,5 +1,4 @@
-<!--ng-if="$ctrl.viewReady-->
-<div>
+<div ng-if="$ctrl.viewReady">
     <div layout="column" layout-align="space-around center">
 
         <div class="profile-img">
@@ -19,5 +18,8 @@
             </div>
 
         </div>
+      <div>
+        <md-button ng-click="$ctrl.sendUserFactors()">DONE</md-button>
+      </div>
     </div>
 </div>

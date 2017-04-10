@@ -20,7 +20,7 @@ class ChooseHobbiesController {
     }
     
   sendCategoriesToServer(){
-  
+    console.log("this.factorsCopy",this.factorsCopy);
   }
   
   onChooseSubCategory(subClassName){

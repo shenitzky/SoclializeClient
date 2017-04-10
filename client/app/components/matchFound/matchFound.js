@@ -12,7 +12,8 @@ let matchFoundModule = angular.module('matchFound', [
       $stateProvider
         .state('matchFound', {
             url: '/matchFound',
-            component: 'matchFound'
+            component: 'matchFound',
+            params: {'optionalMatch': null , 'time': null , 'date': null }
         })
   })
   

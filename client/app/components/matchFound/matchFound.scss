@@ -4,5 +4,44 @@ match-found {
   }
   span{
     display: block;
+    font-size: 12px;
   }
+
+  .img-container{
+    img{
+      width: 80px;
+    }
+    .currentUserImg{
+      margin-left: -20px;
+    }
+  }
+
+  .match-strength{
+    font-size: 30px;
+    margin-left: 17px;
+    font-weight: bold;
+  }
+
+  .match-moment-info{
+    margin-bottom: 10px;
+  }
+
+  .match-name{
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .match-date{
+    margin-left: 20px;
+    margin-right: 40px;
+  }
+
+  .chip-title{
+    margin-left: 20px;
+  }
+
+  .chip-container{
+    margin-left: 15px;
+  }
+
 }

@@ -3,17 +3,50 @@
   <div class="found-title" layout-align="center center">
     <h1>Found One To One Match</h1>
   </div>
-  <div>
-    pics
+
+
+  <div layout="column" layout-align="center center">
+
+    <div layout="row" layout-align="center center">
+      <div class="img-container">
+        <img ng-src="{{'http://'+$ctrl.optionalMatch.matchedDetails.imgUrl}}">
+        <img class="currentUserImg" ng-src="{{'http://'+$ctrl.optionalMatch.matchedDetails.imgUrl}}">
+      </div>
+    </div>
+
+    <div class="match-strength">
+      <h1>{{$ctrl.optionalMatch.matchStrength}}%</h1>
+    </div>
   </div>
+
   <div>
-    <span>name: Noa</span>
-    <span>date: </span>
+    <div class="match-info-container" layout="column" layout-align="space-around start">
+      <div class="match-name">
+        <span>Name: {{$ctrl.optionalMatch.matchedDetails.firstName}}</span>
+      </div>
+      <div class="match-moment-info" layout="row" layout-align="space-around start">
+        <div class="match-date">
+          <span>Date: {{$ctrl.date}}</span>
+        </div>
+        <div class="match-time">
+          <span>Time: {{$ctrl.time}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <md-divider></md-divider>
+  <md-divider></md-divider>
 
-    <span>About Noa: </span>
-    <span>Text Text</span>
+  <div>
+    <h2 class="chip-title">What {{$ctrl.optionalMatch.matchedDetails.firstName}} likes:</h2>
+    <div class="chip-container" ng-repeat="chipArray in $ctrl.chipsArray track by $index">
+        <md-chips ng-model="chipArray"
+                  readonly="true">
+          <md-chip-template>
+            <strong>{{$chip}}</strong>
+          </md-chip-template>
+        </md-chips>
+    </div>
   </div>
 
   <div layout="row" layout-align="center center">

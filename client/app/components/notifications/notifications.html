@@ -1,11 +1,29 @@
 <div>
-  <div>
-    <span>YOU HAVE {{$ctrl.notificationNumber}} NEW <br>NOTIFICATION</span>
+  <div layout="column" layout-align="center center">
+    <h1>YOU HAVE {{$ctrl.notificationNumber}} NEW</h1>
+    <h1>Match Request</h1>
   </div>
 
   <md-divider></md-divider>
-  <div ui-sref="matchFound">
-    info
+  <div layout="row" ng-click="$ctrl.matchFoundState()" >
+    <div class="img-container">
+      <img ng-src="{{'http://'+$ctrl.receiveMatchObject.matchedDetails.imgUrl}}">
+      <img class="currentUserImg" ng-src="{{'http://'+$ctrl.receiveMatchObject.matchedDetails.imgUrl}}">
+    </div>
+    <div class="matchStrength">
+      <h1>{{$ctrl.receiveMatchObject.matchStrength}}%</h1>
+    </div>
+    <div class="match-info-container" layout="column" layout-align="space-around end">
+      <div>
+        <span>Name: {{$ctrl.receiveMatchObject.matchedDetails.firstName}}</span>
+      </div>
+      <div>
+        <span>Date: {{$ctrl.date}}</span>
+      </div>
+      <div>
+        <span>Time: {{$ctrl.time}}</span>
+      </div>
+    </div>
   </div>
   <md-divider></md-divider>
 </div>
