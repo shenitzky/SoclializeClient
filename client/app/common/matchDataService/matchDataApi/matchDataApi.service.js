@@ -36,6 +36,11 @@ export class MatchDataApiService {
     return CONNECTION.get(this).sendPlainText(obj);
   }
   
+  getOptionalMatchStatus() {
+    let obj = {method: 'GET', url: apiConsts.getOptionalMatchStatus};
+    return CONNECTION.get(this).sendPlainText(obj);
+  }
+  
 }
 MatchDataApiService.$inject = ['connection'];
 export default MatchDataApiService;

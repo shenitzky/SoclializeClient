@@ -14,12 +14,11 @@ class MatchRequestUpdateController {
   
   $onInit(){
     this.interval = setInterval(()=>{
-      console.log("HERE");
+      console.log("interval match request update alive");
       MATCH_DATA_SERVICE.get(this).updateAndCheckMatchRequest(this.matchRequestObject).then((optionalMatchData)=>{
         optionalMatchData = _.get(optionalMatchData,'data');
-        console.log("optionalMatchData",optionalMatchData);
         if(!_.isNull(optionalMatchData)) {
-          STATE.get(this).go('notifications',{'optionalMatch':optionalMatchData});
+          STATE.get(this).go('notifications',{'optionalMatch':optionalMatchData,'matchReqId':this.matchRequestObject.matchReqId});
         }
       },error=>{
         console.log("Error",error);
@@ -29,6 +28,7 @@ class MatchRequestUpdateController {
   
   $onDestroy(){
     clearInterval(this.interval);
+    console.log("interval match request update dead");
   }
   
 }
