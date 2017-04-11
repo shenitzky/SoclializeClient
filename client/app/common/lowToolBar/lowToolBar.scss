@@ -1,7 +1,13 @@
+@import "../../common/common";
+
 low-tool-bar {
 
+  md-icon svg {
+    fill: $toolBarIconColor;
+  }
+
   md-toolbar {
-    background-color: #f7f6f6 !important;
+    background-color: $toolBarBackGround !important;
   }
 
   .md-button {
@@ -10,5 +16,8 @@ low-tool-bar {
 
   .icon-container{
     width: 30px;
+  }
+  .history-icon{
+    margin-right: 20px;
   }
 }

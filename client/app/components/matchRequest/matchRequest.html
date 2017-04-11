@@ -1,18 +1,18 @@
-<div ng-if="$ctrl.viewReady">
+<div ng-if="$ctrl.viewReady" class="match-settings">
   <div layout="column" ng-cloak>
     <section layout="row" flex>
       <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
         <md-toolbar class="md-theme-indigo">
-          <h1 class="md-toolbar-tools">Choose Factors</h1>
+          <h1 class="md-toolbar-tools">Match Settings</h1>
         </md-toolbar>
         <md-content layout-margin>
           <p>
-            This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
+            This sidenav is showing match factors, where users can click on it to change match settings.
           </p>
 
           <div class="current-factors-container" ng-repeat="category in $ctrl.user.factors">
+            <h3>{{category.class}}</h3>
             <div ng-repeat="subCategory in category.subClasses">
-
               <checkbox-element section-key="{{subCategory.name}}" section-model="{{category.class}}"
                                 on-element-change="$ctrl.onCheckboxChange(obj,model,key)"
                                 label="{{subCategory.name}}"
@@ -20,21 +20,19 @@
               </checkbox-element>
             </div>
           </div>
-          <md-button ng-click="$ctrl.toggleLeft()" class="md-accent">
-            Close this Sidenav
+          <md-button ng-click="$ctrl.toggleLeft()" class="md-accent button-color">
+            Close Match Settings
           </md-button>
         </md-content>
       </md-sidenav>
       <md-content flex layout-padding>
-        <div layout="column" layout-align="top center">
-          <div>
+        <div layout="column" layout-align="center center">
+          <div class="toggle-match-settings">
             <md-button ng-click="$ctrl.toggleLeft()" class="md-raised">
-              Toggle Sidenav
+              Toggle To Change Match Settings
             </md-button>
           </div>
-
         </div>
-
       </md-content>
     </section>
   </div>
