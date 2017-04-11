@@ -4,6 +4,7 @@ class NotificationsController {
   constructor($stateParams,$state,moment){
     STATE.set(this,$state);
     this.momentTime = moment;
+    this.matchReqId = _.get($stateParams,'matchReqId');
     this.receiveMatchObject = _.get($stateParams,'optionalMatch');
   }
   
@@ -14,7 +15,7 @@ class NotificationsController {
   }
   
   matchFoundState(){
-    STATE.get(this).go('matchFound',{'optionalMatch':this.receiveMatchObject,'time':this.time,'date':this.date});
+    STATE.get(this).go('matchFound',{'optionalMatch':this.receiveMatchObject,'time':this.time,'date':this.date,'matchReqId':this.matchReqId});
   }
   
 }

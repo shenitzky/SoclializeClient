@@ -1,3 +1,5 @@
-.mapHandler {
-  color: red;
+map-handler {
+  .google-map-container ng-map{
+    height: 368px;
+  }
 }

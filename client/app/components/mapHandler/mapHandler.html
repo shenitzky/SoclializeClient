@@ -1,8 +1,8 @@
-<div ng-if="$ctrl.location">
-  <div map-lazy-load="{{$ctrl.googleMapsUrl}}">
-    <ng-map center="{{$ctrl.test1}},{{$ctrl.test2}}" zoom="14">
-      <marker position="[{{$ctrl.test1}}, {{$ctrl.test2}}]"></marker>
-      <marker position="[{{$ctrl.test3}}, {{$ctrl.test4}}]"></marker>
+<div ng-if="$ctrl.matchData.locations">
+  <div class="google-map-container" map-lazy-load="{{$ctrl.googleMapsUrl}}">
+    <ng-map center="{{$ctrl.matchData.locations[0].lat}},{{$ctrl.matchData.locations[0].lng}}" zoom="14">
+      <marker position="[{{$ctrl.matchData.locations[0].lat}},{{$ctrl.matchData.locations[0].lng}}]"></marker>
+      <marker position="[{{$ctrl.matchData.locations[1].lat}},{{$ctrl.matchData.locations[1].lng}}]"></marker>
     </ng-map>
   </div>
 </div>

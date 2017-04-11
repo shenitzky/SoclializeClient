@@ -13,7 +13,7 @@ let mapHandlerModule = angular.module('mapHandler', [
       .state('mapHandler', {
         url: '/mapHandler',
         component: 'mapHandler',
-        params: {'MatchRequestId': null , 'location': null}
+        params: {'matchData': null}
       })
   })
   
