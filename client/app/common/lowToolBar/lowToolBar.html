@@ -3,26 +3,26 @@
     <div layout="row" layout-align-xs="space-around center">
 
         <div class="icon-container" >
-            <md-button>
-                <md-icon md-svg-src="./../../app/common/assets/match.svg"></md-icon>
+            <md-button ui-sref="matchRequest">
+                <md-icon md-svg-src="./../../app/common/assets/match.svg" class="match"></md-icon>
+            </md-button>
+        </div>
+
+        <div class="icon-container">
+            <md-button ui-sref="userProfile">
+                <md-icon md-svg-src="./../../app/common/assets/userProfile.svg" class="userProfile"></md-icon>
             </md-button>
         </div>
 
         <div class="icon-container">
             <md-button>
-                <md-icon md-svg-src="./../../app/common/assets/userProfile.svg"></md-icon>
+                <md-icon md-svg-src="./../../app/common/assets/notifications.svg" class="notifications"></md-icon>
             </md-button>
         </div>
 
-        <div class="icon-container">
+        <div class="icon-container history-icon">
             <md-button>
-                <md-icon md-svg-src="./../../app/common/assets/notifications.svg"></md-icon>
-            </md-button>
-        </div>
-
-        <div class="icon-container">
-            <md-button>
-                <md-icon md-svg-src="./../../app/common/assets/history.svg"></md-icon>
+                <md-icon md-svg-src="./../../app/common/assets/history.svg" class="history"></md-icon>
             </md-button>
         </div>
     </div>

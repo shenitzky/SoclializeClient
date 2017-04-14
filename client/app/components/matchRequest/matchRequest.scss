@@ -1,3 +1,5 @@
+@import "../../common/common";
+
 match-request {
   .img{
     width: 80px;
@@ -20,5 +22,18 @@ match-request {
   }
   .icon-body{
     float: left;
+  }
+  .match-settings{
+    margin-top: 30px;
+  }
+  .md-theme-indigo{
+    background-color: $lightTextColor;
+  }
+  .md-toolbar-tools{
+    background-color: $darkTextColor
+  }
+  .button-color{
+    color: $darkTextColor !important;
+    border-bottom: solid 0.5px;
   }
 }
