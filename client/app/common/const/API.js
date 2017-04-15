@@ -1,12 +1,12 @@
 const consts = {
-    //userData                 : 'http://socialize20170306063515.azurewebsites.net/api/socializeapi/GetUserData',
-    //factors                  : 'http://socialize20170306063515.azurewebsites.net/api/socializeapi/GetAllSystemFactors',
-    //updateUserData           : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/UpdateUserData',
-    //createMatcReq            : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/CreateMatcReq',
-    //updateAndCheckMatcReq    : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/UpdateAndCheckMatcReq',
-    //acceptOptionalMatch      : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/AcceptOptionalMatch',
-    //declineOptionalMatch     : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/DeclineOptionalMatch',
-    //getUserImg               : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/GetUserImgUrl',
+    // userData                 : 'http://socialize20170306063515.azurewebsites.net/api/socializeapi/GetUserData',
+    // factors                  : 'http://socialize20170306063515.azurewebsites.net/api/socializeapi/GetAllSystemFactors',
+    // updateUserData           : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/UpdateUserData',
+    // createMatcReq            : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/CreateMatcReq',
+    // updateAndCheckMatcReq    : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/UpdateAndCheckMatcReq',
+    // acceptOptionalMatch      : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/AcceptOptionalMatch',
+    // declineOptionalMatch     : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/DeclineOptionalMatch',
+    // getUserImg               : 'http://socialize20170306063515.azurewebsites.net/api/socializeApi/GetUserImgUrl',
   
     //todo not working API calls
     userRegister             : '/account/AjaxRegister',
@@ -25,7 +25,7 @@ const consts = {
     acceptOptionalMatch      : '/api/socializeApi/AcceptOptionalMatch',
     declineOptionalMatch     : '/api/socializeApi/DeclineOptionalMatch',
     getUserImg               : '/api/socializeApi/GetUserImgUrl',
-    //todo this will be a function with params of optionalMatchId and matchReqId
+
     getOptionalMatchStatus : '/api/socializeApi/CheckOptionalMatchStatus?optionalMatchId=3&matchReqId=12346789',
 };
 

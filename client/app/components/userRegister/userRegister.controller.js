@@ -1,33 +1,33 @@
-// const USER_DATA_SERVICE = new WeakMap();
-//
-//
-// class UserRegisterController {
-//   constructor(userDataService) {
-//     USER_DATA_SERVICE.set(this,userDataService);
-//     this.name = 'userRegister';
-//   }
-//
-//
-//   $onInit(){
-//
-//     this.userReg = {
-//       Email: '',
-//       Password: '',
-//       ConfirmPassword: ''
-//     };
-//
-//     console.log("user",this.user);
-//     //this.user = false;
-//   }
-//
-//   sendRegistration(){
-//     debugger;
-//     console.log("userReg",this.userReg);
-//     USER_DATA_SERVICE.get(this).userRegister(this.userReg)
-//   }
-//
-//
-// }
-//
-// UserRegisterController.$inject = ['userDataService'];
-// export default UserRegisterController;
+const USER_DATA_SERVICE = new WeakMap();
+const STATE = new WeakMap();
+
+class UserRegisterController {
+  constructor($state,userDataService) {
+    USER_DATA_SERVICE.set(this,userDataService);
+    STATE.set(this,$state);
+    this.name = 'userRegister';
+  }
+
+  $onInit(){
+    this.userReg = {
+      Email: '',
+      Password: '',
+      ConfirmPassword: ''
+    };
+    console.log("user Register",this.user);
+  }
+
+  sendRegistration(){
+    debugger;
+    USER_DATA_SERVICE.get(this).userRegister(this.userReg).then(data => this.user = false);
+  }
+  
+  changeStateBackToLogin(stateName){
+    debugger;
+    STATE.get(this).go(stateName);
+  }
+  
+}
+
+UserRegisterController.$inject = ['$state','userDataService'];
+export default UserRegisterController;

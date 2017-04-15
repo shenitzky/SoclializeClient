@@ -5,7 +5,8 @@ import './userRegister.scss';
 let userRegisterComponent = {
   restrict: 'E',
   bindings: {
-    userDataLogs:'<'
+    userDataLogs:'<',
+    user:'='
   },
   template,
   controller
