@@ -10,11 +10,18 @@ class CheckOptionalMatchStatusController {
   }
   
   $onInit(){
+    this.otherUserDecline = false;
     this.interval = setInterval(()=>{
       MATCH_DATA_SERVICE.get(this).getOptionalMatchStatus(this.optionalMatchId,this.matchReqId).then((matchData)=>{
         matchData = _.get(matchData,'data');
+        
         if(!_.isNull(matchData)) {
-          STATE.get(this).go('mapHandler',{ 'matchData':matchData });
+          
+          if (matchData.IsAccepted) {
+            STATE.get(this).go('mapHandler', {'matchData': matchData});
+          } else {
+            this.otherUserDecline = true;
+          }
         }
       },error=>{
         console.log("Error",error);
@@ -25,9 +32,7 @@ class CheckOptionalMatchStatusController {
   $onDestroy(){
     clearInterval(this.interval);
   }
-  
 }
-
 
 CheckOptionalMatchStatusController.$inject = ['$state','$stateParams','matchDataService'];
 export default CheckOptionalMatchStatusController;
