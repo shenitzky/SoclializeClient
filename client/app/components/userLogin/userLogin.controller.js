@@ -24,7 +24,7 @@ class UserLoginController {
   sendLogin(){
     USER_DATA_SERVICE.get(this).userLogin(this.userLogin).then((data) => {
       this.user = false;
-      STATE.get(this).go('chooseHobbies');
+      STATE.get(this).go('matchRequest');
     });
   }
 }
