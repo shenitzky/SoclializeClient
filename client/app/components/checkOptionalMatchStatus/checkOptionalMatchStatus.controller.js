@@ -17,16 +17,17 @@ class CheckOptionalMatchStatusController {
         
         if(!_.isNull(matchData)) {
           
-          if (matchData.IsAccepted) {
+          if (matchData.isAccepted) {
             STATE.get(this).go('mapHandler', {'matchData': matchData});
           } else {
             this.otherUserDecline = true;
+            this.$onDestroy();
           }
         }
       },error=>{
         console.log("Error",error);
       });
-    }, 8000);
+    }, 10000);
   }
   
   $onDestroy(){
