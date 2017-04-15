@@ -21,8 +21,6 @@ class MatchFoundController {
     _.forEach(this.optionalMatch.matchedDetails.description, (chips)=>{
       this.chipsArray.push(_.split(chips,','));
     });
-    //todo remove this when server will remove duplicate
-    this.chipsArray[2][3]='yossi';
   }
   
   _getUserImg(){

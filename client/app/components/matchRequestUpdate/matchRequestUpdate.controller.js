@@ -23,7 +23,7 @@ class MatchRequestUpdateController {
       },error=>{
         console.log("Error",error);
       });
-    }, 1000);
+    }, 10000);
   }
   
   $onDestroy(){
