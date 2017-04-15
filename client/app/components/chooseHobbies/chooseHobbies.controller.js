@@ -20,7 +20,29 @@ class ChooseHobbiesController {
     }
     
   sendCategoriesToServer(){
-    console.log("this.factorsCopy",this.factorsCopy);
+    let objToSend = [];
+    let tempCategoryName = true;
+    let catName  = '';
+  
+    _.forEach(this.factorsCopy , (category)=>{
+      let tempFactor = {};
+      let tempSubcategory = [];
+      _.forEach(category.subClasses , (subcategory)=>{
+        if(subcategory.isToggle){
+          tempCategoryName = false;
+          catName = category.name;
+          tempSubcategory.push(subcategory);
+        }
+      });
+      if (!_.isEmpty(tempSubcategory)){
+        tempFactor = {
+          'Class': category.class,
+          'SubClasses': tempSubcategory
+        };
+        objToSend.push(tempFactor);
+      }
+    });
+    this.userData.updateUserData({'Data':objToSend});
   }
   
   onChooseSubCategory(subClassName){

@@ -1,4 +1,4 @@
-<div layout="column">
+<div layout="column" ng-if="$ctrl.viewReady">
 
   <div class="found-title" layout-align="center center">
     <h1>Found One To One Match</h1>
@@ -10,7 +10,7 @@
     <div layout="row" layout-align="center center">
       <div class="img-container">
         <img ng-src="{{'http://'+$ctrl.optionalMatch.matchedDetails.imgUrl}}">
-        <img class="currentUserImg" ng-src="{{'http://'+$ctrl.optionalMatch.matchedDetails.imgUrl}}">
+        <img class="currentUserImg" ng-src="{{'http://'+$ctrl.userImg}}">
       </div>
     </div>
 
@@ -20,7 +20,7 @@
   </div>
 
   <div>
-    <div class="match-info-container" layout="column" layout-align="space-around start">
+    <div class="match-info-container" layout="column" layout-align="space-around">
       <div class="match-name">
         <span>Name: {{$ctrl.optionalMatch.matchedDetails.firstName}}</span>
       </div>
@@ -50,7 +50,7 @@
   </div>
 
   <div layout="row" layout-align="center center">
-    <md-button ng-click="$ctrl.declineOptionalMatch()">DECLINE</md-button>
+    <md-button ng-click="$ctrl.declineMatch()">DECLINE</md-button>
     <md-button ng-click="$ctrl.acceptOptionalMatch()">ACCEPT</md-button>
   </div>
 

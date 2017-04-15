@@ -17,6 +17,17 @@ export class UserDataApiService {
     return CONNECTION.get(this).sendPlainText(obj);
   }
   
+  getUserImg() {
+    let obj = {method: 'GET', url: apiConsts.getUserImg};
+    return CONNECTION.get(this).sendPlainText(obj);
+  }
+  
+  //todo move to a new service
+  userRegister(data){
+    let obj = {data: data,method: 'POST', url: apiConsts.userRegister};
+    return CONNECTION.get(this).sendPlainText(obj);
+  }
+  
 }
 UserDataApiService.$inject = ['connection'];
 export default UserDataApiService;

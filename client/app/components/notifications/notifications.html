@@ -1,17 +1,17 @@
-<div>
-  <div layout="column" layout-align="center center">
+<div ng-if="$ctrl.haveNotification && $ctrl.viewReady">
+  <div layout="column" layout-align="center center" class="match-text-container">
     <h1>YOU HAVE {{$ctrl.notificationNumber}} NEW</h1>
     <h1>Match Request</h1>
   </div>
 
   <md-divider></md-divider>
-  <div layout="row" ng-click="$ctrl.matchFoundState()" >
+  <div layout="row" ng-click="$ctrl.matchFoundState()">
     <div class="img-container">
       <img ng-src="{{'http://'+$ctrl.receiveMatchObject.matchedDetails.imgUrl}}">
-      <img class="currentUserImg" ng-src="{{'http://'+$ctrl.receiveMatchObject.matchedDetails.imgUrl}}">
+      <img class="currentUserImg" ng-src="{{'http://'+$ctrl.userImg}}">
     </div>
     <div class="matchStrength">
-      <h1>{{$ctrl.receiveMatchObject.matchStrength}}%</h1>
+      <h1 class="present-text">{{$ctrl.receiveMatchObject.matchStrength}}%</h1>
     </div>
     <div class="match-info-container" layout="column" layout-align="space-around end">
       <div>
@@ -25,5 +25,11 @@
       </div>
     </div>
   </div>
+
+  <div class="noti">1</div>
+
   <md-divider></md-divider>
+</div>
+<div ng-if="!$ctrl.haveNotification">
+  <h1>You Don't have any notifications</h1>
 </div>

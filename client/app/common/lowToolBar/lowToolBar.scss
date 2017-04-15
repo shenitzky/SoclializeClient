@@ -4,6 +4,7 @@ low-tool-bar {
 
   md-icon svg {
     fill: $toolBarIconColor;
+    transition: fill .2s ease-in-out;
   }
 
   md-toolbar {
@@ -16,6 +17,13 @@ low-tool-bar {
 
   .icon-container{
     width: 30px;
+
+    &.active,&:active{
+      md-icon svg{
+        fill:$fillFooterIcon!important;
+      }
+    }
+
   }
   .history-icon{
     margin-right: 20px;
