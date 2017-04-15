@@ -28,6 +28,12 @@ export class UserDataApiService {
     return CONNECTION.get(this).sendPlainText(obj);
   }
   
+  userLogin(data){
+    let obj = {data: data,method: 'POST', url: apiConsts.userLogin};
+    return CONNECTION.get(this).sendPlainText(obj);
+  }
+  
+  
 }
 UserDataApiService.$inject = ['connection'];
 export default UserDataApiService;
