@@ -12,7 +12,7 @@ class UserLoginController {
     this.userLogin = {
       Email: '',
       Password: '',
-      RememberMe: false
+      RememberMe: true
     };
     
     console.log("user from login ",this.user);

@@ -51,15 +51,7 @@ class MatchRequestController {
     },error =>{console.log('error',error)});
   }
   
-  
-  //todo not using it at this moment if needed delete it.
-  onCheckboxChange(obj,model,key) {
-  
-  }
-  
-  
   sendMatchRequest(){
-    
     let currentLocation = {
       'lat':this.latitude,
       'lng':this.longitude
@@ -74,6 +66,32 @@ class MatchRequestController {
       console.log("receivedMatchRequestId",receivedMatchRequestId);
       STATE.get(this).go('matchRequestUpdate',{'MatchRequestId':_.get(receivedMatchRequestId,'data'),'location':currentLocation});
     });
+  }
+  
+  sendCurrentMatchFactors(){
+    let objToSend = [];
+    let tempCategoryName = true;
+    let catName  = '';
+    _.forEach(this.user.factors , (category)=>{
+      let tempFactor = {};
+      let tempSubcategory = [];
+      _.forEach(category.subClasses , (subcategory)=>{
+        if(subcategory.isToggle){
+          tempCategoryName = false;
+          catName = category.name;
+          tempSubcategory.push(subcategory);
+        }
+      });
+      if (!_.isEmpty(tempSubcategory)){
+        tempFactor = {
+          'Class': category.class,
+          'SubClasses': tempSubcategory
+        };
+        objToSend.push(tempFactor);
+      }
+    });
+    debugger;
+    this.user.factors = objToSend;
   }
   
   
