@@ -36,8 +36,8 @@ export class MatchDataApiService {
     return CONNECTION.get(this).sendPlainText(obj);
   }
   
-  getOptionalMatchStatus() {
-    let obj = {method: 'GET', url: apiConsts.getOptionalMatchStatus};
+  getOptionalMatchStatus(optionalMatchId, matchReqId) {
+    let obj = {method: 'GET', url: apiConsts.getOptionalMatchStatus(optionalMatchId, matchReqId)};
     return CONNECTION.get(this).sendPlainText(obj);
   }
   

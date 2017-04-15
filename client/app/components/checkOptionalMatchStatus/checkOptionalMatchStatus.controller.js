@@ -11,8 +11,7 @@ class CheckOptionalMatchStatusController {
   
   $onInit(){
     this.interval = setInterval(()=>{
-      //todo getOptionalMatchStatus will get params that will be added to the get call
-      MATCH_DATA_SERVICE.get(this).getOptionalMatchStatus().then((matchData)=>{
+      MATCH_DATA_SERVICE.get(this).getOptionalMatchStatus(this.optionalMatchId,this.matchReqId).then((matchData)=>{
         matchData = _.get(matchData,'data');
         if(!_.isNull(matchData)) {
           STATE.get(this).go('mapHandler',{ 'matchData':matchData });
@@ -20,7 +19,7 @@ class CheckOptionalMatchStatusController {
       },error=>{
         console.log("Error",error);
       });
-    }, 1000);
+    }, 8000);
   }
   
   $onDestroy(){

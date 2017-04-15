@@ -24,8 +24,8 @@ export class MatchDataService {
     return MATCHDATA_API.get(this).declineOptionalMatch(data);
   }
   
-  getOptionalMatchStatus() {
-    return MATCHDATA_API.get(this).getOptionalMatchStatus();
+  getOptionalMatchStatus(optionalMatchId, matchReqId) {
+    return MATCHDATA_API.get(this).getOptionalMatchStatus(optionalMatchId, matchReqId);
   }
   
 }

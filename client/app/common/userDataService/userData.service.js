@@ -17,9 +17,15 @@ export class UserDataService {
       return USERDATA_API.get(this).getUserImg();
     }
     
+    //todo move to a new service
     userRegister(data) {
       return USERDATA_API.get(this).userRegister(data);
     }
+  
+    userLogin(data) {
+      return USERDATA_API.get(this).userLogin(data);
+    }
+  
 }
 UserDataService.$inject = ['userDataApi'];
 export default UserDataService;

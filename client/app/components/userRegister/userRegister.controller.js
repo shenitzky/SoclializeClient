@@ -18,12 +18,10 @@ class UserRegisterController {
   }
 
   sendRegistration(){
-    debugger;
     USER_DATA_SERVICE.get(this).userRegister(this.userReg).then(data => this.user = false);
   }
   
   changeStateBackToLogin(stateName){
-    debugger;
     STATE.get(this).go(stateName);
   }
   

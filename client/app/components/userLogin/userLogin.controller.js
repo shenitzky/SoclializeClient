@@ -19,8 +19,7 @@ class UserLoginController {
   }
   
   sendLogin(){
-    debugger;
-    USER_DATA_SERVICE.get(this).userRegister(this.userLogin).then(data => this.user = false)
+    USER_DATA_SERVICE.get(this).userLogin(this.userLogin).then(data => this.user = false)
   }
 }
 
