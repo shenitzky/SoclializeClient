@@ -18,7 +18,10 @@ class UserRegisterController {
   }
 
   sendRegistration(){
-    USER_DATA_SERVICE.get(this).userRegister(this.userReg).then(data => this.user = false);
+    USER_DATA_SERVICE.get(this).userRegister(this.userReg).then((data) => {
+      this.user = false;
+      STATE.get(this).go('chooseHobbies');
+    });
   }
   
   changeStateBackToLogin(stateName){
