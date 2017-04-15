@@ -1,38 +1,22 @@
-<div>
-  <h1>{{ $ctrl.name }}</h1>
-
-  <md-content class="md-no-momentum">
-    <!--<md-input-container class="md-icon-float md-block">-->
-      <!--&lt;!&ndash; Use floating label instead of placeholder &ndash;&gt;-->
-      <!--<label>Name</label>-->
-      <!--&lt;!&ndash;<md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>&ndash;&gt;-->
-      <!--<input ng-model="$ctrl.userReg.name" type="text">-->
-    <!--</md-input-container>-->
-
-    <md-input-container class="md-block">
-      <!-- Use floating placeholder instead of label -->
-      <!--<md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>-->
-      <input ng-model="$ctrl.userReg.Email" type="email" placeholder="Email (required)" ng-required="true">
-    </md-input-container>
-
-
-    <md-input-container class="md-block">
-      <!-- Use floating placeholder instead of label -->
-      <!--<md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>-->
-      <input ng-model="$ctrl.userReg.Password" type="password" placeholder="Password (required)" ng-required="true">
-    </md-input-container>
-
-    <md-input-container class="md-block">
-      <!-- Use floating placeholder instead of label -->
-      <!--<md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>-->
-      <input ng-model="$ctrl.userReg.ConfirmPassword" type="password" placeholder="Password (required)" ng-required="true">
-    </md-input-container>
-
+<div  ng-if="!$ctrl.userRegister">
+  <h1>Welcome please login</h1>
 
   </md-content>
 
-  <md-button ng-click="$ctrl.sendRegistration()" >Login</md-button>
+    <md-input-container class="md-block">
+      <input ng-model="$ctrl.userReg.Email" type="email" placeholder="Email (required)" ng-required="true">
+    </md-input-container>
 
-  <md-button ng-click="userRegister" >Register</md-button>
+    <md-input-container class="md-block">
+      <input ng-model="$ctrl.userReg.Password" type="password" placeholder="Password (required)" ng-required="true">
+    </md-input-container>
+
+  </md-content>
+
+
+
+  <md-button ng-click="$ctrl.sendLogin()" >Login</md-button>
+  <md-button ng-click="$ctrl.userRegister = !$ctrl.userRegister" >Register</md-button>
 
 </div>
+<user-register ng-if="$ctrl.userRegister" user="$ctrl.user"></user-register>

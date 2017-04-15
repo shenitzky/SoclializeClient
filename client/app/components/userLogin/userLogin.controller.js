@@ -5,26 +5,23 @@ class UserLoginController {
   constructor(userDataService) {
     USER_DATA_SERVICE.set(this,userDataService);
     this.name = 'userLogin';
+    this.userRegister = false;
   }
-  
   
   $onInit(){
-    this.userReg = {
+    this.userLogin = {
       Email: '',
       Password: '',
-      ConfirmPassword: ''
+      RememberMe: false
     };
     
-    console.log("user",this.user);
-    //this.user = false;
+    console.log("user from login ",this.user);
   }
   
-  sendRegistration(){
-    console.log("userReg",this.userReg);
-    USER_DATA_SERVICE.get(this).userRegister(this.userReg)
+  sendLogin(){
+    debugger;
+    USER_DATA_SERVICE.get(this).userRegister(this.userLogin).then(data => this.user = false)
   }
-  
-  
 }
 
 UserLoginController.$inject = ['userDataService'];
