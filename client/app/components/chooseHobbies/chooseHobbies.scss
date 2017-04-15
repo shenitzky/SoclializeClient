@@ -1,3 +1,5 @@
+//import css from 'style-loader!css-loader!./file.css';
+
 choose-hobbies {
   .text{
     text-align: center;
@@ -27,6 +29,7 @@ choose-hobbies {
     float: left;
   }
   .vIconOn {
+    //background-image: url('./../../common/assets/v.png');
     background-color: #0277bd;
   }
 }

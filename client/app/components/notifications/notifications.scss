@@ -1,9 +1,16 @@
+@import "./../../common/common";
+
 notifications {
 
+  .match-text-container{
+    margin-bottom: 15px;
+  }
 
   .img-container{
     img{
-      width: 80px;
+      width: 55px;
+      margin-left: 20px;
+      margin-top: 20px;
     }
     .currentUserImg{
       margin-left: -20px;
@@ -11,8 +18,8 @@ notifications {
   }
 
   .matchStrength{
-    margin-left: 20px;
-    font-size: 17px;
+    margin-left: 13px;
+    font-size: 20px;
     font-weight: bolder;
   }
 
@@ -20,5 +27,28 @@ notifications {
     margin-left: 4px;
     font-size: 12px;
     font-weight: 400;
+  }
+
+  .noti{
+    font-family: 'Indie Flower', cursive;
+    position: absolute;
+    left: 204px;
+    bottom: 46px;
+    z-index: 1;
+    width: 20px;
+    height: 19px;
+    font-weight: 500;
+    font-size: medium;
+    //todo common the colors
+    background-color: rgba(226, 33, 33, 0.53);
+    text-align: -webkit-center;
+    border: solid 0.1px;
+    box-shadow: 1px 4px 18px rgba(16, 15, 15, 0.53);
+    border-radius: 10px;
+  }
+
+
+  .present-text{
+    font-family: 'Concert One', cursive;
   }
 }

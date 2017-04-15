@@ -7,7 +7,9 @@ import 'normalize.css';
 import angularMaterial from 'angular-material';
 import AngularAnimate from 'angular-animate';
 import ngMap from 'ngmap';
-//import AngularBootstrap from 'angular-ui-bootstrap';
+import userLoginModule from './components/userLogin/userLogin'
+import userRegisterModule from './components/userRegister/userRegister'
+import AngularBootstrap from 'angular-ui-bootstrap';
 import angularAria from 'angular-aria';
 import lodash from 'lodash'
 import moment from 'moment/moment';
@@ -20,7 +22,9 @@ angular.module('app', [
     angularMaterial,
     angularAria,
     AngularAnimate,
-    ngMap
+    ngMap,
+    userLoginModule,
+    userRegisterModule
   ])
   .config(($locationProvider) => {
     "ngInject";

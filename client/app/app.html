@@ -1,12 +1,14 @@
 <!-- Place all UI elements intended to be present across all routes in this file -->
 <div class="mobile-app" id="mobile-app" ng-app="materialApp" layout="column" layout-fill>
   <navbar></navbar>
-  <main id="app" class="main"  md-no-flicker flex>
-    <div ui-view></div>
-    <div class="footer-divider"></div>
-  </main>
-
-  <footer>
-      <low-tool-bar class="bottom"></low-tool-bar>
-  </footer>
+  <user-login ng-if="$ctrl.user" user="$ctrl.user"></user-login>
+  <div ng-if="!$ctrl.user">
+    <main id="app" class="main"  md-no-flicker flex>
+      <div ui-view></div>
+      <div class="footer-divider"></div>
+    </main>
+    <footer>
+        <low-tool-bar class="bottom"></low-tool-bar>
+    </footer>
+  </div>
 </div>

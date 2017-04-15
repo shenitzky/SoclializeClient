@@ -2,26 +2,26 @@
 
     <div layout="row" layout-align-xs="space-around center">
 
-        <div class="icon-container" >
-            <md-button ui-sref="matchRequest">
+        <div class="icon-container" ui-sref-active="active" ui-sref="matchRequest">
+            <md-button>
                 <md-icon md-svg-src="./../../app/common/assets/match.svg" class="match"></md-icon>
             </md-button>
         </div>
 
-        <div class="icon-container">
-            <md-button ui-sref="userProfile">
+        <div class="icon-container" ui-sref="userProfile" ui-sref-active="active">
+            <md-button>
                 <md-icon md-svg-src="./../../app/common/assets/userProfile.svg" class="userProfile"></md-icon>
             </md-button>
         </div>
 
-        <div class="icon-container">
+        <div class="icon-container" ui-sref-active="active" ui-sref="notifications">
             <md-button>
                 <md-icon md-svg-src="./../../app/common/assets/notifications.svg" class="notifications"></md-icon>
             </md-button>
         </div>
 
         <div class="icon-container history-icon">
-            <md-button>
+            <md-button ui-sref-active="active">
                 <md-icon md-svg-src="./../../app/common/assets/history.svg" class="history"></md-icon>
             </md-button>
         </div>
