@@ -3,7 +3,7 @@ const USER_DATA_SERVICE = new WeakMap();
 
 
 class UserLoginController {
-  constructor(userDataService) {
+  constructor($state,userDataService) {
     USER_DATA_SERVICE.set(this,userDataService);
     STATE.set(this,$state);
     this.name = 'userLogin';
@@ -29,5 +29,5 @@ class UserLoginController {
   }
 }
 
-UserLoginController.$inject = ['userDataService'];
+UserLoginController.$inject = ['$state','userDataService'];
 export default UserLoginController;
