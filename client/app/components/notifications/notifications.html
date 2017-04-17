@@ -7,8 +7,8 @@
   <md-divider></md-divider>
   <div layout="row" ng-click="$ctrl.matchFoundState()">
     <div class="img-container">
-      <img ng-src="{{'http://'+$ctrl.receiveMatchObject.matchedDetails.imgUrl}}">
-      <img class="currentUserImg" ng-src="{{'http://'+$ctrl.userImg}}">
+      <img ng-src="{{$ctrl.receiveMatchObject.matchedDetails.imgUrl}}">
+      <img class="currentUserImg" ng-src="{{$ctrl.userImg}}">
     </div>
     <div class="matchStrength">
       <h1 class="present-text">{{$ctrl.receiveMatchObject.matchStrength}}%</h1>
