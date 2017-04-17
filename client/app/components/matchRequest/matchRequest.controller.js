@@ -48,7 +48,11 @@ class MatchRequestController {
       this.longitude = position.coords.longitude;
       console.log("this.latitude",this.latitude);
       console.log("this.longitude",this.longitude);
-    },error =>{console.log('error',error)});
+    },error =>{
+      this.latitude  = 32.090346;
+      this.longitude = 34.802194;
+      console.log('error',error)
+    });
   }
   
   sendMatchRequest(){
