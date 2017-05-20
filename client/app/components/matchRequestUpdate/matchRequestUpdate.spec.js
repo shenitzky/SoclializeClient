@@ -2,35 +2,55 @@
 // import MatchRequestUpdateController from './matchRequestUpdate.controller';
 // import MatchRequestUpdateComponent from './matchRequestUpdate.component';
 // import MatchRequestUpdateTemplate from './matchRequestUpdate.html';
+// import sinon from 'sinon';
+// import sinonAsPromised from 'sinon-as-promised';
 //
 // describe('MatchRequestUpdate', () => {
-//   let $rootScope, makeController;
+//   let $rootScope, makeController,$q,$timeout,$state,$window,$stateParams,matchDataServiceMock;
+//
+//   const matchRequestObject = {
+//     matchReqId: 2,
+//     location: {
+//       lng: 30,
+//       lat: 30
+//     }
+//   };
+//
+//   const optionalMatchData = 'HaveAMatch';
 //
 //   beforeEach(window.module(MatchRequestUpdateModule));
-//   beforeEach(inject((_$rootScope_) => {
+//   beforeEach(inject((_$rootScope_,_$timeout_,_$q_) => {
+//     $q = _$q_;
 //     $rootScope = _$rootScope_;
+//     $timeout = _$timeout_;
+//     sinonAsPromised($q);
+//
+//
+//     $stateParams = {
+//       MatchRequestId: 4,
+//       location: {
+//         lng: 30,
+//         lat: 30
+//       }
+//     };
+//
+//     matchDataServiceMock = {
+//       updateAndCheckMatchRequest: sinon.stub().resolves(optionalMatchData)
+//     };
+//
 //     makeController = () => {
-//       return new MatchRequestUpdateController();
+//       return new MatchRequestUpdateController($state,$window,$stateParams,matchDataServiceMock);
 //     };
 //   }));
 //
-//   describe('Module', () => {
-//     // top-level specs: i.e., routes, injection, naming
-//   });
-//
 //   describe('Controller', () => {
 //     // controller specs
-//     it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
+//     it('', () => { // erase if removing this.name from the controller
 //       let controller = makeController();
-//       expect(controller).to.have.property('name');
-//     });
-//   });
-//
-//   describe('Template', () => {
-//     // template specs
-//     // tip: use regex to ensure correct bindings are used e.g., {{  }}
-//     it('has name in template [REMOVE]', () => {
-//       expect(MatchRequestUpdateTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
+//       controller.$onInit();
+//       controller.matchRequestObject = matchRequestObject;
+//       //expect(matchDataService.updateAndCheckMatchRequest).to.be.calledWith(controller.matchRequestObject);
+//       expect(matchDataServiceMock.updateAndCheckMatchRequest).to.equal(optionalMatchData);
 //     });
 //   });
 //

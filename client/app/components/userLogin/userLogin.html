@@ -1,22 +1,24 @@
-<div  ng-if="!$ctrl.userRegister">
-  <h1>Welcome please login</h1>
-
-  </md-content>
-
-    <md-input-container class="md-block">
-      <input ng-model="$ctrl.userLogin.Email" type="email" placeholder="Email (required)" ng-required="true">
+<div ng-if="!$ctrl.userRegister">
+  <div layout="row" layout-align="center center">
+    <h1>Hi there please login</h1>
+  </div>
+  <div ng-if="$ctrl.authenticationError" layout="column" layout-align="center center">
+    <h2>Please try again</h2><span>Wrong password or email</span>
+  </div>
+  <div layout="column" layout-align="center center">
+    <md-input-container class="md-block" flex="flex">
+      <input ng-model="$ctrl.userLogin.Email" type="email" placeholder="Email" ng-required="true">
     </md-input-container>
 
-    <md-input-container class="md-block">
-      <input ng-model="$ctrl.userLogin.Password" type="password" placeholder="Password (required)" ng-required="true">
+    <md-input-container class="md-block" flex="flex">
+      <input ng-model="$ctrl.userLogin.Password" type="password" placeholder="Password" ng-required="true">
     </md-input-container>
 
-  </md-content>
-
-
-
-  <md-button ng-click="$ctrl.sendLogin()" >Login</md-button>
-  <md-button ng-click="$ctrl.userRegister = !$ctrl.userRegister" >Register</md-button>
-
+    </md-content>
+    <div layout="row" layout-align="center center">
+      <md-button ng-click="$ctrl.sendLogin()">Login</md-button>
+      <md-button ng-click="$ctrl.userRegisterPage($ctrl.userRegister)">Register</md-button>
+    </div>
+  </div>
 </div>
-<user-register ng-if="$ctrl.userRegister" user="$ctrl.user"></user-register>
+<user-register ng-if="$ctrl.userRegister" user="$ctrl.user" user-register="$ctrl.userRegister"></user-register>

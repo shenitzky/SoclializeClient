@@ -1,0 +1,48 @@
+{
+  "name": "YOSSI!",
+  "short_name": "YOSSI",
+  "icons": [
+    {
+      "src": "https://images.hibob.com/mobile/icons/mobile_logo_57.png"
+    },
+    {
+      "src": "https://images.hibob.com/mobile/icons/mobile_logo_57.png",
+      "sizes": "57x57",
+      "type": "image/png"
+    },
+    {
+      "src": "https://images.hibob.com/mobile/icons/mobile_logo_64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "https://images.hibob.com/mobile/icons/mobile_logo_72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "https://images.hibob.com/mobile/icons/mobile_logo_114.png",
+      "sizes": "114x114",
+      "type": "image/png"
+    },
+    {
+      "src": "https://images.hibob.com/mobile/icons/mobile_logo_128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "https://images.hibob.com/mobile/icons/mobile_logo_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://images.hibob.com/mobile/icons/mobile_logo_64.png",
+      "sizes": "128x128",
+      "density": 2
+    }
+  ],
+  "start_url": "http://localhost:3000",
+  "display": "standalone",
+  "background_color": "#87243D",
+  "theme_color": "#87243D"
+}

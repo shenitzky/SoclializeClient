@@ -6,7 +6,8 @@ let userRegisterComponent = {
   restrict: 'E',
   bindings: {
     userDataLogs:'<',
-    user:'='
+    user:'=',
+    userRegister:'='
   },
   template,
   controller

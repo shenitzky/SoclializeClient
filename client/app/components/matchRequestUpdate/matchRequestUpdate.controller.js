@@ -13,9 +13,11 @@ class MatchRequestUpdateController {
   }
   
   $onInit(){
+    console.log(this.matchRequestObject);
+    //Interval that update the server with matchRequestObject when receiving optionalMatchData moving to notifications.
     this.interval = setInterval(()=>{
-      console.log("interval match request update alive");
       MATCH_DATA_SERVICE.get(this).updateAndCheckMatchRequest(this.matchRequestObject).then((optionalMatchData)=>{
+        console.log("here",optionalMatchData);
         optionalMatchData = _.get(optionalMatchData,'data');
         if(!_.isNull(optionalMatchData)) {
           STATE.get(this).go('notifications',{'optionalMatch':optionalMatchData,'matchReqId':this.matchRequestObject.matchReqId});
@@ -23,12 +25,12 @@ class MatchRequestUpdateController {
       },error=>{
         console.log("Error",error);
       });
-    }, 10000);
+    }, 100);
   }
   
   $onDestroy(){
+    //Destroy interval.
     clearInterval(this.interval);
-    console.log("interval match request update dead");
   }
   
 }

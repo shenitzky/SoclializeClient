@@ -20,7 +20,7 @@
   </div>
 
   <div>
-    <div class="match-info-container" layout="column" layout-align="space-around">
+    <div class="match-info-container" layout="column" layout-align="space-around start">
       <div class="match-name">
         <span>Name: {{$ctrl.optionalMatch.matchedDetails.firstName}}</span>
       </div>
@@ -50,8 +50,8 @@
   </div>
 
   <div layout="row" layout-align="center center">
-    <md-button ng-click="$ctrl.declineMatch()">DECLINE</md-button>
-    <md-button ng-click="$ctrl.acceptOptionalMatch()">ACCEPT</md-button>
+    <md-button class="declineBtn" ng-click="$ctrl.declineMatch()">DECLINE</md-button>
+    <md-button class="acceptBtn" ng-click="$ctrl.acceptOptionalMatchBtn()">ACCEPT</md-button>
   </div>
 
 </div>

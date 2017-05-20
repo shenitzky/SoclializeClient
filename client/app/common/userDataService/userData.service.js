@@ -25,6 +25,10 @@ export class UserDataService {
     userLogin(data) {
       return USERDATA_API.get(this).userLogin(data);
     }
+    //todo need to use this
+    getUserOptionalMatch() {
+      return USERDATA_API.get(this).getUserOptionalMatch();
+    }
   
 }
 UserDataService.$inject = ['userDataApi'];

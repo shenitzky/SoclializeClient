@@ -1,9 +1,11 @@
 <div ng-if="!$ctrl.otherUserDecline">
-  <h1>Waiting for another side response</h1>
+  <div layout="row" layout-align="center center">
+    <h1>Waiting for another side response</h1>
+  </div>
   <div layout="row" layout-sm="column" layout-align="space-around">
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </div>
 </div>
-<div ng-if="$ctrl.otherUserDecline">
-  YOU HAVE BEEN DECLINE BITCH
+<div ng-if="$ctrl.otherUserDecline" layout="row" layout-align="center center">
+  <h1>YOU HAVE BEEN DECLINE</h1>
 </div>

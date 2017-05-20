@@ -4,14 +4,14 @@
 const STATE = new WeakMap();
 
 class AppController {
-  constructor($state,$window) {
+  constructor($state) {
     STATE.set(this,$state);
   }
   
-  $onInit(){
-    this.user = true;
+  $onInit() {
+    this.user = false;
   }
 }
 
-AppController.$inject = ['$state','$window'];
+AppController.$inject = ['$state'];
 export default AppController;

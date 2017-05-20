@@ -1,4 +1,3 @@
-//import css from 'style-loader!css-loader!./file.css';
 
 choose-hobbies {
   .text{
@@ -28,8 +27,25 @@ choose-hobbies {
   .icon-body{
     float: left;
   }
-  .vIconOn {
-    //background-image: url('./../../common/assets/v.png');
-    background-color: #0277bd;
+
+  .checkmark_stem {
+    position: relative;
+    width: 6px;
+    height: 20px;
+    background-color: #ff4d9e;
+    left: 40px;
+    top: -57px;
+    transform: rotate(45deg);
   }
+
+  .checkmark_kick {
+    position: relative;
+    width: 9px;
+    height: 6px;
+    background-color: #ff4d9e;
+    left: 31px;
+    top: -67px;
+    transform: rotate(45deg);
+  }
+
 }

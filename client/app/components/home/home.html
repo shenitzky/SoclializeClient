@@ -1,19 +1,24 @@
 <div ng-if="$ctrl.viewReady">
 
-    <div>
-        <md-button ng-click="$ctrl.changeStateNameOnClick('userProfile')">Click to go to user profile.</md-button>
-    </div>
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-    <div>
-        <md-button ng-click="$ctrl.getLocation()">get your coordinates.</md-button>
-    </div>
+  <div>
+    <md-button ng-click="$ctrl.changeStateNameOnClick('userProfile')">Click to go to user profile.</md-button>
+  </div>
 
-    <div>
-        <md-button ng-click="$ctrl.changeStateNameOnClick('chooseHobbies')">Click to go to choose Hobbies screen.</md-button>
-    </div>
+  <div>
+    <md-button ng-click="$ctrl.getLocation()">get your coordinates.</md-button>
+  </div>
 
-    <div>
-        <md-button ng-click="$ctrl.changeStateNameOnClick('matchRequest')">Click to go to start match screen.</md-button>
-    </div>
+  <div>
+    <md-button ng-click="$ctrl.changeStateNameOnClick('chooseHobbies')">Click to go to choose Hobbies screen.
+    </md-button>
+  </div>
+
+  <div>
+    <md-button ng-click="$ctrl.changeStateNameOnClick('matchRequest')">Click to go to start match screen.</md-button>
+  </div>
+
+  <a href="#" ng-click="$ctrl.signOut()">Sign out</a>
 
 </div>

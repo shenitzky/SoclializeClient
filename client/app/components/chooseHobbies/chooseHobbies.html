@@ -12,8 +12,7 @@
         </div>
         <div class="icon-container" ng-repeat="subCategory in category.subClasses track by $index">
           <div class="icon-body" id="{{subCategory.name}}"
-               ng-click="$ctrl.onChooseSubCategory(subCategory.name)"
-               ng-mousedown="$ctrl.onSubCategoryClick(subCategory.name)">
+               ng-click="$ctrl.onChooseSubCategory(subCategory.name)">
             <img class="img-icon" ng-src="{{subCategory.imgUrl}}"/>
           </div>
         </div>

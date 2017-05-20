@@ -8,6 +8,7 @@ class UserLoginController {
     STATE.set(this,$state);
     this.name = 'userLogin';
     this.userRegister = false;
+    this.authenticationError = false;
   }
   
   $onInit(){
@@ -23,10 +24,22 @@ class UserLoginController {
   //todo error handler
   sendLogin(){
     USER_DATA_SERVICE.get(this).userLogin(this.userLogin).then((data) => {
-      this.user = false;
+      debugger;
+      //this.user = false;
+      //todo need to add this authenticationError to server
+      this.user = data.data.authentication;
+      this.authenticationError = data.data.authentication;
       STATE.get(this).go('matchRequest');
+    },error=>{
+      this.user = true;
+      this.authenticationError = true;
     });
   }
+  
+  userRegisterPage(userRegister){
+    this.userRegister = !userRegister
+  }
+  
 }
 
 UserLoginController.$inject = ['$state','userDataService'];
