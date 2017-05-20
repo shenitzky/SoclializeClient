@@ -14,18 +14,18 @@ class UserRegisterController {
       Password: '',
       ConfirmPassword: ''
     };
-    console.log("user Register",this.user);
   }
 
   sendRegistration(){
     USER_DATA_SERVICE.get(this).userRegister(this.userReg).then((data) => {
+      //todo same logic as login component need to verify creation user.
       this.user = false;
       STATE.get(this).go('chooseHobbies');
     });
   }
   
-  changeStateBackToLogin(stateName){
-    STATE.get(this).go(stateName);
+  changeStateBackToLogin(){
+    this.userRegister = false;
   }
   
 }

@@ -29,9 +29,6 @@ let backends = {
     }
 };
 
-//let apiHost = 'http://socialize20170306063515.azurewebsites.net/api/socializApi';
-//let apiHost =_.get(backends);
-
 
 // helper method for resolving paths
 let resolveToApp = (glob = '') => {
@@ -80,10 +77,6 @@ gulp.task('webpack', ['clean'], (cb) => {
 });
 
 gulp.task('serve', () => {
-  // let proxy = proxyMiddleware('/api/*',{
-  //   target: apiHost,
-  //   changeOrigin: true
-  // });
   const config = require('./webpack.dev.config');
   config.entry.app = [
     // this modules required to make HRM working
@@ -110,26 +103,8 @@ gulp.task('serve', () => {
       }),
       webpackHotMiddleware(compiler)
     ]
-    //middleware: [proxy],
-    //notify:false
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 gulp.task("webpack:server", function (callback) {
@@ -165,24 +140,6 @@ gulp.task("webpack:server", function (callback) {
         util.log("[webpack-dev-server]", "https://localhost.hibob.com:3000/webpack-dev-server/");
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 gulp.task('watch', ['serve']);

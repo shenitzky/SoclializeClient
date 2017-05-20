@@ -2,4 +2,20 @@ map-handler {
   .google-map-container ng-map{
     height: 380px;
   }
+
+  .currentUserImg{
+    width: 55px;
+  }
+
+  @media (max-width:667px) and (min-width:375px) {
+    .google-map-container ng-map{
+      height: 476px;
+    }
+  }
+
+  @media (max-width:736px) and (min-width:414px) {
+    .google-map-container ng-map{
+      height: 545px;
+    }
+  }
 }

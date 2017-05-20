@@ -17,26 +17,31 @@ class MatchFoundController {
     this._getUserImg();
   }
   
+  //Init the chip description
   $onInit(){
     _.forEach(this.optionalMatch.matchedDetails.description, (chips)=>{
       this.chipsArray.push(_.split(chips,','));
     });
   }
   
+  //Set user image and set view Html
   _getUserImg(){
     USER_DATA_SERVICE.get(this).getUserImg().then((userImg) =>{
       this.userImg = _.get(userImg,'data');
       this.viewReady = true;
     });
   }
-  
-  acceptOptionalMatch(){
-    STATE.get(this).go('checkOptionalMatchStatus',{'optionalMatchId': this.optionalMatch.id, 'matchReqId':this.matchReqId});
+  //Posting to server acceptOptionalMatchBtn and moving state with the right params.
+  acceptOptionalMatchBtn(){
+    MATCH_DATA_SERVICE.get(this).acceptOptionalMatch({'optionalMatchId': this.optionalMatch.id, 'matchReqId':this.matchReqId}).then(()=>{
+      STATE.get(this).go('checkOptionalMatchStatus',{'optionalMatchId': this.optionalMatch.id, 'matchReqId':this.matchReqId});
+    });
   }
   
+  //Posting to server decline match to server and moving back to find match state
   declineMatch(){
     MATCH_DATA_SERVICE.get(this).declineOptionalMatch({'optionalMatchId': this.optionalMatch.id, 'matchReqId':this.matchReqId});
-    STATE.get(this).go('home');
+    STATE.get(this).go('matchRequest');
   }
 }
 

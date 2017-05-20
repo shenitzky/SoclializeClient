@@ -2,8 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Poiret+One');
 @import url('https://fonts.googleapis.com/css?family=Kalam');
 
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
-
+//Numbers font
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One');
+//Actor font
+@import url('https://fonts.googleapis.com/css?family=Actor');
 //PRESENT FONT
 @import url('https://fonts.googleapis.com/css?family=Concert+One');
 
@@ -17,6 +19,7 @@ $darkTextColor:    #212121;
 $toolBarIconColor: #848383;
 $toolBarBackGround:#f7f6f6;
 $fillFooterIcon:   #a8c6fa;
+$blueBabyNumber:   #75a9f9;
 
 
 body {
@@ -24,6 +27,20 @@ body {
    // browsers default to 16px for font-size,
    // so setting top-level font-size to 62.5%
    // scales 1rem to equal 10px.
-   font: 62.5% 'Roboto', sans-serif;
+   font: 62.5% 'Actor', sans-serif;
+   color: #7a7a7a;
+   //font-family: 'Actor', sans-serif;
 }
 
+@mixin textNumShadowElement($fontSize) {
+  font-size: $fontSize;
+  color:$darkTextColor;
+  text-shadow: 2px 4px 3px rgba(80, 69, 69, 0.23);
+  font-family: 'Alfa Slab One', cursive;
+}
+
+@mixin acceptOrDeclineBtn($backgroundColor,$borderColor){
+  border: solid 0.5px $borderColor;
+  border-radius: 46px;
+  background-color: $backgroundColor;
+}

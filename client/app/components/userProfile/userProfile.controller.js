@@ -1,16 +1,19 @@
+const STATE = new WeakMap();
+const USER_DATA_SERVICE = new WeakMap();
+const FACTORS_DATA_SERVICE = new WeakMap();
 
 class UserProfileController {
-  constructor(factorsDataService,userDataService) {
-      this.name = 'userProfile';
-      this.userData = userDataService;
-      this.factorsData = factorsDataService;
+  constructor($state,factorsDataService,userDataService) {
+      STATE.set(this,$state);
+      USER_DATA_SERVICE.set(this,userDataService);
+      FACTORS_DATA_SERVICE.set(this,factorsDataService);
   }
   
   $onInit(){
+    //this.optionalMatchData = {};
     this.viewReady = false;
-    this.userData.getUserData().then((userData)=> {
-      this.factorsData.getFactorData().then((factorData) => {
-        
+      USER_DATA_SERVICE.get(this).getUserData().then((userData)=> {
+        FACTORS_DATA_SERVICE.get(this).getFactorData().then((factorData) => {
         factorData  = _.get(factorData,'data');
         userData  = _.get(userData,'data');
         this.factorsList = factorData;
@@ -38,7 +41,22 @@ class UserProfileController {
         });
       });
     });
+    //this.checkUserOptinalMatchOverTime();
   }
+  
+  
+  // checkUserOptinalMatchOverTime(){
+  //   USER_DATA_SERVICE.get(this).getUserOptionalMatch().then((optionalMatchData)=>{
+  //     _.isNull(optionalMatchData) ? '' : this._setUpNotification(optionalMatchData);
+  //   });
+  // }
+  //
+  // _setUpNotification(optionalMatchData){
+  //   debugger;
+  //   var notificationIcon = document.getElementById(notificationIcon);
+  //   this.optionalMatchData = _.get(optionalMatchData,'data');
+  // }
+  
   
   sendUserFactors(){
     let objToSend = [];
@@ -63,10 +81,11 @@ class UserProfileController {
         objToSend.push(tempFactor);
       }
     });
-    this.userData.updateUserData({'Data':objToSend});
+    USER_DATA_SERVICE.get(this).updateUserData({'Data':objToSend});
+    STATE.get(this).go('matchRequest');
   }
 }
 
 
-UserProfileController.$inject = ['factorsDataService','userDataService'];
+UserProfileController.$inject = ['$state','factorsDataService','userDataService'];
 export default UserProfileController;

@@ -33,6 +33,10 @@ export class UserDataApiService {
     return CONNECTION.get(this).sendPlainText(obj);
   }
   
+  getUserOptionalMatch() {
+    let obj = {method: 'GET', url: apiConsts.getUserOptionalMatch};
+    return CONNECTION.get(this).sendPlainText(obj);
+  }
   
 }
 UserDataApiService.$inject = ['connection'];

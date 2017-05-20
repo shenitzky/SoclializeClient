@@ -1,40 +1,47 @@
+const FACTOR_DATA_SERVICE = new WeakMap();
+const USER_DATA_SERVICE = new WeakMap();
+
 class ChooseHobbiesController {
-    constructor(userDataService,factorsDataService) {
-      this.userData = userDataService;
-      this.factorsData = factorsDataService;
-      this.factorsCopy = [];
-    }
+  constructor(userDataService, factorsDataService) {
+    USER_DATA_SERVICE.set(this, userDataService);
+    FACTOR_DATA_SERVICE.set(this, factorsDataService);
+    this.factorsCopy = [];
+  }
   
-    $onInit(){
-      this.viewReady = false;
-      this.factorsData.getFactorData().then((factorData)=>{
-        factorData       =  _.get(factorData,'data');
-        this.factorsCopy =  _.cloneDeep(factorData);
-        _.forEach(this.factorsCopy, (category) =>{
-          _.forEach(category.subClasses , (subCategory) =>{
-            subCategory.isToggle = false;
-          });
+  $onInit() {
+    this.viewReady = false;
+    //Getting all factors from server
+    FACTOR_DATA_SERVICE.get(this).getFactorData().then((factorData) => {
+      factorData = _.get(factorData, 'data');
+      this.factorsCopy = _.cloneDeep(factorData);
+      //Adding isToggle status to know when factor has been pressed
+      _.forEach(this.factorsCopy, (category) => {
+        _.forEach(category.subClasses, (subCategory) => {
+          subCategory.isToggle = false;
         });
-        this.viewReady = true;
       });
-    }
-    
-  sendCategoriesToServer(){
+      //Html view is ready
+      this.viewReady = true;
+    });
+  }
+  
+  //Sending categories to Server User Data CategoriesToServer
+  sendCategoriesToServer() {
     let objToSend = [];
     let tempCategoryName = true;
-    let catName  = '';
-  
-    _.forEach(this.factorsCopy , (category)=>{
+    let catName = '';
+    
+    _.forEach(this.factorsCopy, (category) => {
       let tempFactor = {};
       let tempSubcategory = [];
-      _.forEach(category.subClasses , (subcategory)=>{
-        if(subcategory.isToggle){
+      _.forEach(category.subClasses, (subcategory) => {
+        if (subcategory.isToggle) {
           tempCategoryName = false;
           catName = category.name;
           tempSubcategory.push(subcategory);
         }
       });
-      if (!_.isEmpty(tempSubcategory)){
+      if (!_.isEmpty(tempSubcategory)) {
         tempFactor = {
           'Class': category.class,
           'SubClasses': tempSubcategory
@@ -42,37 +49,43 @@ class ChooseHobbiesController {
         objToSend.push(tempFactor);
       }
     });
-    this.userData.updateUserData({'Data':objToSend});
+    USER_DATA_SERVICE.get(this).CategoriesToServer({'Data': objToSend});
   }
   
-  onChooseSubCategory(subClassName){
+  //When choose a sub category adding a class of V icon
+  onChooseSubCategory(subClassName) {
     let toggleStatus = false;
-    var subClassElement = document.getElementById(subClassName);
-    _.forEach(this.factorsCopy, (category) =>{
-      _.forEach(category.subClasses , (subCategory) =>{
-        if(subCategory.name === subClassName){
-          toggleStatus = subCategory.isToggle;
+    let subClassElement = document.getElementById(subClassName);
+    
+    _.forEach(this.factorsCopy, (category) => {
+      _.forEach(category.subClasses, (subCategory) => {
+        if (subCategory.name === subClassName) {
+          toggleStatus = !subCategory.isToggle;
+          subCategory.isToggle = toggleStatus;
         }
       });
     });
-    if(toggleStatus){
-      subClassElement.className += ' vIconOn';
-    }else{
-      subClassElement.classList.remove('vIconOn');
+    if (toggleStatus) {
+      //If Icon has been selected creating a div hat draw the v icon.
+      let checkmark_stem = document.createElement('div');
+      checkmark_stem.id = `checkmark_stem_${subClassName}`;
+      checkmark_stem.className = 'checkmark_stem';
+  
+      let checkmark_kick = document.createElement('div');
+      checkmark_kick.id = `checkmark_kick_${subClassName}`;
+      checkmark_kick.className = 'checkmark_kick';
+      
+      subClassElement.appendChild(checkmark_stem);
+      subClassElement.appendChild(checkmark_kick);
+  
+      subClassElement = null;
+    } else {
+      //If Icon has been deselected removing the v icon.
+      document.getElementById(`checkmark_stem_${subClassName}`).remove();
+      document.getElementById(`checkmark_kick_${subClassName}`).remove();
     }
   }
-  
-  onSubCategoryClick(childName){
-    _.forEach(this.factorsCopy, (category) =>{
-      _.forEach(category.subClasses , (subCategory) =>{
-        if(subCategory.name === childName ){
-          subCategory.isToggle = !subCategory.isToggle;
-        }
-      });
-    });
-  }
-  
 }
 
-ChooseHobbiesController.$inject = ['userDataService','factorsDataService'];
+ChooseHobbiesController.$inject = ['userDataService', 'factorsDataService'];
 export default ChooseHobbiesController;

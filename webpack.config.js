@@ -7,11 +7,18 @@ module.exports = {
   entry: {},
   module: {
     loaders: [
-       {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'} ,
-       { test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: 'ng-annotate!babel' },
-       { test: /\.html$/, loader: 'raw' },
-       { test: /\.(scss|sass)$/, loader: 'style!css!sass' },
-       { test: /\.css$/, loader: 'style!css' }
+      
+      {test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: 'ng-annotate!babel'},
+      {test: /\.html$/, loader: 'raw'},
+      {test: /\.(scss|sass)$/, loader: 'style!css!sass'},
+      {test: /\.css$/, loader: 'style!css'},
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        loaders: [
+          'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+          'image-webpack-loader'
+        ]
+      }
     ]
   },
   plugins: [

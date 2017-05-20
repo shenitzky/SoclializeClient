@@ -21,11 +21,6 @@ export class MatchDataApiService {
     return CONNECTION.get(this).sendPlainText(obj);
   }
   
-  updateAndCheckMatcReq(data) {
-    let obj = {data: data,method: 'POST', url: apiConsts.updateAndCheckMatcReq};
-    return CONNECTION.get(this).sendPlainText(obj);
-  }
-  
   acceptOptionalMatch(data) {
     let obj = {data: data,method: 'POST', url: apiConsts.acceptOptionalMatch};
     return CONNECTION.get(this).sendPlainText(obj);

@@ -1,8 +1,26 @@
 <div ng-if="$ctrl.matchData.locations">
   <div class="google-map-container" map-lazy-load="{{$ctrl.googleMapsUrl}}">
     <ng-map center="{{$ctrl.matchData.locations[0].lat}},{{$ctrl.matchData.locations[0].lng}}" zoom="14">
-      <marker position="[{{$ctrl.matchData.locations[0].lat}},{{$ctrl.matchData.locations[0].lng}}]"></marker>
-      <marker position="[{{$ctrl.matchData.locations[1].lat}},{{$ctrl.matchData.locations[1].lng}}]"></marker>
+      <!--<marker position="[{{$ctrl.matchData.locations[0].lat}},{{$ctrl.matchData.locations[0].lng}}]"></marker>-->
+      <!--<marker position="[{{$ctrl.matchData.locations[1].lat}},{{$ctrl.matchData.locations[1].lng}}]"></marker>-->
+      <directions
+          draggable="true"
+          travel-mode="WALKING"
+          origin="current-location"
+          destination="Tsipora Tov St 12, Rehovot, Israel">
+      </directions>
+
+      <custom-marker id="start"
+                     position="current-location">
+        <div> <img class="currentUserImg" ng-src="{{$ctrl.userImg}}"> </div>
+      </custom-marker>
+      <custom-marker id="end"
+                     position="Tsipora Tov St 12, Rehovot, Israel">
+        <div>
+          <img class="currentUserImg" ng-src="{{$ctrl.userImg}}">
+        </div>
+      </custom-marker>
+
     </ng-map>
   </div>
 </div>

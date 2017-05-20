@@ -1,23 +1,25 @@
 <div>
-  <h1>Register:</h1>
-
-  <md-content class="md-no-momentum">
+  <div layout="row" layout-align="center center">
+    <h1>Sign up to find a match</h1>
+  </div>
+  <div layout="column" layout-align="center center">
 
     <md-input-container class="md-block">
-      <input ng-model="$ctrl.userReg.Email" type="email" placeholder="Email (required)" ng-required="true">
+      <input ng-model="$ctrl.userReg.Email" type="email" placeholder="Email" ng-required="true">
     </md-input-container>
 
 
     <md-input-container class="md-block">
-      <input ng-model="$ctrl.userReg.Password" type="password" placeholder="Password (required)" ng-required="true">
+      <input ng-model="$ctrl.userReg.Password" type="password" placeholder="Password" ng-required="true">
     </md-input-container>
 
     <md-input-container class="md-block">
-      <input ng-model="$ctrl.userReg.ConfirmPassword" type="password" placeholder="Confirm password (required)" ng-required="true">
+      <input ng-model="$ctrl.userReg.ConfirmPassword" type="password" placeholder="Confirm password" ng-required="true">
     </md-input-container>
 
-
-  </md-content>
-  <md-button ng-click="$ctrl.sendRegistration()">Register</md-button>
-  <md-button ng-click="$ctrl.changeStateBackToLogin('home')">Back</md-button>
+  </div>
+  <div layout="row" layout-align="center center">
+    <md-button ng-click="$ctrl.sendRegistration()">Register</md-button>
+    <md-button ng-click="$ctrl.changeStateBackToLogin()">Back</md-button>
+  </div>
 </div>
