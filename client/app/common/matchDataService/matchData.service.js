@@ -28,6 +28,10 @@ export class MatchDataService {
     return MATCHDATA_API.get(this).getOptionalMatchStatus(optionalMatchId, matchReqId);
   }
   
+  getReverseGeocoding(latitude ,longitude){
+    return MATCHDATA_API.get(this).getReverseGeocoding(latitude ,longitude);
+  }
+  
 }
 MatchDataService.$inject = ['matchDataApi'];
 export default MatchDataService;

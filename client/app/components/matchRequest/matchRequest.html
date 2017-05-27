@@ -1,4 +1,4 @@
-<div ng-if="$ctrl.viewReady" class="match-settings">
+<div ng-if="$ctrl.viewReady && !$ctrl.allReadyMatchExist" class="match-settings">
   <div layout="column" ng-cloak>
     <section layout="row" flex>
       <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
@@ -48,7 +48,15 @@
   <div layout="row"  layout-align="center center">
     <md-button><span class="find-match-title" ng-click="$ctrl.sendMatchRequest()">FIND MATCH</span></md-button>
   </div>
+  <div ng-if="$ctrl.notificationAlert" class="notification">1</div>
 </div>
+
+<div ng-if="$ctrl.allReadyMatchExist" layout="column" layout-align="center center">
+  <h1>You already have a match request </h1>
+  <h1>checkout notifications</h1>
+  <div ng-if="$ctrl.notificationAlert" class="notification">1</div>
+</div>
+
 
 
 

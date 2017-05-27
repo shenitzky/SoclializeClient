@@ -37,7 +37,6 @@ notifications {
     margin: 8px;
   }
 
-
   .notification{
     position: relative;
     left: 202px;
@@ -55,11 +54,9 @@ notifications {
     border-radius: 10px;
   }
 
-
   .present-text{
     @include textNumShadowElement(36px);
   }
-
 
   @media (max-width:667px) and (min-width:375px) {
     .notification{
@@ -74,4 +71,12 @@ notifications {
       bottom: -306px;
     }
   }
+
+  @media (width:412px) and (height:732px) {
+    .notification{
+      left: 256px;
+      bottom: 39px;
+    }
+  }
+
 }

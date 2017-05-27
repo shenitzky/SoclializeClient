@@ -1,6 +1,5 @@
 <div ng-if="$ctrl.viewReady">
     <div layout="column" layout-align="space-around center">
-
         <div class="profile-img">
             <img ng-src="{{$ctrl.user.imgUrl}}"/>
         </div>
@@ -22,6 +21,6 @@
         <md-button ng-click="$ctrl.sendUserFactors()">FIND MATCH</md-button>
       </div>
     </div>
-    <!--<div class="notification" ng-if="$ctrl.optionalMatchData">1</div>-->
+    <div ng-if="$ctrl.notificationAlert" class="notification">1</div>
 </div>
 

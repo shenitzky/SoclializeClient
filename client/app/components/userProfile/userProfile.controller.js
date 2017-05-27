@@ -10,8 +10,9 @@ class UserProfileController {
   }
   
   $onInit(){
-    //this.optionalMatchData = {};
+    this.notificationAlert = false;
     this.viewReady = false;
+    this.checkOptionalMatchExistence();
       USER_DATA_SERVICE.get(this).getUserData().then((userData)=> {
         FACTORS_DATA_SERVICE.get(this).getFactorData().then((factorData) => {
         factorData  = _.get(factorData,'data');
@@ -41,22 +42,15 @@ class UserProfileController {
         });
       });
     });
-    //this.checkUserOptinalMatchOverTime();
   }
   
   
-  // checkUserOptinalMatchOverTime(){
-  //   USER_DATA_SERVICE.get(this).getUserOptionalMatch().then((optionalMatchData)=>{
-  //     _.isNull(optionalMatchData) ? '' : this._setUpNotification(optionalMatchData);
-  //   });
-  // }
-  //
-  // _setUpNotification(optionalMatchData){
-  //   debugger;
-  //   var notificationIcon = document.getElementById(notificationIcon);
-  //   this.optionalMatchData = _.get(optionalMatchData,'data');
-  // }
-  
+  checkOptionalMatchExistence(){
+    USER_DATA_SERVICE.get(this).getUserOptionalMatch().then((optionalMatchData)=>{
+      optionalMatchData = _.get(optionalMatchData,'data',null);
+      this.notificationAlert = !_.isNull(optionalMatchData);
+    });
+  }
   
   sendUserFactors(){
     let objToSend = [];
