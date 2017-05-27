@@ -1,8 +1,10 @@
+const STATE = new WeakMap();
 const FACTOR_DATA_SERVICE = new WeakMap();
 const USER_DATA_SERVICE = new WeakMap();
 
 class ChooseHobbiesController {
-  constructor(userDataService, factorsDataService) {
+  constructor($state,userDataService, factorsDataService) {
+    STATE.set(this, $state);
     USER_DATA_SERVICE.set(this, userDataService);
     FACTOR_DATA_SERVICE.set(this, factorsDataService);
     this.factorsCopy = [];
@@ -49,7 +51,9 @@ class ChooseHobbiesController {
         objToSend.push(tempFactor);
       }
     });
-    USER_DATA_SERVICE.get(this).CategoriesToServer({'Data': objToSend});
+    USER_DATA_SERVICE.get(this).updateUserData({'Data': objToSend}).then(()=>{
+      STATE.get(this).go('matchRequest');
+    });
   }
   
   //When choose a sub category adding a class of V icon
@@ -87,5 +91,5 @@ class ChooseHobbiesController {
   }
 }
 
-ChooseHobbiesController.$inject = ['userDataService', 'factorsDataService'];
+ChooseHobbiesController.$inject = ['$state','userDataService', 'factorsDataService'];
 export default ChooseHobbiesController;
