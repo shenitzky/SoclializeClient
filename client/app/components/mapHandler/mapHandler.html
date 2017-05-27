@@ -1,4 +1,4 @@
-<div ng-if="$ctrl.matchData.locations">
+<div ng-if="$ctrl.viewReady && ($ctrl.firstUserLocation && $ctrl.secUserLocation)">
   <div class="google-map-container" map-lazy-load="{{$ctrl.googleMapsUrl}}">
     <ng-map center="{{$ctrl.matchData.locations[0].lat}},{{$ctrl.matchData.locations[0].lng}}" zoom="14">
       <!--<marker position="[{{$ctrl.matchData.locations[0].lat}},{{$ctrl.matchData.locations[0].lng}}]"></marker>-->
@@ -7,15 +7,18 @@
           draggable="true"
           travel-mode="WALKING"
           origin="current-location"
-          destination="Tsipora Tov St 12, Rehovot, Israel">
+          destination={{$ctrl.secUserLocation}}">
       </directions>
 
       <custom-marker id="start"
                      position="current-location">
-        <div> <img class="currentUserImg" ng-src="{{$ctrl.userImg}}"> </div>
+        <div>
+          <img class="currentUserImg" ng-src="{{$ctrl.userImg}}">
+        </div>
       </custom-marker>
+
       <custom-marker id="end"
-                     position="Tsipora Tov St 12, Rehovot, Israel">
+                     position="{{$ctrl.secUserLocation}}">
         <div>
           <img class="currentUserImg" ng-src="{{$ctrl.userImg}}">
         </div>

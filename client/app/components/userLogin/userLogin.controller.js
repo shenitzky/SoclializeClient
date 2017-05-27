@@ -17,18 +17,15 @@ class UserLoginController {
       Password: '',
       RememberMe: true
     };
-    
     console.log("user from login ",this.user);
   }
   
-  //todo error handler
+  
   sendLogin(){
     USER_DATA_SERVICE.get(this).userLogin(this.userLogin).then((data) => {
-      debugger;
-      //this.user = false;
-      //todo need to add this authenticationError to server
-      this.user = data.data.authentication;
-      this.authenticationError = data.data.authentication;
+      this.user = _.get(data.data, "RedirectUrl",null);
+      this.user = _.isNull(this.user);
+      this.authenticationError = this.user;
       STATE.get(this).go('matchRequest');
     },error=>{
       this.user = true;

@@ -1,18 +1,11 @@
 const WINDOW = new WeakMap();
-const HTTP = new WeakMap();
 const STATE = new WeakMap();
 const USER_DATA_SERVICE = new WeakMap();
 const MATCH_DATA_SERIVE = new WeakMap();
 
-
-//todo 1.maybe not need $http
-//todo
-
-
 class MatchRequestController {
-  constructor($window, $http, $state, userDataService, matchDataService, $mdSidenav) {
+  constructor($window, $state, userDataService, matchDataService, $mdSidenav) {
     WINDOW.set(this, $window);
-    HTTP.set(this, $http);
     STATE.set(this, $state);
     USER_DATA_SERVICE.set(this, userDataService);
     MATCH_DATA_SERIVE.set(this, matchDataService);
@@ -21,11 +14,16 @@ class MatchRequestController {
   
   //Init match request
   $onInit() {
-    this.maxDistance = 26;
-    this.viewReady = false;
+    this.notificationAlert  = false;
+    this.allReadyMatchExist = false;
     
-    this.toggleLeft = this.buildToggler('left');
+    this.maxDistance = 26;
+    this.viewReady   = false;
+    
+    this.toggleLeft  = this.buildToggler('left');
     this.toggleRight = this.buildToggler('right');
+  
+    this.checkOptionalMatchExistence();
     
     this._getLocation();
     USER_DATA_SERVICE.get(this).getUserData().then((userData) => {
@@ -59,7 +57,7 @@ class MatchRequestController {
     });
   }
   
-  //Start match request with current parameters
+  //Start match request with current parameters or present already have a match request
   sendMatchRequest() {
     let currentLocation = {
       'lat': this.latitude,
@@ -73,11 +71,12 @@ class MatchRequestController {
         'maxDistance':this.maxDistance
       })
       .then((receivedMatchRequestId) => {
-        console.log("receivedMatchRequestId", receivedMatchRequestId);
-        STATE.get(this).go('matchRequestUpdate', {
-          'MatchRequestId': _.get(receivedMatchRequestId, 'data'),
-          'location': currentLocation
-        });
+        receivedMatchRequestId = _.get(receivedMatchRequestId, 'data',null);
+        _.isEqual(receivedMatchRequestId, '-1') ? this.allReadyMatchExist = true :
+          STATE.get(this).go('matchRequestUpdate', {
+            'MatchRequestId': receivedMatchRequestId,
+            'location': currentLocation
+          });
       });
   }
   
@@ -114,8 +113,15 @@ class MatchRequestController {
       this.mdSidenav(componentId).toggle();
     };
   }
+  //check optional match existence
+  checkOptionalMatchExistence(){
+    USER_DATA_SERVICE.get(this).getUserOptionalMatch().then((optionalMatchData)=>{
+      optionalMatchData = _.get(optionalMatchData,'data',null);
+      this.notificationAlert = !_.isNull(optionalMatchData);
+    });
+  }
   
 }
 
-MatchRequestController.$inject = ['$window', '$http', '$state', 'userDataService', 'matchDataService', '$mdSidenav'];
+MatchRequestController.$inject = ['$window','$state', 'userDataService', 'matchDataService', '$mdSidenav'];
 export default MatchRequestController;

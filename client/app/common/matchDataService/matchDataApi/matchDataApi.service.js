@@ -36,6 +36,11 @@ export class MatchDataApiService {
     return CONNECTION.get(this).sendPlainText(obj);
   }
   
+  getReverseGeocoding(latitude ,longitude){
+    let obj = {method: 'GET', url: apiConsts.getReverseGeocoding(latitude ,longitude)};
+    return CONNECTION.get(this).sendPlainText(obj);
+  }
+  
 }
 MatchDataApiService.$inject = ['connection'];
 export default MatchDataApiService;

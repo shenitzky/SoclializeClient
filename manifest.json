@@ -41,7 +41,7 @@
       "density": 2
     }
   ],
-  "start_url": "http://localhost:3000",
+  "start_url": "https://socialize20170520113532.azurewebsites.net",
   "display": "standalone",
   "background_color": "#87243D",
   "theme_color": "#87243D"

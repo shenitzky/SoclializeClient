@@ -36,4 +36,43 @@ match-request {
     color: $darkTextColor !important;
     border-bottom: solid 0.5px;
   }
+
+  .notification{
+    position: fixed;
+    left: 198px;
+    bottom: 36px;
+    z-index: 1;
+    width: 20px;
+    height: 19px;
+    font-weight: 500;
+    color: white;
+    font-size: medium;
+    background-color: rgba(226, 33, 33, 0.53);
+    text-align: -webkit-center;
+    border: solid 0.01px;
+    box-shadow: 1px 4px 18px rgba(16, 15, 15, 0.53);
+    border-radius: 10px;
+  }
+
+  @media (max-width:667px) and (min-width:375px) {
+    .notification{
+      left: 234px;
+      bottom: 39px;
+    }
+  }
+
+  @media (max-width:736px) and (min-width:414px) {
+    .notification{
+      left: 258px;
+      bottom: 35px;
+    }
+  }
+
+  @media (width:412px) and (height:732px) {
+    .notification{
+      left: 256px;
+      bottom: 39px;
+    }
+  }
+
 }
