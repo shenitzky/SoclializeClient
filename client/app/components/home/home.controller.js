@@ -1,16 +1,21 @@
-// const STATE = new WeakMap();
-// const WINDOW = new WeakMap();
-// const ROOTSCOPE = new WeakMap();
-// const USER_DATA_SERVICE = new WeakMap();
-// class HomeController {
-//   constructor(userDataService, $state, $window,$rootScope) {
-//     USER_DATA_SERVICE.set(this, userDataService);
-//     this.viewReady = false;
-//     this.viewReady = true;
-//     STATE.set(this, $state);
-//     WINDOW.set(this, $window);
-//     ROOTSCOPE.set(this, $rootScope);
-//   }
+const STATE = new WeakMap();
+const WINDOW = new WeakMap();
+const ROOTSCOPE = new WeakMap();
+const USER_DATA_SERVICE = new WeakMap();
+class HomeController {
+  constructor(userDataService, $state, $window,$rootScope) {
+    USER_DATA_SERVICE.set(this, userDataService);
+    this.viewReady = false;
+    this.viewReady = true;
+    STATE.set(this, $state);
+    WINDOW.set(this, $window);
+    ROOTSCOPE.set(this, $rootScope);
+  }
+  
+  $onInit() {
+    STATE.get(this).go('matchRequest');
+  }
+  
 //
 //   $onInit() {
 //
@@ -93,7 +98,7 @@
 //
 //
 //
-// }
-//
-// HomeController.$inject = ['userDataService', '$state', '$window','$rootScope'];
-// export default HomeController;
+}
+
+HomeController.$inject = ['userDataService', '$state', '$window','$rootScope'];
+export default HomeController;

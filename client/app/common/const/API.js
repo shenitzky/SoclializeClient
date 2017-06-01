@@ -10,7 +10,7 @@ const consts = {
     // getOptionalMatchStatus   :(optionalMatchId, matchReqId) => `http://socialize20170306063515.azurewebsites.net/api/socializeApi/CheckOptionalMatchStatus?optionalMatchId=${optionalMatchId}&matchReqId=${matchReqId}`,
     
     
-    //
+
     // userRegister             : 'http://localhost:50825/account/AjaxRegister',
     // userLogin                : 'http://localhost:50825/account/AjaxLogin',
     //
@@ -24,10 +24,11 @@ const consts = {
     // getUserImg               : 'http://localhost:50825/api/socializeApi/GetUserImgUrl',
     // getOptionalMatchStatus   : ( optionalMatchId , matchReqId) => `http://localhost:50825/api/socializeApi/CheckOptionalMatchStatus?optionalMatchId=${optionalMatchId}&matchReqId=${matchReqId}`,
     // getUserOptionalMatch     : 'http://localhost:50825/api/socializeApi/GetUserOptionalMatch',
-    // getReverseGeocoding      : ( latitude ,longitude ) => `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyD8IhUUKMzZsCjNFUa_zM6sFhzB6jZhaJk`
+    // getReverseGeocoding      : ( latitude ,longitude ) => `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyD8IhUUKMzZsCjNFUa_zM6sFhzB6jZhaJk`,
     //
+    // updateUserExtraData     : 'http://localhost:50825/api/socializeApi/UpdateUserExtraData',
 
-  
+
   
   userRegister             : '/account/AjaxRegister',
   userLogin                : '/account/AjaxLogin',
@@ -43,11 +44,8 @@ const consts = {
   getUserImg               : '/api/socializeApi/GetUserImgUrl',
   getOptionalMatchStatus   : (optionalMatchId,matchReqId) => `/api/socializeApi/CheckOptionalMatchStatus?optionalMatchId=${optionalMatchId}&matchReqId=${matchReqId}`,
   getUserOptionalMatch     : '/api/socializeApi/GetUserOptionalMatch',
-  getReverseGeocoding      : ( latitude ,longitude ) => `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyD8IhUUKMzZsCjNFUa_zM6sFhzB6jZhaJk`
-
-
-  
-  
+  getReverseGeocoding      : ( latitude ,longitude ) => `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyD8IhUUKMzZsCjNFUa_zM6sFhzB6jZhaJk`,
+  updateUserExtraData     : '/api/socializeApi/UpdateUserExtraData',
   
 };
 

@@ -12,6 +12,7 @@ import checkOptionalMatchStatusModule from './../checkOptionalMatchStatus/checkO
 import mapHandlerModule from './../mapHandler/mapHandler';
 import matchRequestUpdateModule from './../matchRequestUpdate/matchRequestUpdate';
 import checkboxElement from './../elements/checkboxElement/checkboxElement'
+import userInformationDataModule from './../userInformationData/userInformationData'
 
 let homeModule = angular.module('home', [
   uiRouter,
@@ -25,7 +26,8 @@ let homeModule = angular.module('home', [
   mapHandlerModule,
   matchRequestUpdateModule,
   checkOptionalMatchStatusModule,
-  notificationsModule
+  notificationsModule,
+  userInformationDataModule
 ])
 
 .config(($stateProvider, $urlRouterProvider) => {

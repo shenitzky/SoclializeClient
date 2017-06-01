@@ -16,8 +16,7 @@ export class UserDataService {
     getUserImg() {
       return USERDATA_API.get(this).getUserImg();
     }
-    
-    //todo move to a new service
+  
     userRegister(data) {
       return USERDATA_API.get(this).userRegister(data);
     }
@@ -25,9 +24,13 @@ export class UserDataService {
     userLogin(data) {
       return USERDATA_API.get(this).userLogin(data);
     }
-    //todo need to use this
+    
     getUserOptionalMatch() {
       return USERDATA_API.get(this).getUserOptionalMatch();
+    }
+  
+    updateUserExtraData(data) {
+      return USERDATA_API.get(this).updateUserExtraData();
     }
   
 }

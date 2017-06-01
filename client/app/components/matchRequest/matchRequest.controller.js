@@ -121,6 +121,11 @@ class MatchRequestController {
     });
   }
   
+  //Swipe to close and send factors to current match
+  onSwipeLeft(){
+    this.toggleLeft();
+    this.setCurrentMatchFactors();
+  }
 }
 
 MatchRequestController.$inject = ['$window','$state', 'userDataService', 'matchDataService', '$mdSidenav'];

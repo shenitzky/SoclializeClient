@@ -1,0 +1,38 @@
+<div layout="column" layout-padding ng-cloak>
+  <div layout="row" layout-align="center center">
+    <h1>Tell us about your self</h1>
+  </div>
+  <br/>
+  <md-content class="md-no-momentum">
+    <md-input-container class="md-icon-float md-block">
+      <label>First Name</label>
+      <md-icon md-svg-src="/content/images/icons/face.svg" class="name"></md-icon>
+      <input ng-model="$ctrl.userInformation.FirstName" required type="text">
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
+      <label>Last Name</label>
+      <md-icon md-svg-src="/content/images/icons/lastName.svg" class="name"></md-icon>
+      <input ng-model="$ctrl.userInformation.LastName" required type="text">
+    </md-input-container>
+
+    <md-input-container md-no-float class="md-block">
+      <md-icon md-svg-src="/content/images/icons/phone.svg"></md-icon>
+      <input ng-model="$ctrl.userInformation.PhoneNumber" required type="text" placeholder="Phone Number">
+    </md-input-container>
+
+    <md-input-container md-no-float class="md-block">
+      <md-icon md-svg-src="/content/images/icons/age.svg"></md-icon>
+      <input ng-model="$ctrl.userInformation.Age" required type="number"  placeholder="Age">
+    </md-input-container>
+
+    <md-input-container md-no-float class="md-block">
+      <md-icon md-svg-src="/content/images/icons/description.svg" style="display:inline-block;"></md-icon>
+      <input ng-model="$ctrl.userInformation.Description" type="text" placeholder="Description">
+    </md-input-container>
+
+  </md-content>
+
+  <md-button ng-click="$ctrl.validUserInformationForm()">Next</md-button>
+
+</div>
