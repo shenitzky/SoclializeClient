@@ -11,21 +11,21 @@ class UserLoginController {
     this.authenticationError = false;
   }
   
+  //Init user login object
   $onInit(){
     this.userLogin = {
       Email: '',
       Password: '',
       RememberMe: true
     };
-    console.log("user from login ",this.user);
   }
   
-  
+  //send login to server and set user from response
   sendLogin(){
     USER_DATA_SERVICE.get(this).userLogin(this.userLogin).then((data) => {
-      this.user = _.get(data.data, "RedirectUrl",null);
-      this.user = _.isNull(this.user);
-      this.authenticationError = this.user;
+      this.user = _.get(data, "data.RedirectUrl",false);
+      this.user = !_.isNull(this.user);
+      this.authenticationError = !this.user;
       STATE.get(this).go('matchRequest');
     },error=>{
       this.user = true;
@@ -33,6 +33,7 @@ class UserLoginController {
     });
   }
   
+  //back to login page
   userRegisterPage(userRegister){
     this.userRegister = !userRegister
   }

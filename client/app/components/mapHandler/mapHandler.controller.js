@@ -33,8 +33,10 @@ class MapHandlerController {
         MATCH_DATA_SERVICE.get(this).getReverseGeocoding(this.matchData.locations[1].lat,this.matchData.locations[1].lng)
       ])
       .then(([userLocationOne, userLocationTwo])=>{
-        this.firstUserLocation = _.get(userLocationOne.data,'results[0].formatted_address');
-        this.secUserLocation   = _.get(userLocationTwo.data,'results[0].formatted_address');
+        this.firstUserLocation = _.get(userLocationOne.data,'results[0].formatted_address',null);
+        this.secUserLocation   = _.get(userLocationTwo.data,'results[0].formatted_address',null);
+        this.secUserImage      = _.get(this.matchData,'MatchedImgUrl',null);
+        this.myImageUrl        = _.get(this.matchData,'MyImgUrl',null);
       })
       .finally(()=>this.viewReady = true);
   }

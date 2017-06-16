@@ -30,7 +30,7 @@ class CheckOptionalMatchStatusController {
         //On error from server
         console.log("Error",error);
       });
-    }, 100);
+    }, 5000);
   }
   
   $onDestroy(){

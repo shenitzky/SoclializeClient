@@ -46,7 +46,7 @@ class ChooseHobbiesController {
       if (!_.isEmpty(tempSubcategory)) {
         tempFactor = {
           'Class': category.class,
-          'SubClasses': tempSubcategory
+          'subclasses': tempSubcategory
         };
         objToSend.push(tempFactor);
       }

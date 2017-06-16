@@ -15,8 +15,8 @@ class UserProfileController {
     this.checkOptionalMatchExistence();
       USER_DATA_SERVICE.get(this).getUserData().then((userData)=> {
         FACTORS_DATA_SERVICE.get(this).getFactorData().then((factorData) => {
-        factorData  = _.get(factorData,'data');
-        userData  = _.get(userData,'data');
+        factorData  = _.get(factorData,'data',null);
+        userData  = _.get(userData,'data',null);
         this.factorsList = factorData;
         this.user = userData;
   

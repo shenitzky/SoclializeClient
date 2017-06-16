@@ -22,7 +22,6 @@ export class UserDataApiService {
     return CONNECTION.get(this).sendPlainText(obj);
   }
   
-  //todo move to a new service
   userRegister(data){
     let obj = {data: data,method: 'POST', url: apiConsts.userRegister};
     return CONNECTION.get(this).sendPlainText(obj);
@@ -35,6 +34,11 @@ export class UserDataApiService {
   
   getUserOptionalMatch() {
     let obj = {method: 'GET', url: apiConsts.getUserOptionalMatch};
+    return CONNECTION.get(this).sendPlainText(obj);
+  }
+  
+  updateUserExtraData(data){
+    let obj = {data: data,method: 'POST', url: apiConsts.updateUserExtraData};
     return CONNECTION.get(this).sendPlainText(obj);
   }
   
