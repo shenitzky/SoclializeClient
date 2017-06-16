@@ -8,8 +8,10 @@ export class FactorDataService {
     getFactorData() {
         return FACTORDATA_API.get(this).getFactorsData();
     }
-
-
+  
+    getImagesForBubble() {
+      return FACTORDATA_API.get(this).getImagesForBubble();
+    }
 }
 FactorDataService.$inject = ['factorDataApi'];
 export default FactorDataService;

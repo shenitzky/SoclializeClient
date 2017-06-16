@@ -21,7 +21,6 @@ class MapHandlerController {
   $onInit(){
     this.googleMapsUrl="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8IhUUKMzZsCjNFUa_zM6sFhzB6jZhaJk";
     this._reverseGeocoding();
-    this._getUserImg();
   }
   
   
@@ -35,20 +34,11 @@ class MapHandlerController {
       .then(([userLocationOne, userLocationTwo])=>{
         this.firstUserLocation = _.get(userLocationOne.data,'results[0].formatted_address',null);
         this.secUserLocation   = _.get(userLocationTwo.data,'results[0].formatted_address',null);
-        this.secUserImage      = _.get(this.matchData,'MatchedImgUrl',null);
-        this.myImageUrl        = _.get(this.matchData,'MyImgUrl',null);
+        this.secUserImage      = _.get(this.matchData,'matchedImgUrl',null);
+        this.myImageUrl        = _.get(this.matchData,'myImgUrl',null);
       })
       .finally(()=>this.viewReady = true);
   }
-  
-  //Gettings current user image
-  _getUserImg(){
-    USER_DATA_SERVICE.get(this).getUserImg().then((userImg) =>{
-      this.userImg = _.get(userImg,'data');
-      this.viewReady = true;
-    });
-  }
-  
 }
 
 MapHandlerController.$inject = ['$state','$window','$stateParams','NgMap','userDataService','matchDataService','$q'];

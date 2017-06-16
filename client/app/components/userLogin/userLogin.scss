@@ -1,4 +1,10 @@
+@import "./../../common/common";
+
 user-login {
+
+  .buttonElement {
+    @include buttonElement();
+  }
 
   md-input-container{
     min-width: 55%;

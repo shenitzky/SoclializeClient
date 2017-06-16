@@ -30,7 +30,7 @@ class UserInformationDataController {
   
   //send user information to server
   _sendUserInformationForm(){
-    USER_DATA_SERVICE.get(this).updateUserExtraData().then(()=>{
+    USER_DATA_SERVICE.get(this).updateUserExtraData(this.userInformation).then(()=>{
       STATE.get(this).go('chooseHobbies');
     });
   }

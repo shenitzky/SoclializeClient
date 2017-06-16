@@ -30,7 +30,7 @@ export class UserDataService {
     }
   
     updateUserExtraData(data) {
-      return USERDATA_API.get(this).updateUserExtraData();
+      return USERDATA_API.get(this).updateUserExtraData(data);
     }
   
 }

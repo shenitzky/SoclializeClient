@@ -1,7 +1,7 @@
 <div layout="column" ng-if="$ctrl.viewReady">
 
   <div class="found-title" layout-align="center center">
-    <h1>Found One To One Match</h1>
+    <h1>Match found</h1>
   </div>
 
 
@@ -32,13 +32,16 @@
           <span>Time: {{$ctrl.time}}</span>
         </div>
       </div>
+      <div class="match-description">
+        <span>About {{$ctrl.optionalMatch.matchedDetails.firstName}}: {{$ctrl.optionalMatch.matchedDetails.description}}</span>
+      </div>
     </div>
   </div>
 
   <md-divider></md-divider>
 
   <div>
-    <h2 class="chip-title">What {{$ctrl.optionalMatch.matchedDetails.firstName}} likes:</h2>
+    <h2 class="chip-title">Matched by:</h2>
     <div class="chip-container" ng-repeat="chipArray in $ctrl.chipsArray track by $index">
         <md-chips ng-model="chipArray"
                   readonly="true">

@@ -75,7 +75,14 @@ notifications {
   @media (width:412px) and (height:732px) {
     .notification{
       left: 256px;
-      bottom: 39px;
+      bottom: -300px;
+    }
+  }
+
+  @media (width:360px) and (height:640px) {
+    .notification{
+      left: 221px;
+      bottom: -206px;
     }
   }
 

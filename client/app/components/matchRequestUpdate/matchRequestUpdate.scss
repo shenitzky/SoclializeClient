@@ -1,5 +1,8 @@
 @import "./../../common/common";
 
 match-request-update {
+  .buttonElement {
+    @include buttonElement();
+  }
 
 }
