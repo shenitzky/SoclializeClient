@@ -17,6 +17,7 @@ const consts = {
     updateUserExtraData      : 'http://localhost:50825/api/socializeApi/UpdateUserExtraData',
     getImagesForBubble       : 'http://localhost:50825/api/socializeapi/GetImagesForBubble'
   
+  
   // userRegister             : '/account/AjaxRegister',
   // userLogin                : '/account/AjaxLogin',
   //
