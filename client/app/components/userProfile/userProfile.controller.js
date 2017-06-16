@@ -38,8 +38,8 @@ class UserProfileController {
               });
             });
           });
-          this.viewReady = true;
         });
+        this.viewReady = true;
       });
     });
   }
@@ -75,8 +75,9 @@ class UserProfileController {
         objToSend.push(tempFactor);
       }
     });
-    USER_DATA_SERVICE.get(this).updateUserData({'Data':objToSend});
-    STATE.get(this).go('matchRequest');
+    USER_DATA_SERVICE.get(this).updateUserData({'Data':objToSend}).then(()=>{
+      STATE.get(this).go('matchRequest');
+    });
   }
 }
 

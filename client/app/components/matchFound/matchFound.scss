@@ -54,6 +54,9 @@ match-found {
     margin-left: 15px;
   }
 
+  .match-description{
+    margin-bottom: 10px;
+  }
   .acceptBtn{
     @include acceptOrDeclineBtn(rgba(180, 232, 180, 0.23),rgba(108, 145, 108, 0.31));
   }

@@ -1,8 +1,7 @@
 <div ng-if="$ctrl.viewReady && ($ctrl.firstUserLocation && $ctrl.secUserLocation)">
   <div class="google-map-container" map-lazy-load="{{$ctrl.googleMapsUrl}}">
     <ng-map center="{{$ctrl.matchData.locations[0].lat}},{{$ctrl.matchData.locations[0].lng}}" zoom="14">
-      <!--<marker position="[{{$ctrl.matchData.locations[0].lat}},{{$ctrl.matchData.locations[0].lng}}]"></marker>-->
-      <!--<marker position="[{{$ctrl.matchData.locations[1].lat}},{{$ctrl.matchData.locations[1].lng}}]"></marker>-->
+
       <directions
           draggable="true"
           travel-mode="WALKING"
@@ -13,7 +12,7 @@
       <custom-marker id="start"
                      position="current-location">
         <div>
-          <img class="currentUserImg" ng-src="{{$ctrl.this.myImageUrl}}">
+          <img class="currentUserImg" ng-src="{{$ctrl.myImageUrl}}">
         </div>
       </custom-marker>
 

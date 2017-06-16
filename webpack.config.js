@@ -1,6 +1,7 @@
 var path    = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -22,6 +23,11 @@ module.exports = {
     ]
   },
   plugins: [
+  
+    new InlineManifestWebpackPlugin({
+      name: 'webpackManifest'
+    }),
+    new webpack.NamedModulesPlugin(),
     // Injects bundles in your index.html instead of wiring all manually.
     // It also adds hash to all injected assets so we don't have problems
     // with cache purging during deployment.

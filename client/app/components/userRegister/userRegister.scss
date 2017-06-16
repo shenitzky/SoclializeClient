@@ -1,8 +1,13 @@
+@import "./../../common/common";
+
 user-register {
   a {
     color: black;
   }
   md-input-container{
     min-width: 55%;
+  }
+  .buttonElement {
+    @include buttonElement();
   }
 }

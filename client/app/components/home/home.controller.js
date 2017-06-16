@@ -2,14 +2,19 @@ const STATE = new WeakMap();
 const WINDOW = new WeakMap();
 const ROOTSCOPE = new WeakMap();
 const USER_DATA_SERVICE = new WeakMap();
+const ELEMENT = new WeakMap();
+const FACTOR_DATA_SERVICE = new WeakMap();
+
 class HomeController {
-  constructor(userDataService, $state, $window,$rootScope) {
+  constructor(userDataService, $state, $window,$rootScope,factorsDataService,$element) {
     USER_DATA_SERVICE.set(this, userDataService);
     this.viewReady = false;
     this.viewReady = true;
     STATE.set(this, $state);
     WINDOW.set(this, $window);
     ROOTSCOPE.set(this, $rootScope);
+    FACTOR_DATA_SERVICE.set(this, factorsDataService);
+    ELEMENT.set(this, $element);
   }
   
   $onInit() {
@@ -77,28 +82,8 @@ class HomeController {
 //       console.log('User signed out.');
 //     });
 //   }
-//
-//   //Geo-location
-//   getLocation() {
-//     WINDOW.get(this).navigator.geolocation.getCurrentPosition((position) => {
-//       this.latitude = position.coords.latitude;
-//       this.longitude = position.coords.longitude;
-//       console.log("latitude:", this.latitude);
-//       console.log("longitude:", this.longitude);
-//     }, error => {
-//       this.latitude = 32.090346;
-//       this.longitude = 34.802194;
-//       console.log(error)
-//     });
-//   }
-//
-//
-//
-//
-//
-//
-//
+
 }
 
-HomeController.$inject = ['userDataService', '$state', '$window','$rootScope'];
+HomeController.$inject = ['userDataService', '$state', '$window','$rootScope','factorsDataService','$element'];
 export default HomeController;

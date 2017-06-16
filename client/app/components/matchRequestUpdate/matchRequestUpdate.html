@@ -1,8 +1,18 @@
 <div>
-  <div layout="row" layout-align="center center">
-    <h1>Searching for a match...</h1>
+  <div ng-if="!$ctrl.optionalMatchNotFound" layout="column">
+    <div layout="row" layout-align="center center">
+      <h1>Searching for a match...</h1>
+    </div>
+
+    <div layout="row" layout-sm="column" layout-align="space-around">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
   </div>
-  <div layout="row" layout-sm="column" layout-align="space-around">
-    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  <div ng-if="$ctrl.optionalMatchNotFound" layout="column" layout-align="center center">
+    <h1>No match found</h1>
+    <h2>Please try again</h2>
+    <div>
+      <md-button class="buttonElement" ng-click="$ctrl.moveToCreateMacth()">Let's find a match</md-button>
+    </div>
   </div>
 </div>

@@ -1,3 +1,5 @@
+@import "./../../common/common";
+
 user-profile {
   .profile-img{
     margin-top: 20px;
@@ -13,7 +15,7 @@ user-profile {
   .category-container{
     position: relative;
     float: left;
-    margin-left: 15%;
+    margin-left: 17%;
     margin-right: 5%;
     margin-bottom: 20px;
   }
@@ -29,6 +31,10 @@ user-profile {
     font-size: 18px;
     margin-bottom: 20px;
 
+  }
+
+  .buttonElement {
+    @include buttonElement();
   }
 
   .notification{

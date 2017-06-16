@@ -24,7 +24,7 @@ class MatchFoundController {
   }
   
   _setChipMatch(){
-    _.forEach(this.optionalMatch.matchedDetails.description, (chips)=>{
+    _.forEach(this.optionalMatch.rawMatchFactors, (chips)=>{
       this.chipsArray.push(_.split(chips,','));
     });
   }
@@ -37,7 +37,6 @@ class MatchFoundController {
       this.matchReqId    = _.get(optionalMatchData,'id',null);
       this.date = this.momentTime(optionalMatchData.created).format("DD/MM");
       this.time = this.momentTime(optionalMatchData.created).format("HH:mm");
-      debugger;
       this._setChipMatch();
     })
   }

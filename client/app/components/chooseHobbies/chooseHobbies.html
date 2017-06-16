@@ -10,7 +10,7 @@
         <div class="category-title">
           <h2>{{category.class}}</h2>
         </div>
-        <div class="icon-container" ng-repeat="subCategory in category.subClasses track by $index">
+        <div class="icon-container" layout-align="center center" ng-repeat="subCategory in category.subClasses track by $index">
           <div class="icon-body" id="{{subCategory.name}}"
                ng-click="$ctrl.onChooseSubCategory(subCategory.name)">
             <img class="img-icon" ng-src="{{subCategory.imgUrl}}"/>

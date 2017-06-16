@@ -1,11 +1,23 @@
-<div ng-if="$ctrl.viewReady && !$ctrl.allReadyMatchExist" class="match-settings">
+<div ng-if="$ctrl.viewReady && !$ctrl.allReadyMatchExist && !$ctrl.noFactorsError" class="match-settings">
+
+  <div>
+    <div class="bubbles" ng-repeat="bubble in $ctrl.bubblePics track by $index">
+      <div class="bubble-container" ng-style="::bubble.style" >
+        <div class="bubble">
+          <img ng-src="{{::bubble.first}}">
+          <img class="sec-img" ng-src="{{::bubble.sec}}">
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div layout="column" ng-cloak>
-    <section layout="row" flex>
-      <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
+    <section layout="row" flex >
+      <md-sidenav class="md-sidenav-left touch-container" md-component-id="left" md-disable-backdrop md-whiteframe="4">
         <md-toolbar class="md-theme-indigo">
           <h1 class="md-toolbar-tools">Match Settings</h1>
         </md-toolbar>
-        <md-content layout-margin md-swipe-left="$ctrl.onSwipeLeft()">
+        <md-content layout-margin>
           <p>
             This sidenav is showing match factors, where users can click on it to change match settings.
           </p>
@@ -30,7 +42,7 @@
           </md-slider>
 
           <md-button ng-click="$ctrl.toggleLeft();$ctrl.setCurrentMatchFactors()" class="md-accent button-color">
-            Close Match Settings
+            Done
           </md-button>
         </md-content>
       </md-sidenav>
@@ -38,7 +50,7 @@
         <div layout="column" layout-align="center center">
           <div class="toggle-match-settings">
             <md-button ng-click="$ctrl.toggleLeft()" class="md-raised">
-              Toggle To Change Match Settings
+              Change match settings
             </md-button>
           </div>
         </div>
@@ -46,9 +58,9 @@
     </section>
   </div>
   <div layout="row"  layout-align="center center">
-    <md-button><span class="find-match-title" ng-click="$ctrl.sendMatchRequest()">FIND MATCH</span></md-button>
+    <md-button class="md-fab find-match-title" ng-click="$ctrl.validMatchRequest(); clickActive = true " ng-class="{'find-match-title-click': clickActive}">FIND MATCH</md-button>
   </div>
-  <div ng-if="$ctrl.notificationAlert" class="notification">1</div>
+  <div ng-if="$ctrl.notificationAlert && !$ctrl.noFactorsError" class="notification">1</div>
 </div>
 
 <div ng-if="$ctrl.allReadyMatchExist" layout="column" layout-align="center center">
@@ -57,6 +69,10 @@
   <div ng-if="$ctrl.notificationAlert" class="notification">1</div>
 </div>
 
+<div ng-if="$ctrl.noFactorsError && !$ctrl.notificationAlert" layout="column" layout-align="center center">
+  <h1>Please select at list one subject</h1>
+  <h1>for match</h1>
+</div>
 
 
 

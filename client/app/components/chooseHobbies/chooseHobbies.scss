@@ -48,4 +48,27 @@ choose-hobbies {
     transform: rotate(45deg);
   }
 
+  @media (max-width:667px) and (min-width:375px) {
+    .icon-body{
+      margin-left: 3%;
+    }
+  }
+
+  @media (max-width:736px) and (min-width:414px) {
+    .icon-body{
+      margin-left: 5%;
+    }
+  }
+
+  @media (width:412px) and (height:732px) {
+    .icon-body{
+      margin-left: 4%;
+    }
+  }
+
+  @media (width:360px) and (height:640px) {
+    .icon-body{
+      margin-left: 2%;
+    }
+  }
 }

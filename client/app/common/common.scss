@@ -19,6 +19,8 @@ $toolBarIconColor: #848383;
 $toolBarBackGround:#f7f6f6;
 $fillFooterIcon:   #a8c6fa;
 $blueBabyNumber:   #75a9f9;
+$buttonsColor:     #babaf7;
+$buttonColorClick: #9b91f5;
 
 
 body {
@@ -29,6 +31,11 @@ body {
    font: 62.5% 'Actor', sans-serif;
    color: #7a7a7a;
    //font-family: 'Actor', sans-serif;
+}
+
+@mixin buttonElement(){
+  border: solid 0.5px;
+  border-color: $buttonsColor;
 }
 
 @mixin textNumShadowElement($fontSize) {

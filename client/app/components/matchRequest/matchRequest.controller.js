@@ -2,18 +2,22 @@ const WINDOW = new WeakMap();
 const STATE = new WeakMap();
 const USER_DATA_SERVICE = new WeakMap();
 const MATCH_DATA_SERIVE = new WeakMap();
+const FACTOR_DATA_SERVICE = new WeakMap();
 
 class MatchRequestController {
-  constructor($window, $state, userDataService, matchDataService, $mdSidenav) {
+  constructor($window, $state, userDataService, matchDataService,$mdSidenav,factorsDataService) {
     WINDOW.set(this, $window);
     STATE.set(this, $state);
     USER_DATA_SERVICE.set(this, userDataService);
     MATCH_DATA_SERIVE.set(this, matchDataService);
+    FACTOR_DATA_SERVICE.set(this, factorsDataService);
     this.mdSidenav = $mdSidenav
   }
   
   //Init match request
   $onInit() {
+    this.bubbleInit();
+    this.noFactorsError     = false;
     this.notificationAlert  = false;
     this.allReadyMatchExist = false;
     
@@ -48,8 +52,6 @@ class MatchRequestController {
     WINDOW.get(this).navigator.geolocation.getCurrentPosition((position) => {
       this.latitude = position.coords.latitude;
       this.longitude = position.coords.longitude;
-      console.log("this.latitude", this.latitude);
-      console.log("this.longitude", this.longitude);
     }, error => {
       this.latitude = 32.090346;
       this.longitude = 34.802194;
@@ -57,8 +59,14 @@ class MatchRequestController {
     });
   }
   
+  //Valid match request before send it to server
+  validMatchRequest() {
+    _.isUndefined(this.user.factors) ? this.noFactorsError = true : this._sendMatchRequest();
+  }
+  
   //Start match request with current parameters or present already have a match request
-  sendMatchRequest() {
+  _sendMatchRequest(){
+    
     let currentLocation = {
       'lat': this.latitude,
       'lng': this.longitude
@@ -66,7 +74,7 @@ class MatchRequestController {
     
     MATCH_DATA_SERIVE.get(this).createMatchDataRequest(
       {
-        'matchFactors': this.CurrentMatchFactors,
+        'matchFactors': _.isUndefined(this.CurrentMatchFactors) ? this.user.factors : this.CurrentMatchFactors,
         'location': currentLocation,
         'maxDistance':this.maxDistance
       })
@@ -121,12 +129,48 @@ class MatchRequestController {
     });
   }
   
-  //Swipe to close and send factors to current match
-  onSwipeLeft(){
-    this.toggleLeft();
-    this.setCurrentMatchFactors();
+  bubbleInit() {
+    this.viewReady  = false;
+    this.bubblePics = {};
+    FACTOR_DATA_SERVICE.get(this).getImagesForBubble().then((data)=>{
+      this.bubblePics = _.get(data,'data',null);
+      _.map(this.bubblePics, bubble => {bubble.style = this.bubblesBuilder()});
+      this.viewReady = true;
+    });
   }
+
+  bubblesBuilder() {
+
+      this.pos_rand = Math.floor(Math.random() * 60);
+
+      // Randomise the time they start rising (0-15s)
+      this.delay_rand = Math.floor(Math.random() * 16);
+
+      // Randomise their speed (3-8s)
+      this.speed_rand = 10 + Math.floor(Math.random() * 9);
+
+      // Random blur
+      this.blur_rand = Math.floor(Math.random() * 1.2);
+      return {
+        'left' : this.pos_rand + '%',
+        '-webkit-animation-duration' : this.speed_rand + 's',
+        '-moz-animation-duration' : this.speed_rand + 's',
+        '-ms-animation-duration' : this.speed_rand + 's',
+        'animation-duration' : this.speed_rand + 's',
+
+        '-webkit-animation-delay' : this.delay_rand + 's',
+        '-moz-animation-delay' : this.delay_rand + 's',
+        '-ms-animation-delay' : this.delay_rand + 's',
+        'animation-delay' : this.delay_rand + 's',
+
+        '-webkit-filter' : 'blur(' + this.blur_rand  + 'px)',
+        '-moz-filter' : 'blur(' + this.blur_rand  + 'px)',
+        '-ms-filter' : 'blur(' + this.blur_rand  + 'px)',
+        'filter' : 'blur(' + this.blur_rand  + 'px)'
+      };
+  }
+  
 }
 
-MatchRequestController.$inject = ['$window','$state', 'userDataService', 'matchDataService', '$mdSidenav'];
+MatchRequestController.$inject = ['$window','$state', 'userDataService', 'matchDataService','$mdSidenav','factorsDataService'];
 export default MatchRequestController;

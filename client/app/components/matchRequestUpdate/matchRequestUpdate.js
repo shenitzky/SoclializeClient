@@ -1,9 +1,11 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import matchRequestUpdateComponent from './matchRequestUpdate.component';
+import factorsDataService from './../../common/factorsDataService/factorsData.module'
 
 let matchRequestUpdateModule = angular.module('matchRequestUpdate', [
-  uiRouter
+  uiRouter,
+  factorsDataService
 ])
   
   
