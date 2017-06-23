@@ -41,12 +41,20 @@
                      aria-label="distance">
           </md-slider>
 
+          <h3>Match Percent</h3>
+          <md-slider flex md-discrete
+                     ng-model="$ctrl.matchPercent"
+                     step="2.5" min="1"
+                     max="100"
+                     aria-label="distance">
+          </md-slider>
+
           <md-button ng-click="$ctrl.toggleLeft();$ctrl.setCurrentMatchFactors()" class="md-accent button-color">
             Done
           </md-button>
         </md-content>
       </md-sidenav>
-      <md-content flex layout-padding>
+      <md-content flex layout-padding class="match-settings-container">
         <div layout="column" layout-align="center center">
           <div class="toggle-match-settings">
             <md-button ng-click="$ctrl.toggleLeft()" class="md-raised">

@@ -16,6 +16,12 @@ export class FactorsDataApiService {
       let obj = {method: 'GET', url: apiConsts.getImagesForBubble};
       return CONNECTION.get(this).sendPlainText(obj);
     }
+  
+  addDynamicFactor(factorName) {
+    let obj = {method: 'GET', url: apiConsts.addDynamicFactor(factorName)};
+    return CONNECTION.get(this).sendPlainText(obj);
+  }
+  
 }
 FactorsDataApiService.$inject = ['connection'];
 export default FactorsDataApiService;

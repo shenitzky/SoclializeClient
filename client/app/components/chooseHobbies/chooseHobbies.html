@@ -13,7 +13,8 @@
         <div class="icon-container" layout-align="center center" ng-repeat="subCategory in category.subClasses track by $index">
           <div class="icon-body" id="{{subCategory.name}}"
                ng-click="$ctrl.onChooseSubCategory(subCategory.name)">
-            <img class="img-icon" ng-src="{{subCategory.imgUrl}}"/>
+            <img  ng-if="!category.noImg" class="img-icon" ng-src="{{subCategory.imgUrl}}"/>
+            <span ng-if="category.noImg">{{subCategory.name}}</span>
           </div>
         </div>
       </div>

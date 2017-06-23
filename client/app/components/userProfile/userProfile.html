@@ -17,7 +17,28 @@
             </div>
 
         </div>
-      <div layout="row" layout-align="center center">
+
+        <div ng-repeat="factorHobby in $ctrl.newFactorsHobbies track by $index ">
+          <div layout="row" layout-align="space-around center">
+            <div class="garbage-container" ng-click="$ctrl.removeHobbyFactor($index)">
+              <md-icon md-svg-src="/content/images/icons/garbage.svg" class="userProfile" ng-click="$ctrl.removeHobbyFactor($index)"></md-icon>
+            </div>
+            <md-input-container class="md-block">
+              <input ng-disabled="factorHobby.isDisable" ng-model="factorHobby.name" type="text" placeholder="Hobby" ng-required="true">
+            </md-input-container>
+            <div class="save-hobby-container">
+              <md-button ng-disabled="factorHobby.isDisable" ng-click="$ctrl.saveDynamicFactor($index,factorHobby)">Save</md-button>
+            </div>
+          </div>
+        </div>
+
+
+      <div layout="column" layout-align="center center">
+        <div class="plus-hobby-button">
+          <h3>Enter your own hobby</h3>
+          <new-field ng-click="$ctrl.createNewFactorsHobby()"></new-field>
+        </div>
+
         <md-button class="buttonElement" ng-click="$ctrl.sendUserFactors()">Save</md-button>
       </div>
     </div>

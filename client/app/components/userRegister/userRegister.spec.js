@@ -59,7 +59,7 @@ describe('UserRegister', () => {
       controller.userReg.ConfirmPassword = "abcd1234";
       controller.sendRegistration();
       $timeout.flush();
-      expect(controller.user).to.be.true
+      expect(controller.user).to.be.false
     });
     
   });

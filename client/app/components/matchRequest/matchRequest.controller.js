@@ -21,11 +21,12 @@ class MatchRequestController {
     this.notificationAlert  = false;
     this.allReadyMatchExist = false;
     
-    this.maxDistance = 26;
-    this.viewReady   = false;
+    this.maxDistance   = 26;
+    this.matchPercent  = 50;
+    this.viewReady     = false;
     
-    this.toggleLeft  = this.buildToggler('left');
-    this.toggleRight = this.buildToggler('right');
+    this.toggleLeft    = this.buildToggler('left');
+    this.toggleRight   = this.buildToggler('right');
   
     this.checkOptionalMatchExistence();
     
@@ -76,7 +77,8 @@ class MatchRequestController {
       {
         'matchFactors': _.isUndefined(this.CurrentMatchFactors) ? this.user.factors : this.CurrentMatchFactors,
         'location': currentLocation,
-        'maxDistance':this.maxDistance
+        'maxDistance':this.maxDistance,
+        'minMatchStrength': this.matchPercent
       })
       .then((receivedMatchRequestId) => {
         receivedMatchRequestId = _.get(receivedMatchRequestId, 'data',null);

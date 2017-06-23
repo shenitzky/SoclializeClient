@@ -10,6 +10,7 @@ class UserProfileController {
   }
   
   $onInit(){
+    this.newFactorsHobbies = [];
     this.notificationAlert = false;
     this.viewReady = false;
     this.checkOptionalMatchExistence();
@@ -79,6 +80,32 @@ class UserProfileController {
       STATE.get(this).go('matchRequest');
     });
   }
+  
+  createNewFactorsHobby() {
+    this.newFactorsHobbies.push({
+      name:null,
+      isDisable:false
+    });
+  }
+  saveDynamicFactor(index,factorHobby) {
+    if(this.validNewFactorName(index)){
+      FACTORS_DATA_SERVICE.get(this).addDynamicFactor(factorHobby.name).then(()=>{
+        this.newFactorsHobbies[index].isDisable = true;
+        this.newFactorsHobbies[index].name = factorHobby.name;
+      });
+    }
+  }
+  
+  validNewFactorName(index) {
+    return !_.isEmpty(this.newFactorsHobbies[index].name);
+  }
+  
+  removeHobbyFactor(index) {
+    if(!_.isEmpty(this.newFactorsHobbies[index])){
+      this.newFactorsHobbies.splice(index,1);
+    }
+  }
+  
 }
 
 

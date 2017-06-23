@@ -64,6 +64,10 @@ match-request {
     border-radius: 10px;
   }
 
+  .match-settings-container {
+    background-color: transparent;
+  }
+
   @mixin animate($animation, $duration, $repeat, $easing) {
     -webkit-animation: $animation $duration $repeat $easing;
     -moz-animation: $animation $duration $repeat $easing;

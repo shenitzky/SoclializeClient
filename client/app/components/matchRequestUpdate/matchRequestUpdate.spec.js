@@ -5,10 +5,10 @@
 // import sinon from 'sinon';
 // import sinonAsPromised from 'sinon-as-promised';
 //
-// describe('MatchRequestUpdate', () => {
-//   let $rootScope, makeController,$q,$timeout,$state,$window,$stateParams,matchDataServiceMock;
+// describe.only('MatchRequestUpdate', () => {
+//   let $rootScope, makeController,$q,$timeout,$state,$window,$stateParams,matchDataServiceMock,controller,stateParams;
 //
-//   const matchRequestObject = {
+//   const matchRequestObjectMock = {
 //     matchReqId: 2,
 //     location: {
 //       lng: 30,
@@ -16,7 +16,11 @@
 //     }
 //   };
 //
-//   const optionalMatchData = 'HaveAMatch';
+//   let optionalMatchData = {
+//     data: {
+//       matchRequestId: -1
+//     }
+//   };
 //
 //   beforeEach(window.module(MatchRequestUpdateModule));
 //   beforeEach(inject((_$rootScope_,_$timeout_,_$q_) => {
@@ -25,32 +29,33 @@
 //     $timeout = _$timeout_;
 //     sinonAsPromised($q);
 //
-//
-//     $stateParams = {
-//       MatchRequestId: 4,
-//       location: {
-//         lng: 30,
-//         lat: 30
-//       }
-//     };
-//
 //     matchDataServiceMock = {
 //       updateAndCheckMatchRequest: sinon.stub().resolves(optionalMatchData)
 //     };
 //
-//     makeController = () => {
-//       return new MatchRequestUpdateController($state,$window,$stateParams,matchDataServiceMock);
+//     stateParams = {
+//       MatchRequestId: -1,
 //     };
+//
+//     makeController = () => {
+//       return new MatchRequestUpdateController($state,$window,{$stateParams:stateParams},matchDataServiceMock);
+//     };
+//     $stateParams = stateParams;
+//     controller = makeController();
+//     controller.matchRequestObject = {
+//       'matchReqId': matchRequestObjectMock.matchReqId,
+//       'location': matchRequestObjectMock.location
+//     }
 //   }));
 //
 //   describe('Controller', () => {
 //     // controller specs
 //     it('', () => { // erase if removing this.name from the controller
-//       let controller = makeController();
 //       controller.$onInit();
-//       controller.matchRequestObject = matchRequestObject;
-//       //expect(matchDataService.updateAndCheckMatchRequest).to.be.calledWith(controller.matchRequestObject);
-//       expect(matchDataServiceMock.updateAndCheckMatchRequest).to.equal(optionalMatchData);
+//       $timeout.flush();
+//       expect(controller.optionalMatchNotFound).to.be.equal(true);
+//
+//       //expect(matchDataServiceMock.updateAndCheckMatchRequest).to.equal(optionalMatchData);
 //     });
 //   });
 //
