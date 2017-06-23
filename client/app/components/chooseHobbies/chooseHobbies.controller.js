@@ -18,6 +18,7 @@ class ChooseHobbiesController {
       this.factorsCopy = _.cloneDeep(factorData);
       //Adding isToggle status to know when factor has been pressed
       _.forEach(this.factorsCopy, (category) => {
+        category.noImg = category.class === 'Suggested by users';
         _.forEach(category.subClasses, (subCategory) => {
           subCategory.isToggle = false;
         });

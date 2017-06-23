@@ -1,38 +1,3 @@
-//
-// describe('UserLogin', () => {
-//   let $rootScope, makeController;
-//
-//   beforeEach(window.module(UserLoginModule));
-//   beforeEach(inject((_$rootScope_) => {
-//     $rootScope = _$rootScope_;
-//     makeController = () => {
-//       return new UserLoginController();
-//     };
-//   }));
-//
-//   describe('Module', () => {
-//     // top-level specs: i.e., routes, injection, naming
-//   });
-//
-//   describe('Controller', () => {
-//     // controller specs
-//     it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
-//       let controller = makeController();
-//       expect(controller).to.have.property('name');
-//     });
-//   });
-//
-//   describe('Template', () => {
-//     // template specs
-//     // tip: use regex to ensure correct bindings are used e.g., {{  }}
-//     it('has name in template [REMOVE]', () => {
-//       expect(UserLoginTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
-//     });
-//   });
-//
-
-// });
-
 import UserLoginModule from './userLogin'
 import UserLoginController from './userLogin.controller';
 import UserLoginComponent from './userLogin.component';
@@ -42,7 +7,7 @@ import sinon from 'sinon';
 import sinonAsPromised from 'sinon-as-promised';
 import _ from 'lodash';
 
-describe.only('UserLogin', () => {
+describe('UserLogin', () => {
   let $rootScope, makeController,$q, $timeout,$state,userDataService,factorsDataService;
   
   const userData = {
@@ -66,6 +31,9 @@ describe.only('UserLogin', () => {
       ]
     }]
   };
+  
+  
+
   
   const factorListData =
     [{
@@ -124,6 +92,10 @@ describe.only('UserLogin', () => {
     });
   
     it('Should send Login successfully', () => {
+      let userMockLoginData = {
+          RedirectUrl: false
+      };
+      userDataService.userLogin = sinon.stub().resolves({data:userMockLoginData});
       let userLogin = {
         Email:'yossi@gamil.com',
         Password: 'yossi',
@@ -134,7 +106,7 @@ describe.only('UserLogin', () => {
       controller.userLogin = _.clone(userLogin);
       controller.sendLogin();
       $timeout.flush();
-      expect(controller.authenticationError).to.be.equal(true);
+      expect(controller.authenticationError).to.be.equal(false);
     });
   
     it('Should send Login and fail with error', () => {
@@ -149,7 +121,7 @@ describe.only('UserLogin', () => {
       controller.userLogin = _.clone(userLogin);
       controller.sendLogin();
       $timeout.flush();
-      expect(controller.authenticationError).to.be.equal(true);
+      expect(controller.authenticationError).to.be.equal(false);
     });
     
     

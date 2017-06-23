@@ -12,6 +12,10 @@ export class FactorDataService {
     getImagesForBubble() {
       return FACTORDATA_API.get(this).getImagesForBubble();
     }
+  
+    addDynamicFactor(factorName) {
+      return FACTORDATA_API.get(this).addDynamicFactor(factorName);
+    }
 }
 FactorDataService.$inject = ['factorDataApi'];
 export default FactorDataService;

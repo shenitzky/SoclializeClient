@@ -1,8 +1,6 @@
 const STATE = new WeakMap();
 const USER_DATA_SERVICE = new WeakMap();
 
-//todo need to check - first server need to provide if state params is empty && server response is empty then show no notifications
-
 class NotificationsController {
   constructor($stateParams,$state,moment,userDataService){
     STATE.set(this,$state);
