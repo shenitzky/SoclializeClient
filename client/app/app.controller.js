@@ -9,7 +9,7 @@ class AppController {
   }
   
   $onInit() {
-    this.user = false;
+    this.user = true;
   }
 }
 
