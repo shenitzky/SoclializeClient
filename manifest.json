@@ -3,45 +3,45 @@
   "short_name": "YOSSI",
   "icons": [
     {
-      "src": "https://mobile/icons/mobile_logo_57.png"
+      "src": "https://drive.google.com/open?id=0B7DcbKlAlZlqeHNfTEtfZmVIXzA"
     },
     {
-      "src": "https://mobile/icons/mobile_logo_57.png",
+      "src": "https://drive.google.com/open?id=0B7DcbKlAlZlqeHNfTEtfZmVIXzA",
       "sizes": "57x57",
       "type": "image/png"
     },
     {
-      "src": "https://mobile/icons/mobile_logo_64.png",
+      "src": "https://drive.google.com/open?id=0B7DcbKlAlZlqRkJ1amFnY3VTdk0",
       "sizes": "64x64",
       "type": "image/png"
     },
     {
-      "src": "https://mobile/icons/mobile_logo_72.png",
+      "src": "https://drive.google.com/open?id=0B7DcbKlAlZlqMzVqbk1WSnNNLWc",
       "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "src": "https://mobile/icons/mobile_logo_114.png",
+      "src": "https://drive.google.com/open?id=0B7DcbKlAlZlqajlmclJBZTl0SWc",
       "sizes": "114x114",
       "type": "image/png"
     },
     {
-      "src": "https://mobile/icons/mobile_logo_128.png",
+      "src": "https://drive.google.com/open?id=0B7DcbKlAlZlqNXNiYXctZHRzNkk",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "https://mobile/icons/mobile_logo_192.png",
+      "src": "https://drive.google.com/open?id=0B7DcbKlAlZlqU2llb2ZkdVNRZjQ",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://mobile/icons/mobile_logo_64.png",
+      "src": "https://drive.google.com/open?id=0B7DcbKlAlZlqNXNiYXctZHRzNkk",
       "sizes": "128x128",
       "density": 2
     }
   ],
-  "start_url": "https://socialize20170520113532.azurewebsites.net",
+  "start_url": "https://socialize20170624031639.azurewebsites.net/",
   "display": "standalone",
   "background_color": "#87243D",
   "theme_color": "#87243D"

@@ -4,6 +4,7 @@ import Hero from './hero/hero';
 import User from './user/user';
 import connection from './connection/connection'
 import LowToolBar from './lowToolBar/lowToolBar'
+import desktopToolBar from './desktopToolBar/desktopToolBar'
 
 
 let commonModule = angular.module('app.common', [
@@ -11,7 +12,8 @@ let commonModule = angular.module('app.common', [
     Hero,
     User,
     connection,
-    LowToolBar
+    LowToolBar,
+    desktopToolBar
 ])
 
     .name;
