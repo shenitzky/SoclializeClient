@@ -23,7 +23,6 @@ module.exports = {
     ]
   },
   plugins: [
-  
     new InlineManifestWebpackPlugin({
       name: 'webpackManifest'
     }),

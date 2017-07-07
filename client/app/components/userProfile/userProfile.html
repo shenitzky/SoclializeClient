@@ -4,6 +4,10 @@
             <img ng-src="{{$ctrl.user.imgUrl}}"/>
         </div>
 
+        <div class="img-file-container">
+          <input type="file" accept="image/*" id="files" capture="camera">
+        </div>
+
         <div layout-align="space-around center" class="categories-container">
             <div layout="column" class="category-container" ng-repeat="category in $ctrl.factorsList track by $index">
                 <span class="category-title">{{category.class}}</span>
@@ -21,7 +25,7 @@
         <div ng-repeat="factorHobby in $ctrl.newFactorsHobbies track by $index ">
           <div layout="row" layout-align="space-around center">
             <div class="garbage-container" ng-click="$ctrl.removeHobbyFactor($index)">
-              <md-icon md-svg-src="/content/images/icons/garbage.svg" class="userProfile" ng-click="$ctrl.removeHobbyFactor($index)"></md-icon>
+              <md-icon md-svg-src="/content/images/icons/garbage.svg" class="userProfile" ng-click="$ctrl.removeHobbyFactor($index,factorHobby)"></md-icon>
             </div>
             <md-input-container class="md-block">
               <input ng-disabled="factorHobby.isDisable" ng-model="factorHobby.name" type="text" placeholder="Hobby" ng-required="true">

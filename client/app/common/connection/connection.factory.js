@@ -15,11 +15,6 @@ export class ConnectionService {
         HTTP.set(this, $http);
         Q.set(this, $q);
         TIMEOUT.set(this, $timeout);
-        // this.headers = {
-        //     'X-Requested-With': 'XMLHttpRequest',
-        //     dataType: "json",
-        //     "Access-Control-Allow-Credentials": true,
-        // };
         this.headers = '*'
     }
 
@@ -66,9 +61,7 @@ export class ConnectionService {
             let errorMsg = _.isObject(error) && error.error ? error.error : _.isString(error) ? error : 'ERROR';
             if (status >= 500) {
                 if (this._checkIfHtml(error) || !error) {
-                    console.log("BABBBB-1")
                 } else {
-                    console.log("BABBBB-2");
                 }
             }
             deferred.reject(error, status);
@@ -95,7 +88,6 @@ export class ConnectionService {
         if (loaderInvoker) {
             promise.finally(() => {
                 TIMEOUT.get(this).cancel(loaderInvoker);
-                console.log("BABBBB-3");
             });
         }
         return promise;

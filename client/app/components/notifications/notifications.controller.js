@@ -17,6 +17,7 @@ class NotificationsController {
     _.isNull(this.matchReqId) ? this._checkOptionalMatchExistence() : this._setAndDrawOpMatch() ;
   }
   
+  //Draw Match notification plus user Image
   _setAndDrawOpMatch(){
     this._checkMatchExistence();
     this._getUserImg();
@@ -25,7 +26,7 @@ class NotificationsController {
   _checkOptionalMatchExistence(){
     USER_DATA_SERVICE.get(this).getUserOptionalMatch().then((optionalMatchData)=>{
       optionalMatchData  = _.get(optionalMatchData,'data',null);
-      this.matchReqId    = _.get(optionalMatchData,'id',null);
+      this.matchReqId    = _.get(optionalMatchData,'matchRequestId',null);
       this.receiveMatchObject = optionalMatchData;
       this._setAndDrawOpMatch();
     });
@@ -39,10 +40,12 @@ class NotificationsController {
     this.haveNotification = true;
   }
   
+  //check Match Existence and validation
   _checkMatchExistence(){
-    _.isEmpty(this.receiveMatchObject) ? this.haveNotification = false : this._initMatch();
+    (_.isEmpty(this.receiveMatchObject) || this.matchReqId === -1) ? this.haveNotification = false : this._initMatch();
   }
   
+  //getting user current image
   _getUserImg(){
     USER_DATA_SERVICE.get(this).getUserImg().then((userImg) =>{
       this.userImg = _.get(userImg,'data');

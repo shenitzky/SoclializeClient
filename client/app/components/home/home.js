@@ -13,6 +13,8 @@ import mapHandlerModule from './../mapHandler/mapHandler';
 import matchRequestUpdateModule from './../matchRequestUpdate/matchRequestUpdate';
 import checkboxElement from './../elements/checkboxElement/checkboxElement'
 import userInformationDataModule from './../userInformationData/userInformationData'
+import pageNotFound from './../../common/pageNotFound/pageNotFound'
+
 
 let homeModule = angular.module('home', [
   uiRouter,
@@ -27,18 +29,27 @@ let homeModule = angular.module('home', [
   matchRequestUpdateModule,
   checkOptionalMatchStatusModule,
   notificationsModule,
-  userInformationDataModule
+  userInformationDataModule,
+  pageNotFound
 ])
 
 .config(($stateProvider, $urlRouterProvider) => {
   "ngInject";
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/404');
 
   $stateProvider
     .state('home', {
       url: '/',
       component: 'home'
+    })
+    .state('404', {
+      url: '/404',
+      template: '<page-not-found></page-not-found>',
+      data: {
+        error: 404,
+        background: 'notFound',
+      }
     })
 })
 

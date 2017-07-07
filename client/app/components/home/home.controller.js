@@ -51,7 +51,6 @@ class HomeController {
 //   //Working FaceBook login status
 //   faceBookLoginEvent(){
 //     FB.getLoginStatus(function(response) {
-//       debugger;
 //       FB.login();
 //       //statusChangeCallback(response);
 //     });

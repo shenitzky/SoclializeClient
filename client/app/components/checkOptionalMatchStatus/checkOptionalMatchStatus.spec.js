@@ -1,49 +1,50 @@
-// import CheckOptionalMatchStatusModule from './checkOptionalMatchStatus'
-// import CheckOptionalMatchStatusController from './checkOptionalMatchStatus.controller';
-// import CheckOptionalMatchStatusComponent from './checkOptionalMatchStatus.component';
-// import CheckOptionalMatchStatusTemplate from './checkOptionalMatchStatus.html';
-//
-// describe('CheckOptionalMatchStatus', () => {
-//   let $rootScope, makeController;
-//
-//   beforeEach(window.module(CheckOptionalMatchStatusModule));
-//   beforeEach(inject((_$rootScope_) => {
-//     $rootScope = _$rootScope_;
-//     makeController = () => {
-//       return new CheckOptionalMatchStatusController();
-//     };
-//   }));
-//
-//   describe('Module', () => {
-//     // top-level specs: i.e., routes, injection, naming
-//   });
-//
-//   describe('Controller', () => {
-//     // controller specs
-//     it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
-//       let controller = makeController();
-//       expect(controller).to.have.property('name');
-//     });
-//   });
-//
-//   describe('Template', () => {
-//     // template specs
-//     // tip: use regex to ensure correct bindings are used e.g., {{  }}
-//     it('has name in template [REMOVE]', () => {
-//       expect(CheckOptionalMatchStatusTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
-//     });
-//   });
-//
-//   describe('Component', () => {
-//       // component/directive specs
-//       let component = CheckOptionalMatchStatusComponent;
-//
-//       it('includes the intended template',() => {
-//         expect(component.template).to.equal(CheckOptionalMatchStatusTemplate);
-//       });
-//
-//       it('invokes the right controller', () => {
-//         expect(component.controller).to.equal(CheckOptionalMatchStatusController);
-//       });
-//   });
-// });
+import CheckOptionalMatchStatusModule from './checkOptionalMatchStatus'
+import CheckOptionalMatchStatusController from './checkOptionalMatchStatus.controller';
+import CheckOptionalMatchStatusComponent from './checkOptionalMatchStatus.component';
+import CheckOptionalMatchStatusTemplate from './checkOptionalMatchStatus.html';
+import sinon from 'sinon';
+import sinonAsPromised from 'sinon-as-promised';
+import _ from 'lodash';
+
+describe('CheckOptionalMatchStatus', () => {
+  let $rootScope, makeController,$q, $timeout,$stateParams,$state,matchDataService,controller;
+  
+  let matchData = {
+    data: {
+      id:123
+    }
+  };
+  
+  beforeEach(window.module(CheckOptionalMatchStatusModule));
+  beforeEach(inject((_$q_, _$timeout_, _$rootScope_) => {
+    $rootScope = _$rootScope_;
+    $q = _$q_;
+    sinonAsPromised($q);
+    $timeout = _$timeout_;
+  
+    matchDataService = {
+      getOptionalMatchStatus:sinon.stub().resolves(matchData),
+    };
+    
+    makeController = () => {
+      return new CheckOptionalMatchStatusController($state,$stateParams,matchDataService);
+    };
+  }));
+  
+  describe('Controller', () => {
+  
+  });
+  
+  describe('Component', () => {
+    // component/directive specs
+    let component = CheckOptionalMatchStatusComponent;
+    
+    it('includes the intended template',() => {
+      expect(component.template).to.equal(CheckOptionalMatchStatusTemplate);
+    });
+    
+    it('invokes the right controller', () => {
+      expect(component.controller).to.equal(CheckOptionalMatchStatusController);
+    });
+  });
+});

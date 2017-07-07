@@ -16,8 +16,10 @@ const consts = {
     // getReverseGeocoding     : ( latitude ,longitude ) => `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyD8IhUUKMzZsCjNFUa_zM6sFhzB6jZhaJk`,
     // updateUserExtraData     : 'http://localhost:50825/api/socializeApi/UpdateUserExtraData',
     // getImagesForBubble      : 'http://localhost:50825/api/socializeapi/GetImagesForBubble',
-    // addDynamicFactor        :  ( dynamicFactor) => `http://localhost:50825/api/socializeApi/SuggestNewSubClass?newSubClassDesc=${dynamicFactor}`
+    // addDynamicFactor        :  ( dynamicFactor) => `http://localhost:50825/api/socializeApi/SuggestNewSubClass?newSubClassDesc=${dynamicFactor}`,
+    // removeDynamicFactor          :  ( dynamicFactorRemove) => `http://localhost:50825/api/socializeApi/ReduceSuggestNewSubClass?newSubClassDesc=${dynamicFactorRemove}`
     //
+
   userRegister             : '/account/AjaxRegister',
   userLogin                : '/account/AjaxLogin',
 
@@ -34,7 +36,8 @@ const consts = {
   getReverseGeocoding      : ( latitude ,longitude ) => `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyD8IhUUKMzZsCjNFUa_zM6sFhzB6jZhaJk`,
   updateUserExtraData      : '/api/socializeApi/UpdateUserExtraData',
   getImagesForBubble       : '/api/socializeApi/GetImagesForBubble',
-  addDynamicFactor          :  ( dynamicFactor) => `/api/socializeApi/SuggestNewSubClass?newSubClassDesc=${dynamicFactor}`
+  addDynamicFactor         :  ( dynamicFactor) => `/api/socializeApi/SuggestNewSubClass?newSubClassDesc=${dynamicFactor}`,
+  removeDynamicFactor      :  ( dynamicFactorRemove) => `/api/socializeApi/ReduceSuggestNewSubClass?newSubClassDesc=${dynamicFactorRemove}`
 };
 
 

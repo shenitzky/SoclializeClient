@@ -8,6 +8,7 @@ class ChooseHobbiesController {
     USER_DATA_SERVICE.set(this, userDataService);
     FACTOR_DATA_SERVICE.set(this, factorsDataService);
     this.factorsCopy = [];
+    this.suggestedVarray = [];
   }
   
   $onInit() {
@@ -60,9 +61,11 @@ class ChooseHobbiesController {
   //When choose a sub category adding a class of V icon
   onChooseSubCategory(subClassName) {
     let toggleStatus = false;
+    let suggestedV = false;
     let subClassElement = document.getElementById(subClassName);
     
     _.forEach(this.factorsCopy, (category) => {
+      suggestedV  = category.noImg;
       _.forEach(category.subClasses, (subCategory) => {
         if (subCategory.name === subClassName) {
           toggleStatus = !subCategory.isToggle;
@@ -70,19 +73,19 @@ class ChooseHobbiesController {
         }
       });
     });
-    if (toggleStatus) {
+    if (toggleStatus && suggestedV) {
       //If Icon has been selected creating a div hat draw the v icon.
       let checkmark_stem = document.createElement('div');
       checkmark_stem.id = `checkmark_stem_${subClassName}`;
       checkmark_stem.className = 'checkmark_stem';
-  
+
       let checkmark_kick = document.createElement('div');
       checkmark_kick.id = `checkmark_kick_${subClassName}`;
       checkmark_kick.className = 'checkmark_kick';
-      
+
       subClassElement.appendChild(checkmark_stem);
       subClassElement.appendChild(checkmark_kick);
-  
+
       subClassElement = null;
     } else {
       //If Icon has been deselected removing the v icon.

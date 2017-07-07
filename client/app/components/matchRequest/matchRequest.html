@@ -1,4 +1,4 @@
-<div ng-if="$ctrl.viewReady && !$ctrl.allReadyMatchExist && !$ctrl.noFactorsError" class="match-settings">
+<div ng-if="$ctrl.viewReady && !$ctrl.allReadyMatchExist" class="match-settings">
 
   <div>
     <div class="bubbles" ng-repeat="bubble in $ctrl.bubblePics track by $index">
@@ -33,7 +33,7 @@
             </div>
           </div>
 
-          <h3>Match Distance</h3>
+          <h3>Max Distance</h3>
           <md-slider flex md-discrete
                      ng-model="$ctrl.maxDistance"
                      step="2.5" min="1"
@@ -41,7 +41,7 @@
                      aria-label="distance">
           </md-slider>
 
-          <h3>Match Percent</h3>
+          <h3>Match Strength</h3>
           <md-slider flex md-discrete
                      ng-model="$ctrl.matchPercent"
                      step="2.5" min="1"
@@ -68,6 +68,11 @@
   <div layout="row"  layout-align="center center">
     <md-button class="md-fab find-match-title" ng-click="$ctrl.validMatchRequest(); clickActive = true " ng-class="{'find-match-title-click': clickActive}">FIND MATCH</md-button>
   </div>
+
+  <div class="no-factors-error" ng-if="$ctrl.noFactorsError" layout="column" layout-align="center center">
+    <h2>Please select at least one subject</h2>
+    <h2>for match</h2>
+  </div>
   <div ng-if="$ctrl.notificationAlert && !$ctrl.noFactorsError" class="notification">1</div>
 </div>
 
@@ -75,11 +80,6 @@
   <h1>You already have a match request </h1>
   <h1>checkout notifications</h1>
   <div ng-if="$ctrl.notificationAlert" class="notification">1</div>
-</div>
-
-<div ng-if="$ctrl.noFactorsError && !$ctrl.notificationAlert" layout="column" layout-align="center center">
-  <h1>Please select at list one subject</h1>
-  <h1>for match</h1>
 </div>
 
 
