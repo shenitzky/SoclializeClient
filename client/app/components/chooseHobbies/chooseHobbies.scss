@@ -32,7 +32,7 @@ choose-hobbies {
     position: relative;
     width: 6px;
     height: 20px;
-    background-color: #ff4d9e;
+    background-color: rgba(0, 0, 0, 0.97);
     left: 40px;
     top: -57px;
     transform: rotate(45deg);
@@ -42,10 +42,35 @@ choose-hobbies {
     position: relative;
     width: 9px;
     height: 6px;
-    background-color: #ff4d9e;
+    background-color: #000000;
     left: 31px;
     top: -67px;
     transform: rotate(45deg);
+  }
+
+  .no-img-container{
+    border: solid 0.5px;
+    border-radius: 15px;
+    margin-bottom: 23px;
+  }
+
+  .no-img{
+    font-size: 25px;
+    margin: 5px;
+    text-align: center;
+  }
+
+  .v-img {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(https://yossitrx.github.io/socializeManifest/vIcon.png);
+  }
+
+  .v-img-location {
+    position: relative;
+    left: 60px;
+    top: -24px;
+    display: inline;
   }
 
   @media (max-width:667px) and (min-width:375px) {

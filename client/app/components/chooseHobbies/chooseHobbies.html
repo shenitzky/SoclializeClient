@@ -1,8 +1,8 @@
 <div ng-if="$ctrl.viewReady">
-    <div>
-        <h1 class="text title">HI</h1>
-        <h2 class="text sub-title">Tell us what you are<br>interested in</h2>
-    </div>
+  <div>
+    <h1 class="text title">HI</h1>
+    <h2 class="text sub-title">Tell us what you are<br>interested in</h2>
+  </div>
 
   <div layout="column">
     <div ng-repeat="category in $ctrl.factorsCopy track by $index">
@@ -10,11 +10,19 @@
         <div class="category-title">
           <h2>{{category.class}}</h2>
         </div>
-        <div class="icon-container" layout-align="center center" ng-repeat="subCategory in category.subClasses track by $index">
-          <div class="icon-body" id="{{subCategory.name}}"
-               ng-click="$ctrl.onChooseSubCategory(subCategory.name)">
-            <img  ng-if="!category.noImg" class="img-icon" ng-src="{{subCategory.imgUrl}}"/>
-            <span ng-if="category.noImg">{{subCategory.name}}</span>
+        <div layout-sm="row" layout-align="center center">
+          <div ng-repeat="subCategory in category.subClasses track by $index">
+            <div class="icon-body" id="{{subCategory.name}}"
+                 ng-click="$ctrl.onChooseSubCategory(subCategory.name) ; $ctrl.suggestedVarray[$index] = !$ctrl.suggestedVarray[$index] ">
+
+              <div ng-if="!category.noImg">
+                <img class="img-icon" ng-src="{{subCategory.imgUrl}}"/>
+              </div>
+
+              <div class="no-img-container" ng-if="category.noImg" layout-sm="row" layout-align="center center">
+                <div class="no-img"  ng-class="{'v-img': $ctrl.suggestedVarray[$index]}" >{{subCategory.name}}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

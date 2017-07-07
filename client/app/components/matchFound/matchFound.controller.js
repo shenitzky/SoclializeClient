@@ -34,7 +34,7 @@ class MatchFoundController {
     USER_DATA_SERVICE.get(this).getUserOptionalMatch().then((optionalMatchData)=>{
       optionalMatchData  = _.get(optionalMatchData,'data',null);
       this.optionalMatch = optionalMatchData;
-      this.matchReqId    = _.get(optionalMatchData,'id',null);
+      this.matchReqId    = _.get(optionalMatchData,'matchRequestId',null);
       this.date = this.momentTime(optionalMatchData.created).format("DD/MM");
       this.time = this.momentTime(optionalMatchData.created).format("HH:mm");
       this._setChipMatch();

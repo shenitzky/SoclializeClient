@@ -11,7 +11,7 @@ class MatchRequestController {
     USER_DATA_SERVICE.set(this, userDataService);
     MATCH_DATA_SERIVE.set(this, matchDataService);
     FACTOR_DATA_SERVICE.set(this, factorsDataService);
-    this.mdSidenav = $mdSidenav
+    this.mdSidenav = $mdSidenav;
   }
   
   //Init match request
@@ -36,6 +36,9 @@ class MatchRequestController {
       this.user = userData;
       this.viewReady = true;
       this._setActiveToggle();
+  
+      document.getElementById('files').addEventListener('change', this.handleFileSelect, false);
+      
     });
   }
   
@@ -62,33 +65,47 @@ class MatchRequestController {
   
   //Valid match request before send it to server
   validMatchRequest() {
-    _.isUndefined(this.user.factors) ? this.noFactorsError = true : this._sendMatchRequest();
+    if(_.isUndefined(this.user.factors) || _.isEmpty(this.user.factors)) {
+      this.noFactorsError = true
+    } else if (_.isUndefined(this.CurrentMatchFactors)) {
+      this.CurrentMatchFactors = _.cloneDeep(this.user.factors);
+      this._sendMatchRequest();
+    } else if (_.isEmpty(this.CurrentMatchFactors)){
+      this.noFactorsError = true
+    } else if (!_.isEmpty(this.CurrentMatchFactors)) {
+      this._sendMatchRequest();
+    }
   }
   
   //Start match request with current parameters or present already have a match request
   _sendMatchRequest(){
     
+    this.noFactorsError = false;
+    
     let currentLocation = {
       'lat': this.latitude,
       'lng': this.longitude
     };
-    
+
     MATCH_DATA_SERIVE.get(this).createMatchDataRequest(
       {
-        'matchFactors': _.isUndefined(this.CurrentMatchFactors) ? this.user.factors : this.CurrentMatchFactors,
+        'matchFactors': this.CurrentMatchFactors,
         'location': currentLocation,
-        'maxDistance':this.maxDistance,
+        'maxDistance': this.maxDistance,
         'minMatchStrength': this.matchPercent
       })
       .then((receivedMatchRequestId) => {
-        receivedMatchRequestId = _.get(receivedMatchRequestId, 'data',null);
+        receivedMatchRequestId = _.get(receivedMatchRequestId, 'data', null);
         _.isEqual(receivedMatchRequestId, '-1') ? this.allReadyMatchExist = true :
           STATE.get(this).go('matchRequestUpdate', {
             'MatchRequestId': receivedMatchRequestId,
             'location': currentLocation
           });
       });
+  
   }
+  
+  //Checking the integrity of match request object before request to find a match if true start match object will be sent to the server else massage will appear to user
   
   //Toggle and set current match settings
   setCurrentMatchFactors() {
@@ -127,7 +144,8 @@ class MatchRequestController {
   checkOptionalMatchExistence(){
     USER_DATA_SERVICE.get(this).getUserOptionalMatch().then((optionalMatchData)=>{
       optionalMatchData = _.get(optionalMatchData,'data',null);
-      this.notificationAlert = !_.isNull(optionalMatchData);
+      this.notificationAlert    = _.get(optionalMatchData,'id',null);
+      this.notificationAlert === -1 ? this.notificationAlert = false : this.notificationAlert = !_.isNull(optionalMatchData);
     });
   }
   
@@ -170,6 +188,24 @@ class MatchRequestController {
         '-ms-filter' : 'blur(' + this.blur_rand  + 'px)',
         'filter' : 'blur(' + this.blur_rand  + 'px)'
       };
+  }
+  
+  handleFileSelect(evt) {
+    let files = evt.target.files;
+    let reader = new FileReader();
+    
+    // Closure to capture the file information.
+    reader.onload = ((theFile) =>{
+      return (e)=> {
+        // Render thumbnail.
+        let span = document.createElement('span');
+        span.innerHTML = ['<img class="thumb" src="', e.target.result,
+          '" title="', escape(theFile.name), '"/>'].join('');
+        document.getElementById('list').insertBefore(span, null);
+      };
+    })(files[0]);
+    // Read in the image file as a data URL.
+    reader.readAsDataURL(files[0]);
   }
   
 }

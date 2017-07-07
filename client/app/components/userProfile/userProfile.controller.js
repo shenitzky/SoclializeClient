@@ -45,11 +45,12 @@ class UserProfileController {
     });
   }
   
-  
+  //check optional match existence if -1 will not show anything
   checkOptionalMatchExistence(){
     USER_DATA_SERVICE.get(this).getUserOptionalMatch().then((optionalMatchData)=>{
       optionalMatchData = _.get(optionalMatchData,'data',null);
-      this.notificationAlert = !_.isNull(optionalMatchData);
+      this.notificationAlert    = _.get(optionalMatchData,'id',null);
+      this.notificationAlert === -1 ? this.notificationAlert = false : this.notificationAlert = !_.isNull(optionalMatchData);
     });
   }
   
@@ -100,11 +101,15 @@ class UserProfileController {
     return !_.isEmpty(this.newFactorsHobbies[index].name);
   }
   
-  removeHobbyFactor(index) {
-    if(!_.isEmpty(this.newFactorsHobbies[index])){
-      this.newFactorsHobbies.splice(index,1);
+  removeHobbyFactor(index,factorHobby) {
+    if (!_.isEmpty(this.newFactorsHobbies[index])) {
+      FACTORS_DATA_SERVICE.get(this).removeDynamicFactor(factorHobby.name).then(() => {
+        this.newFactorsHobbies.splice(index, 1);
+      });
     }
   }
+  
+  
   
 }
 
