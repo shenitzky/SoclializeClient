@@ -9,15 +9,13 @@
           destination={{$ctrl.secUserLocation}}">
       </directions>
 
-      <custom-marker id="start"
-                     position="current-location">
+      <custom-marker id="start" position="current-location">
         <div>
           <img class="currentUserImg" ng-src="{{$ctrl.myImageUrl}}">
         </div>
       </custom-marker>
 
-      <custom-marker id="end"
-                     position="{{$ctrl.secUserLocation}}">
+      <custom-marker id="end" position="{{$ctrl.secUserLocation}}">
         <div>
           <img class="currentUserImg" ng-src="{{$ctrl.secUserImage}}">
         </div>

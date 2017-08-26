@@ -1,49 +1,50 @@
-// import NavbarModule from './navbar'
-//
-// describe('Navbar', () => {
-//   let $rootScope, $state, $location, $componentController, $compile;
-//
-//   beforeEach(window.module(NavbarModule));
-//
-//   beforeEach(inject(($injector) => {
-//     $rootScope = $injector.get('$rootScope');
-//     $componentController = $injector.get('$componentController');
-//     $state = $injector.get('$state');
-//     $location = $injector.get('$location');
-//     $compile = $injector.get('$compile');
-//   }));
-//
-//   describe('Module', () => {
-//     // top-level specs: i.e., routes, injection, naming
-//   });
-//
-//   describe('Controller', () => {
-//     // controller specs
-//     let controller;
-//     beforeEach(() => {
-//       controller = $componentController('navbar', {
-//         $scope: $rootScope.$new()
-//       });
-//     });
-//
-//     it('has a name property', () => { // erase if removing this.name from the controller
-//       expect(controller).to.have.property('name');
-//     });
-//   });
-//
-//   describe('View', () => {
-//     // view layer specs.
-//     let scope, template;
-//
-//     beforeEach(() => {
-//       scope = $rootScope.$new();
-//       template = $compile('<navbar></navbar>')(scope);
-//       scope.$apply();
-//     });
-//
-//     it('has name in template', () => {
-//       expect(template.find('h1').find('a').html()).to.eq('navbar');
-//     });
-//
-//   });
-// });
+import NavbarModule from './navbar'
+import NavbarController from './navbar.controller';
+import NavbarComponent from './navbar.component';
+import NavbarTemplate from './navbar.html';
+import sinon from 'sinon';
+import sinonAsPromised from 'sinon-as-promised';
+import _ from 'lodash';
+
+describe('CheckOptionalMatchStatus', () => {
+  let $rootScope, makeController,$q, $timeout,$state;
+  
+  beforeEach(window.module(NavbarModule));
+  beforeEach(inject((_$q_, _$timeout_, _$rootScope_) => {
+    $rootScope = _$rootScope_;
+    $q = _$q_;
+    sinonAsPromised($q);
+    $timeout = _$timeout_;
+  
+    $state = {
+      go: sinon.stub().resolves(true)
+    }
+    
+    makeController = () => {
+      return new NavbarController($state);
+    };
+  }));
+  
+  describe('Controller', () => {
+    it('changeStateHomeOnClick',()=>{
+      let controller = new makeController();
+      let goHome = 'matchRequest';
+      controller.changeStateHomeOnClick(goHome);
+      expect($state.go.calledWith('matchRequest')).to.be.equal(true);
+    });
+  });
+  
+  describe('Component', () => {
+    
+    let component = NavbarComponent;
+    
+    it('includes the intended template',() => {
+      expect(component.template).to.equal(NavbarTemplate);
+    });
+    
+    it('invokes the right controller', () => {
+      expect(component.controller).to.equal(NavbarController);
+    });
+  });
+});
+

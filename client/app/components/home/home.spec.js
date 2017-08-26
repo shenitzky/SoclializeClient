@@ -1,54 +1,52 @@
-// import HomeModule from './home'
-//
-// describe('Home', () => {
-//   let $rootScope, $state, $location, $componentController, $compile;
-//
-//   beforeEach(window.module(HomeModule));
-//
-//   beforeEach(inject(($injector) => {
-//     $rootScope = $injector.get('$rootScope');
-//     $componentController = $injector.get('$componentController');
-//     $state = $injector.get('$state');
-//     $location = $injector.get('$location');
-//     $compile = $injector.get('$compile');
-//   }));
-//
-//   describe('Module', () => {
-//     // top-level specs: i.e., routes, injection, naming
-//     it('default component should be home', () => {
-//       $location.url('/');
-//       $rootScope.$digest();
-//       expect($state.current.component).to.eq('home');
-//     });
-//   });
-//
-//   describe('Controller', () => {
-//     // controller specs
-//     let controller;
-//     beforeEach(() => {
-//       controller = $componentController('home', {
-//         $scope: $rootScope.$new()
-//       });
-//     });
-//
-//     it('has a name property', () => { // erase if removing this.name from the controller
-//       expect(controller).to.have.property('name');
-//     });
-//   });
-//
-//   describe('View', () => {
-//     // view layer specs.
-//     let scope, template;
-//
-//     beforeEach(() => {
-//       scope = $rootScope.$new();
-//       template = $compile('<home></home>')(scope);
-//       scope.$apply();
-//     });
-//
-//     it('has name in template', () => {
-//       expect(template.find('h1').html()).to.eq('Found in home.html');
-//     });
-//
-//   });
-// });
+import HomeModule from './home'
+import HomeController from './home.controller';
+import HomeComponent from './home.component';
+import HomeTemplate from './home.html';
+import sinon from 'sinon';
+import sinonAsPromised from 'sinon-as-promised';
+import _ from 'lodash';
+
+describe('Home', () => {
+  let $rootScope, makeController,$q, $timeout,$state;
+  
+  
+  beforeEach(window.module(HomeModule));
+  beforeEach(inject((_$q_, _$timeout_, _$rootScope_) => {
+    $rootScope = _$rootScope_;
+    $q = _$q_;
+    sinonAsPromised($q);
+    $timeout = _$timeout_;
+    
+    $state = {
+      go: sinon.stub().resolves()
+    };
+    
+    makeController = () => {
+      return new  HomeController($state);
+    };
+    
+  }));
+  
+  describe('Controller', () => {
+    
+    it('Should move state on init',()=>{
+      let controller = new makeController();
+      controller.$onInit();
+      expect($state.go.calledWith('matchRequest')).to.be.true;
+    });
+  });
+  
+  describe('Component', () => {
+    
+    let component = HomeComponent;
+    
+    it('includes the intended template',() => {
+      expect(component.template).to.equal(HomeTemplate);
+    });
+    
+    it('invokes the right controller', () => {
+      expect(component.controller).to.equal(HomeController);
+    });
+  });
+});
+

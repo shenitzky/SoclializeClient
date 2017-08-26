@@ -20,23 +20,24 @@ describe('MatchFound', () => {
       getUserImg:sinon.stub().resolves(),
     }
     
+    $stateParams = {'optionalMatch': 123 , 'time': '18:00' , 'date': '1/1/2017', 'matchReqId': 1 };
+    
     makeController = () => {
       return new MatchFoundController($stateParams,$state,userDataService,matchDataService);
     };
   }));
-
-  describe('Module', () => {
-    // top-level specs: i.e., routes, injection, naming
-  });
-
+  
   describe('Controller', () => {
     // controller specs
-    it('Should _getUserImg and set view ready', () => { // erase if removing this.name from the controller
+    it('Should _getUserImg and set view ready', () => {
       let controller = makeController();
       controller._getUserImg();
       $timeout.flush();
       expect(controller.viewReady).to.be.equal(true);
     });
+    
+    
+    
   });
   
   describe('Component', () => {

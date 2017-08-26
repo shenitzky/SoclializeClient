@@ -22,16 +22,17 @@ $blueBabyNumber:   #75a9f9;
 $buttonsColor:     #babaf7;
 $buttonColorClick: #9b91f5;
 $mainOrange:       #FEA54A;
-
+$bodyColor:        #7a7a7a;
+$gary:             #434343;
+$checkBoxBg:       #c3c3f7;
+$defaultBg:        #dfe3f7;
+$imgFileCon:       #bdbdf7;
+$hobbiesTitle:     #444444;
 
 body {
    height: 100%;
-   // browsers default to 16px for font-size,
-   // so setting top-level font-size to 62.5%
-   // scales 1rem to equal 10px.
    font: 62.5% 'Actor', sans-serif;
-   color: #7a7a7a;
-   //font-family: 'Actor', sans-serif;
+   color: $bodyColor;
 }
 
 @mixin buttonElement(){

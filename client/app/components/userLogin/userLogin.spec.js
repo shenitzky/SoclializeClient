@@ -73,9 +73,6 @@ describe('UserLogin', () => {
     
   }));
   
-  describe('Module', () => {
-    // top-level specs: i.e., routes, injection, naming
-  });
   
   describe('Controller', () => {
     
@@ -128,7 +125,7 @@ describe('UserLogin', () => {
   });
   
   describe('Component', () => {
-    // component/directive specs
+    
     let component = UserLoginComponent;
     
     it('includes the intended template',() => {

@@ -10,7 +10,6 @@ class MatchRequestUpdateController {
       'location': $stateParams.location
     };
     this.optionalMatchNotFound = false;
-    this.name = 'matchRequestUpdate';
   }
   
   $onInit(){

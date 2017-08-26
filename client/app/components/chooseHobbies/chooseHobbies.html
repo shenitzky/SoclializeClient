@@ -13,7 +13,7 @@
         <div layout-sm="row" layout-align="center center">
           <div ng-repeat="subCategory in category.subClasses track by $index">
             <div class="icon-body" id="{{subCategory.name}}"
-                 ng-click="$ctrl.onChooseSubCategory(subCategory.name) ; $ctrl.suggestedVarray[$index] = !$ctrl.suggestedVarray[$index] ">
+                 ng-click="$ctrl.onChooseSubCategory(subCategory.name,$index)">
 
               <div ng-if="!category.noImg">
                 <img class="img-icon" ng-src="{{subCategory.imgUrl}}"/>

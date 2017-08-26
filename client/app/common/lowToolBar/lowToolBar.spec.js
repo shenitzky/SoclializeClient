@@ -13,21 +13,16 @@ describe('LowToolBar', () => {
       return new LowToolBarController();
     };
   }));
-
-  describe('Module', () => {
-    // top-level specs: i.e., routes, injection, naming
-  });
-
+  
   describe('Controller', () => {
-    // controller specs
-    it('has a name property [REMOVE]', () => {
+    it('has a name property', () => {
       let controller = makeController();
       expect(controller).to.have.property('name');
     });
   });
   
   describe('Component', () => {
-      // component/directive specs
+      
       let component = LowToolBarComponent;
 
       it('includes the intended template',() => {

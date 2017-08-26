@@ -53,27 +53,33 @@ class ChooseHobbiesController {
         objToSend.push(tempFactor);
       }
     });
+    
     USER_DATA_SERVICE.get(this).updateUserData({'Data': objToSend}).then(()=>{
       STATE.get(this).go('matchRequest');
     });
   }
   
   //When choose a sub category adding a class of V icon
-  onChooseSubCategory(subClassName) {
+  onChooseSubCategory(subClassName,index) {
+    this.tempSuggestedVarray = false;
     let toggleStatus = false;
-    let suggestedV = false;
     let subClassElement = document.getElementById(subClassName);
     
     _.forEach(this.factorsCopy, (category) => {
-      suggestedV  = category.noImg;
       _.forEach(category.subClasses, (subCategory) => {
         if (subCategory.name === subClassName) {
           toggleStatus = !subCategory.isToggle;
           subCategory.isToggle = toggleStatus;
+          if(category.class === 'Suggested by users'){
+            this.suggestedVarray[index] = subCategory.isToggle;
+            this.tempSuggestedVarray = this.suggestedVarray[index];
+          }
         }
       });
     });
-    if (toggleStatus && suggestedV) {
+    if(this.tempSuggestedVarray){
+    }
+    else if (toggleStatus) {
       //If Icon has been selected creating a div hat draw the v icon.
       let checkmark_stem = document.createElement('div');
       checkmark_stem.id = `checkmark_stem_${subClassName}`;
@@ -89,8 +95,12 @@ class ChooseHobbiesController {
       subClassElement = null;
     } else {
       //If Icon has been deselected removing the v icon.
-      document.getElementById(`checkmark_stem_${subClassName}`).remove();
-      document.getElementById(`checkmark_kick_${subClassName}`).remove();
+      let checkmark_stem_ = document.getElementById(`checkmark_stem_${subClassName}`);
+      let checkmark_kick_ = document.getElementById(`checkmark_kick_${subClassName}`);
+      if(!_.isNull(checkmark_stem_) && !_.isNull(checkmark_kick_)){
+        checkmark_stem_.remove();
+        checkmark_kick_.remove();
+      }
     }
   }
 }

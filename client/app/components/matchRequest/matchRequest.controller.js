@@ -16,7 +16,7 @@ class MatchRequestController {
   
   //Init match request
   $onInit() {
-    this.bubbleInit();
+    this._bubbleInit();
     this.noFactorsError     = false;
     this.notificationAlert  = false;
     this.allReadyMatchExist = false;
@@ -27,8 +27,7 @@ class MatchRequestController {
     
     this.toggleLeft    = this.buildToggler('left');
     this.toggleRight   = this.buildToggler('right');
-  
-    this.checkOptionalMatchExistence();
+    this._checkOptionalMatchExistence();
     
     this._getLocation();
     USER_DATA_SERVICE.get(this).getUserData().then((userData) => {
@@ -36,9 +35,6 @@ class MatchRequestController {
       this.user = userData;
       this.viewReady = true;
       this._setActiveToggle();
-  
-      document.getElementById('files').addEventListener('change', this.handleFileSelect, false);
-      
     });
   }
   
@@ -57,8 +53,6 @@ class MatchRequestController {
       this.latitude = position.coords.latitude;
       this.longitude = position.coords.longitude;
     }, error => {
-      this.latitude = 32.090346;
-      this.longitude = 34.802194;
       console.log('error', error)
     });
   }
@@ -79,7 +73,6 @@ class MatchRequestController {
   
   //Start match request with current parameters or present already have a match request
   _sendMatchRequest(){
-    
     this.noFactorsError = false;
     
     let currentLocation = {
@@ -106,7 +99,6 @@ class MatchRequestController {
   }
   
   //Checking the integrity of match request object before request to find a match if true start match object will be sent to the server else massage will appear to user
-  
   //Toggle and set current match settings
   setCurrentMatchFactors() {
     let objToSend = [];
@@ -141,7 +133,7 @@ class MatchRequestController {
     };
   }
   //check optional match existence
-  checkOptionalMatchExistence(){
+  _checkOptionalMatchExistence(){
     USER_DATA_SERVICE.get(this).getUserOptionalMatch().then((optionalMatchData)=>{
       optionalMatchData = _.get(optionalMatchData,'data',null);
       this.notificationAlert    = _.get(optionalMatchData,'id',null);
@@ -149,17 +141,19 @@ class MatchRequestController {
     });
   }
   
-  bubbleInit() {
+  //bubble init getting images data from server
+  _bubbleInit() {
     this.viewReady  = false;
     this.bubblePics = {};
     FACTOR_DATA_SERVICE.get(this).getImagesForBubble().then((data)=>{
       this.bubblePics = _.get(data,'data',null);
-      _.map(this.bubblePics, bubble => {bubble.style = this.bubblesBuilder()});
+      _.map(this.bubblePics, bubble => {bubble.style = this._bubblesBuilder()});
       this.viewReady = true;
     });
   }
 
-  bubblesBuilder() {
+  //bubbles image builder puting images as random on screen
+  _bubblesBuilder() {
 
       this.pos_rand = Math.floor(Math.random() * 60);
 
@@ -188,24 +182,6 @@ class MatchRequestController {
         '-ms-filter' : 'blur(' + this.blur_rand  + 'px)',
         'filter' : 'blur(' + this.blur_rand  + 'px)'
       };
-  }
-  
-  handleFileSelect(evt) {
-    let files = evt.target.files;
-    let reader = new FileReader();
-    
-    // Closure to capture the file information.
-    reader.onload = ((theFile) =>{
-      return (e)=> {
-        // Render thumbnail.
-        let span = document.createElement('span');
-        span.innerHTML = ['<img class="thumb" src="', e.target.result,
-          '" title="', escape(theFile.name), '"/>'].join('');
-        document.getElementById('list').insertBefore(span, null);
-      };
-    })(files[0]);
-    // Read in the image file as a data URL.
-    reader.readAsDataURL(files[0]);
   }
   
 }

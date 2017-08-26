@@ -1,3 +1,4 @@
+@import "../../common/common";
 
 choose-hobbies {
   .text{
@@ -6,7 +7,7 @@ choose-hobbies {
   .title{
     font-size: 50px;
     font-weight: 400;
-    color: #444444;
+    color: $hobbiesTitle;
     margin-bottom: 10px;
   }
   .sub-title{
@@ -42,7 +43,7 @@ choose-hobbies {
     position: relative;
     width: 9px;
     height: 6px;
-    background-color: #000000;
+    background-color: $darkTextColor;
     left: 31px;
     top: -67px;
     transform: rotate(45deg);

@@ -7,7 +7,7 @@ import sinonAsPromised from 'sinon-as-promised';
 import _ from 'lodash';
 
 describe('CheckOptionalMatchStatus', () => {
-  let $rootScope, makeController,$q, $timeout,$stateParams,$state,matchDataService,controller;
+  let $rootScope, makeController,$q, $timeout,$stateParams,$state,matchDataService;
   
   let matchData = {
     data: {
@@ -22,6 +22,8 @@ describe('CheckOptionalMatchStatus', () => {
     sinonAsPromised($q);
     $timeout = _$timeout_;
   
+    $stateParams = {matchReqId: 1, optionalMatchId: 123};
+    
     matchDataService = {
       getOptionalMatchStatus:sinon.stub().resolves(matchData),
     };
@@ -32,7 +34,11 @@ describe('CheckOptionalMatchStatus', () => {
   }));
   
   describe('Controller', () => {
-  
+    it('getOptionalMatchStatus',()=>{
+      let controller = new makeController();
+      expect(controller.optionalMatchId).to.be.equal(123);
+      expect(matchDataService.getOptionalMatchStatus.calledWith(123,1));
+    });
   });
   
   describe('Component', () => {

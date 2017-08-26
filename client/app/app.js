@@ -13,6 +13,7 @@ import AngularBootstrap from 'angular-ui-bootstrap';
 import angularAria from 'angular-aria';
 import lodash from 'lodash'
 import moment from 'moment/moment';
+import pageNotFound from './../../client/app/common/pageNotFound/pageNotFound'
 
 import 'angular-material/angular-material.css'
 angular.module('app', [
@@ -24,12 +25,27 @@ angular.module('app', [
     AngularAnimate,
     ngMap,
     userLoginModule,
-    userRegisterModule
+    userRegisterModule,
+    pageNotFound
   ])
-  .config(($locationProvider) => {
+  .config(($locationProvider,$urlRouterProvider,$stateProvider) => {
     "ngInject";
-    // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
-    // #how-to-configure-your-server-to-work-with-html5mode
+    
+    $urlRouterProvider.otherwise('/404');
+  
+    $stateProvider
+    .state('app', {
+      url: '/',
+      component: 'home'
+    })
+    .state('404', {
+      url: '/404',
+      template: '<page-not-found></page-not-found>',
+      data: {
+        error: 404,
+        background: 'notFound',
+      }
+    })
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
 

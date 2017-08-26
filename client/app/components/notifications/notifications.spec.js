@@ -21,22 +21,42 @@ describe('Notifications', () => {
       getUserOptionalMatch:sinon.stub().resolves(),
       getUserImg:sinon.stub().resolves()
     };
+  
+    $stateParams = {matchReqId:123,optionalMatch:321};
     
     makeController = () => {
-      return new NotificationsController($stateParams,$state,moment,userDataService,userDataService);
+      return new NotificationsController($stateParams,$state,moment,userDataService);
     };
   }));
   
-  describe('Module', () => {
-    // top-level specs: i.e., routes, injection, naming
-  });
-  
   describe('Controller', () => {
 
+    it('Should init controller',() => {
+      let controller = makeController();
+      controller.$onInit();
+      expect(controller.matchReqId).to.be.equal(123);
+      expect(controller.receiveMatchObject).to.be.equal(321);
+    });
+  
+    it('Should get user img ',() => {
+      let controller = makeController();
+      controller.$onInit();
+      controller._getUserImg();
+      $timeout.flush();
+      expect(controller.viewReady).to.be.equal(true);
+    });
+  
+    it('Should notify Me',() => {
+      let controller = makeController();
+      controller.$onInit();
+      controller.notifyMe();
+      expect(controller.spawnNotification).to.be.called;
+    });
+    
   });
   
   describe('Component', () => {
-    // component/directive specs
+    
     let component = NotificationsComponent;
     
     it('includes the intended template',() => {

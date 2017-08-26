@@ -17,12 +17,10 @@ const consts = {
     // updateUserExtraData     : 'http://localhost:50825/api/socializeApi/UpdateUserExtraData',
     // getImagesForBubble      : 'http://localhost:50825/api/socializeapi/GetImagesForBubble',
     // addDynamicFactor        :  ( dynamicFactor) => `http://localhost:50825/api/socializeApi/SuggestNewSubClass?newSubClassDesc=${dynamicFactor}`,
-    // removeDynamicFactor          :  ( dynamicFactorRemove) => `http://localhost:50825/api/socializeApi/ReduceSuggestNewSubClass?newSubClassDesc=${dynamicFactorRemove}`
-    //
-
+    // removeDynamicFactor     :  ( dynamicFactorRemove) => `http://localhost:50825/api/socializeApi/ReduceSuggestNewSubClass?newSubClassDesc=${dynamicFactorRemove}`
+  
   userRegister             : '/account/AjaxRegister',
   userLogin                : '/account/AjaxLogin',
-
   userData                 : '/api/socializeapi/GetUserData',
   factors                  : '/api/socializeapi/GetAllSystemFactors',
   updateUserData           : '/api/socializeapi/UpdateUserData',

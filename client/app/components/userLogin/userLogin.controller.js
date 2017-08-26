@@ -6,7 +6,6 @@ class UserLoginController {
   constructor($state,userDataService) {
     USER_DATA_SERVICE.set(this,userDataService);
     STATE.set(this,$state);
-    this.name = 'userLogin';
     this.userRegister = false;
     this.authenticationError = false;
   }
