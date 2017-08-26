@@ -80,10 +80,6 @@ describe('UserProfile', () => {
     
   }));
   
-  describe('Module', () => {
-    // top-level specs: i.e., routes, injection, naming
-  });
-  
   describe('Controller', () => {
     it('Should create controller successfully', () => {
       let controller = makeController();

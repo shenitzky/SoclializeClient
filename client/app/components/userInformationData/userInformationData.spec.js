@@ -25,10 +25,6 @@ describe('UserInformationData', () => {
     };
   }));
   
-  describe('Module', () => {
-    // top-level specs: i.e., routes, injection, naming
-  });
-  
   describe('Controller', () => {
     it('Should valid user information and fail',()=>{
       let controller = makeController();

@@ -72,17 +72,45 @@ describe('ChooseHobbies', () => {
     };
   
     makeController = () => {
-      return new ChooseHobbiesController($state,userDataService,factorsDataService);
+      return new  ChooseHobbiesController($state,userDataService,factorsDataService);
     };
     
   }));
   
-  describe('Module', () => {
-    // top-level specs: i.e., routes, injection, naming
-  });
-  
   describe('Controller', () => {
-
+    
+    it('Valid onInit factors',()=>{
+      let factorsWithToggle = [{
+        id: 0,
+        userId: null,
+        class: "Sport",
+        subClasses: [{
+          id: 0,
+          name: "Soccer",
+          imgUrl: "http://localhost:3000/Content/Images/icons/games.png",
+          isToggle: false
+        },
+          {
+            id: 0,
+            name: "Tennis3",
+            imgUrl: "http://localhost:3000/Content/Images/icons/games.png",
+            isToggle: false
+          }],
+        noImg:false
+      }];
+      let controller = new makeController();
+      controller.$onInit();
+      $timeout.flush();
+      expect(controller.factorsCopy).to.be.deep.equal(factorsWithToggle);
+    })
+    
+    it('sendCategoriesToServer',()=>{
+      let controller = new makeController();
+      controller.$onInit();
+      $timeout.flush();
+      controller.sendCategoriesToServer();
+      expect(userDataService.updateUserData.called).to.be.true;
+    })
   });
   
   describe('Component', () => {

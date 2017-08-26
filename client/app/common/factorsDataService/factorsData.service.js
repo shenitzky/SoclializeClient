@@ -17,9 +17,9 @@ export class FactorDataService {
       return FACTORDATA_API.get(this).addDynamicFactor(factorName);
     }
   
-  removeDynamicFactor(factorNameToRemove) {
-    return FACTORDATA_API.get(this).addDynamicFactor(factorNameToRemove);
-  }
+    removeDynamicFactor(factorNameToRemove) {
+      return FACTORDATA_API.get(this).removeDynamicFactor(factorNameToRemove);
+    }
   
 }
 FactorDataService.$inject = ['factorDataApi'];

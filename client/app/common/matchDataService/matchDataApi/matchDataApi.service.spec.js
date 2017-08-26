@@ -1,15 +1,15 @@
 import {ConnectionService} from '../../../common/connection/connection.factory';
-import userDataApiService from './userDataApi.service';
+import matchDataApiService from './matchDataApi.service';
 import apiConsts from '../../../common/const/API'
 import sinon from 'sinon';
 
-describe('userData Api service', () => {
+describe('matchData Api service', () => {
   let  service, makeService, connectionService;
   beforeEach(inject(() => {
     connectionService = new ConnectionService();
     connectionService.sendPlainText = sinon.stub().resolves('test');
     makeService = () => {
-      return new userDataApiService(connectionService);
+      return new matchDataApiService(connectionService);
     };
     
     service = makeService();
@@ -17,66 +17,58 @@ describe('userData Api service', () => {
   
   describe('Service', () => {
     
-    it('getUserData', () => {
-      service.getUserData();
+    it('createMatchRequest', () => {
+      service.createMatchRequest({data:'data'});
       expect(connectionService.sendPlainText.withArgs({
-        method: 'GET',
-        url: apiConsts.userData,
+        method: 'POST',
+        url: apiConsts.createMatcReq,
+        data:{data:'data'}
       }).calledOnce).to.be.equal(true)
     });
     
-    it('updateUserData', () => {
-      service.updateUserData({data:'data'});
+    it('updateAndCheckMatcReq', () => {
+      service.updateAndCheckMatcReq({data:'data'});
       expect(connectionService.sendPlainText.withArgs({
         method: 'POST',
-        url: apiConsts.updateUserData,
+        url: apiConsts.updateAndCheckMatcReq,
         data:{data:'data'}
       }).calledOnce).to.be.equal(true)
     });
     
     
-    it('getUserImg', () => {
-      service.getUserImg();
-      expect(connectionService.sendPlainText.withArgs({
-        method: 'GET',
-        url: apiConsts.getUserImg,
-      }).calledOnce).to.be.equal(true)
-    });
-    
-    it('userRegister', () => {
-      service.userRegister({data:'data'});
+    it('acceptOptionalMatch', () => {
+      service.acceptOptionalMatch({data:'data'});
       expect(connectionService.sendPlainText.withArgs({
         method: 'POST',
-        url: apiConsts.userRegister,
+        url: apiConsts.acceptOptionalMatch,
         data:{data:'data'}
-      }).calledOnce).to.be.equal(true)
-    });
-    
-    it('userLogin', () => {
-      service.userLogin({data:'data'});
-      expect(connectionService.sendPlainText.withArgs({
-        method: 'POST',
-        url: apiConsts.userLogin,
-        data:{data:'data'}
-      }).calledOnce).to.be.equal(true)
-    });
-    
-    it('getUserOptionalMatch', () => {
-      service.getUserOptionalMatch();
-      expect(connectionService.sendPlainText.withArgs({
-        method: 'GET',
-        url: apiConsts.getUserOptionalMatch,
       }).calledOnce).to.be.equal(true)
     });
   
-    it('updateUserExtraData', () => {
-      service.updateUserExtraData({data:'data'});
+    it('declineOptionalMatch', () => {
+      service.declineOptionalMatch({data:'data'});
       expect(connectionService.sendPlainText.withArgs({
         method: 'POST',
-        url: apiConsts.updateUserExtraData,
+        url: apiConsts.declineOptionalMatch,
         data:{data:'data'}
       }).calledOnce).to.be.equal(true)
     });
-    
+  
+    it('getOptionalMatchStatus', () => {
+      service.getOptionalMatchStatus(123,321);
+      expect(connectionService.sendPlainText.withArgs({
+        method: 'GET',
+        url: apiConsts.getOptionalMatchStatus(123,321),
+      }).calledOnce).to.be.equal(true)
+    });
+  
+    it('getOptionalMatchStatus', () => {
+      service.getReverseGeocoding(33.322,3.421);
+      expect(connectionService.sendPlainText.withArgs({
+        method: 'GET',
+        url: apiConsts.getReverseGeocoding(33.322,3.421),
+      }).calledOnce).to.be.equal(true)
+    });
+
   });
 });

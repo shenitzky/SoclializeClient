@@ -1,3 +1,5 @@
+@import "../../../common/common";
+
 checkbox-element {
 
   md-checkbox .md-label {
@@ -19,12 +21,12 @@ checkbox-element {
       border: 0 !important;
 
       &::after {
-        border-color: #434343 !important;
+        border-color: $gary !important;
       }
     }
     &.md-checked {
       .md-icon {
-        background: #c3c3f7;
+        background: $checkBoxBg;
         &:after {
           left: 9.66667px;
           top: 2.22222px;
@@ -42,7 +44,7 @@ checkbox-element {
     background-color:rgba(0,0,0,-1.74);
   }
   md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-icon{
-    background-color: #dfe3f7;
+    background-color: $defaultBg;
   }
   md-checkbox .md-container{
     &:after, &:before{

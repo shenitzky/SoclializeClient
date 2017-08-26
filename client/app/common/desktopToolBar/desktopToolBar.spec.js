@@ -13,23 +13,15 @@ describe('DesktopToolBar', () => {
       return new DesktopToolBarController();
     };
   }));
-
-  describe('Module', () => {
-    // top-level specs: i.e., routes, injection, naming
-  });
-
+  
   describe('Controller', () => {
-    // controller specs
-    it('has a name property [REMOVE]', () => { // erase if removing this.name from the controller
+    it('has a name property', () => {
       let controller = makeController();
       expect(controller).to.have.property('name');
     });
   });
 
-  describe('Template', () => {
-
-  });
-
+  
   describe('Component', () => {
       // component/directive specs
       let component = DesktopToolBarComponent;

@@ -13,7 +13,7 @@ class UserProfileController {
     this.newFactorsHobbies = [];
     this.notificationAlert = false;
     this.viewReady = false;
-    this.checkOptionalMatchExistence();
+    this._checkOptionalMatchExistence();
       USER_DATA_SERVICE.get(this).getUserData().then((userData)=> {
         FACTORS_DATA_SERVICE.get(this).getFactorData().then((factorData) => {
         factorData  = _.get(factorData,'data',null);
@@ -46,11 +46,11 @@ class UserProfileController {
   }
   
   //check optional match existence if -1 will not show anything
-  checkOptionalMatchExistence(){
+  _checkOptionalMatchExistence(){
     USER_DATA_SERVICE.get(this).getUserOptionalMatch().then((optionalMatchData)=>{
       optionalMatchData = _.get(optionalMatchData,'data',null);
       this.notificationAlert    = _.get(optionalMatchData,'id',null);
-      this.notificationAlert === -1 ? this.notificationAlert = false : this.notificationAlert = !_.isNull(optionalMatchData);
+      this.notificationAlert === -1 ? this.notificationAlert = false : this.notificationAlert = !_.isNull(optionalMatchData) && this.notifyMe();
     });
   }
   
@@ -89,7 +89,7 @@ class UserProfileController {
     });
   }
   saveDynamicFactor(index,factorHobby) {
-    if(this.validNewFactorName(index)){
+    if(this._validNewFactorName(index)){
       FACTORS_DATA_SERVICE.get(this).addDynamicFactor(factorHobby.name).then(()=>{
         this.newFactorsHobbies[index].isDisable = true;
         this.newFactorsHobbies[index].name = factorHobby.name;
@@ -97,7 +97,7 @@ class UserProfileController {
     }
   }
   
-  validNewFactorName(index) {
+  _validNewFactorName(index) {
     return !_.isEmpty(this.newFactorsHobbies[index].name);
   }
   
@@ -109,7 +109,26 @@ class UserProfileController {
     }
   }
   
+  notifyMe() {
+    // Let's check if the browser supports notifications
+    if (!("Notification" in window)) {
+      console.log("This browser does not support system notifications");
+    }
+    // Let's check whether notification permissions have already been granted
+    else if (Notification.permission === "granted") {
+      // If it's okay let's create a notification
+      let notification = this.spawnNotification("You Have a match!",'content/images/icons/logo.png','Socialize')
+    }
+  }
   
+  spawnNotification(theBody,theIcon,theTitle) {
+    let options = {
+      body: theBody,
+      icon: theIcon
+    };
+    let n = new Notification(theTitle,options);
+    setTimeout(n.close.bind(n), 5000);
+  }
   
 }
 

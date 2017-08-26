@@ -16,7 +16,6 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import colorsSupported      from 'supports-color';
 import historyApiFallback   from 'connect-history-api-fallback';
-import proxyMiddleware from 'http-proxy-middleware'
 import _ from 'lodash'
 
 

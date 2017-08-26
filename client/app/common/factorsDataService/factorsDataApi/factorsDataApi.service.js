@@ -17,16 +17,16 @@ export class FactorsDataApiService {
       return CONNECTION.get(this).sendPlainText(obj);
     }
   
-  addDynamicFactor(factorName) {
-    let obj = {method: 'GET', url: apiConsts.addDynamicFactor(factorName)};
-    return CONNECTION.get(this).sendPlainText(obj);
-  }
-  
-  removeDynamicFactor(factorNameToRemove) {
-    let obj = {method: 'GET', url: apiConsts.removeDynamicFactor(factorNameToRemove)};
-    return CONNECTION.get(this).sendPlainText(obj);
-  }
-  
+    addDynamicFactor(factorName) {
+      let obj = {method: 'GET', url: apiConsts.addDynamicFactor(factorName)};
+      return CONNECTION.get(this).sendPlainText(obj);
+    }
+    
+    removeDynamicFactor(factorNameToRemove) {
+      let obj = {method: 'GET', url: apiConsts.removeDynamicFactor(factorNameToRemove)};
+      return CONNECTION.get(this).sendPlainText(obj);
+    }
+    
 }
 FactorsDataApiService.$inject = ['connection'];
 export default FactorsDataApiService;

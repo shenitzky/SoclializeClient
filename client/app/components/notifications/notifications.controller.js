@@ -38,6 +38,7 @@ class NotificationsController {
     this.date = this.momentTime(this.receiveMatchObject.created).format("DD/MM");
     this.time = this.momentTime(this.receiveMatchObject.created).format("HH:mm");
     this.haveNotification = true;
+    this.notifyMe();
   }
   
   //check Match Existence and validation
@@ -55,6 +56,29 @@ class NotificationsController {
   //match found moving state with optional match
   matchFoundState(){
     STATE.get(this).go('matchFound',{'optionalMatch':this.receiveMatchObject,'time':this.time,'date':this.date,'matchReqId':this.matchReqId});
+  }
+  
+  //found match notify user
+  notifyMe() {
+    // Let's check if the browser supports notifications
+    if (!("Notification" in window)) {
+      console.log("This browser does not support system notifications");
+    }
+    // Let's check whether notification permissions have already been granted
+    else if (Notification.permission === "granted") {
+      // If it's okay let's create a notification
+      let notification = this.spawnNotification("You Have a match!",'content/images/icons/logo.png','Socialize')
+    }
+  }
+  
+  //build massage and icons to user
+  spawnNotification(theBody,theIcon,theTitle) {
+    let options = {
+      body: theBody,
+      icon: theIcon
+    };
+    let n = new Notification(theTitle,options);
+    setTimeout(n.close.bind(n), 5000);
   }
   
 }

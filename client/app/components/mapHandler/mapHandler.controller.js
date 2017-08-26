@@ -13,7 +13,6 @@ class MapHandlerController {
     MATCH_DATA_SERVICE.set(this,matchDataService);
     this.matchData = $stateParams.matchData;
     this.viewReady = false;
-    this.name = 'mapHandler';
     this.gMap = NgMap;
   }
  
